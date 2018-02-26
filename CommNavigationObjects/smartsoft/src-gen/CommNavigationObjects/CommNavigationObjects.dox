@@ -1,0 +1,400 @@
+/** 
+\class CommNavigationObjects::CommPlannerEventParameterCore
+
+Structure of Communication Object:
+- oldState: CommNavigationObjects::PlannerEventType 
+
+\class CommNavigationObjects::CommPlannerEventResultCore
+
+Structure of Communication Object:
+- state: CommNavigationObjects::PlannerEventType 
+
+\class CommNavigationObjects::CommCdlGoalEventParameterCore
+
+Structure of Communication Object:
+- oldState: CommNavigationObjects::CdlGoalEventType 
+
+\class CommNavigationObjects::CommCdlGoalEventResultCore
+
+Structure of Communication Object:
+- state: CommNavigationObjects::CdlGoalEventType 
+
+\class CommNavigationObjects::CdlGoalEventStateCore
+
+Structure of Communication Object:
+- newState: CommNavigationObjects::CdlGoalEventType 
+
+\class CommNavigationObjects::CommGridMapCore
+
+Structure of Communication Object:
+- id: UInt32 
+- is_valid: Boolean 
+- time: CommBasicObjects::CommTimeStamp 
+- xOffsetMM: Int32 
+- yOffsetMM: Int32 
+- xOffsetCells: Int32 
+- yOffsetCells: Int32 
+- cellSizeMM: Int32 
+- xSizeMM: UInt32 
+- ySizeMM: UInt32 
+- xSizeCells: UInt32 
+- ySizeCells: UInt32 
+- size: UInt32 
+- cell: UInt8[*] 
+
+\class CommNavigationObjects::CommPlannerGoalCore
+
+Structure of Communication Object:
+- id: Int32 
+- flag: Int32 
+- xWayPoint: Double 
+- yWayPoint: Double 
+- hWayPoint: Double 
+- xGoalPoint: Double 
+- yGoalPoint: Double 
+- hGoalPoint: Double 
+
+\class CommNavigationObjects::CommGridMapRequestCore
+
+Structure of Communication Object:
+- id: UInt32 
+- xOffsetMM: Int32 
+- yOffsetMM: Int32 
+- xSizeMM: UInt32 
+- ySizeMM: UInt32 
+- curLtmState: Boolean 
+- curLtmThreshold: UInt32 
+
+\class CommNavigationObjects::PlannerEventStateCore
+
+Structure of Communication Object:
+- newState: CommNavigationObjects::PlannerEventType 
+
+\class CommNavigationObjects::CommCdlRobotBlockedEventParameterCore
+
+Structure of Communication Object:
+- oldState: CommNavigationObjects::CdlRobotBlockEventType 
+
+\class CommNavigationObjects::CommCdlRobotBlockedEventResultCore
+
+Structure of Communication Object:
+- state: CommNavigationObjects::CdlRobotBlockEventType 
+
+\class CommNavigationObjects::CommCdlRobotBlockedStateCore
+
+Structure of Communication Object:
+- newState: CommNavigationObjects::CdlRobotBlockEventType 
+
+\class CommNavigationObjects::OctomapTagType
+
+Structure of Enumeration:
+- RESET 
+
+\class CommNavigationObjects::CdlTagType
+
+Structure of Enumeration:
+- CDL_SET_MODE_STRATEGY 
+- CDL_SET_FREE_BEHAVIOUR 
+- CDL_SET_LOOKUP_TABLE 
+- CDL_SET_TRANS_VELOCITY 
+- CDL_SET_ROT_VELOCITY 
+- CDL_SET_MODE_GOAL 
+- CDL_SET_ID 
+- CDL_SET_GOAL 
+- CDL_SET_APPROACH_DIST 
+- CDL_SAVE_CURRENT_POS 
+- CDL_SET_SAFETY_CLEARENCE 
+- CDL_NEUTRAL 
+- CDL_REACTIVE 
+- CDL_JOYSTICK 
+- CDL_TURN 
+- CDL_APPROACH_FLAT_SURF 
+- CDL_APPROACH_HALT 
+- CDL_APPROACH 
+- CDL_ROTATE 
+- CDL_FOLLOW 
+- CDL_BACKWARD 
+- CDL_ABSOLUTE 
+- CDL_PLANNER 
+- CDL_PERSON 
+- CDL_SAVED 
+- CDL_ANGLE_ABSOLUTE 
+- CDL_ANGLE_RELATIVE 
+- CDL_DEFAULT_LOOKUP 
+- CDL_SECOND_LOOKUP 
+- CDL_NO_FREE_BEHAVIOUR 
+- CDL_FREE_BEHAVIOR 
+- CDL_APPROACH_COVERAGE 
+
+\class CommNavigationObjects::PlannerTagType
+
+Structure of Enumeration:
+- PLANNER_DELETE_GOAL 
+- PLANNER_SET_DESTINATION_LINE 
+- PLANNER_SET_DESTINATION_CIRCLE 
+- PLANNER_ID 
+
+\class CommNavigationObjects::SLAM6DOFTag
+
+Structure of Enumeration:
+- INITALPOSE_6DOF 
+- SLAM_MODE 
+- POSETRACKING_MODE 
+
+\class CommNavigationObjects::MapperTagType
+
+Structure of Enumeration:
+- MAPPER_CUR_PARAMETER 
+- MAPPER_CUR_LTM 
+- MAPPER_CUR_SAVE 
+- MAPPER_CUR_LOAD 
+- MAPPER_CUR_LOAD_LTM 
+- MAPPER_CTR_SAVE_XPM 
+- MAPPER_LTM_PARAMETER 
+- MAPPER_LTM_INITIALIZE 
+- MAPPER_LTM_SAVE 
+- MAPPER_LTM_LOAD 
+- MAPPER_LTM_SAVE_XPM 
+- MAPPER_LTM_SAVE_YAML_PGM 
+- MAPPER_LTM_SAVE_YAML_PPM 
+- MAPPER_LTM_LOAD_YAML 
+
+\class CommNavigationObjects::PlannerEventType
+
+Structure of Enumeration:
+- PLANNER_NO_ERROR 
+- PLANNER_UNKNOWN_ERROR 
+- PLANNER_NO_GOAL_AVAILABLE 
+- PLANNER_GOAL_OK 
+- PLANNER_GOAL_NOT_MARKED 
+- PLANNER_START_OCCUPIED_OBSTACLE 
+- PLANNER_START_OCCUPIED_GOAL 
+- PLANNER_NO_PATH 
+- PLANNER_PATH_FOUND 
+- PLANNER_WRONG_MAPID 
+- PLANNER_INVALID_MAP 
+- PLANNER_UNKNOWN 
+
+\class CommNavigationObjects::CdlGoalEventType
+
+Structure of Enumeration:
+- CDL_GOAL_UNKNOWN 
+- CDL_GOAL_REACHED 
+- CDL_GOAL_NOT_REACHED 
+
+\class CommNavigationObjects::CdlRobotBlockEventType
+
+Structure of Enumeration:
+- CDL_ROBOT_UNKNOWN 
+- CDL_ROBOT_BLOCKED 
+- CDL_ROBOT_NOT_BLOCKED 
+- CDL_ROBOT_BLOCKED_PATH 
+- CDL_ROBOT_UNBLOCKED_PATH 
+
+
+
+
+@defgroup CommNavigationObjects
+@ingroup commObjGroup
+@{
+\page CommNavigationObjectsPage CommNavigationObjects
+Class Reference: CommNavigationObjects
+<hr>
+
+@section CommPlannerEventParameter CommPlannerEventParameter
+- oldState: @ref PlannerEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommPlannerEventParameterCore
+<hr>
+@section CommPlannerEventResult CommPlannerEventResult
+- state: @ref PlannerEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommPlannerEventResultCore
+<hr>
+@section CommCdlGoalEventParameter CommCdlGoalEventParameter
+- oldState: @ref CdlGoalEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommCdlGoalEventParameterCore
+<hr>
+@section CommCdlGoalEventResult CommCdlGoalEventResult
+- state: @ref CdlGoalEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommCdlGoalEventResultCore
+<hr>
+@section CdlGoalEventState CdlGoalEventState
+- newState: @ref CdlGoalEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CdlGoalEventStateCore
+<hr>
+@section CommGridMap CommGridMap
+- id: UInt32  
+- is_valid: Boolean  
+- time: @ref CommTimeStamp (CommObj) 
+- xOffsetMM: Int32  
+- yOffsetMM: Int32  
+- xOffsetCells: Int32  
+- yOffsetCells: Int32  
+- cellSizeMM: Int32  
+- xSizeMM: UInt32  
+- ySizeMM: UInt32  
+- xSizeCells: UInt32  
+- ySizeCells: UInt32  
+- size: UInt32  
+- cell: UInt8[*]  
+
+Class Reference: CommNavigationObjects::CommGridMapCore
+<hr>
+@section CommPlannerGoal CommPlannerGoal
+- id: Int32  
+- flag: Int32  
+- xWayPoint: Double  
+- yWayPoint: Double  
+- hWayPoint: Double  
+- xGoalPoint: Double  
+- yGoalPoint: Double  
+- hGoalPoint: Double  
+
+Class Reference: CommNavigationObjects::CommPlannerGoalCore
+<hr>
+@section CommGridMapRequest CommGridMapRequest
+- id: UInt32  
+- xOffsetMM: Int32  
+- yOffsetMM: Int32  
+- xSizeMM: UInt32  
+- ySizeMM: UInt32  
+- curLtmState: Boolean  
+- curLtmThreshold: UInt32  
+
+Class Reference: CommNavigationObjects::CommGridMapRequestCore
+<hr>
+@section PlannerEventState PlannerEventState
+- newState: @ref PlannerEventType (Enum) 
+
+Class Reference: CommNavigationObjects::PlannerEventStateCore
+<hr>
+@section CommCdlRobotBlockedEventParameter CommCdlRobotBlockedEventParameter
+- oldState: @ref CdlRobotBlockEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommCdlRobotBlockedEventParameterCore
+<hr>
+@section CommCdlRobotBlockedEventResult CommCdlRobotBlockedEventResult
+- state: @ref CdlRobotBlockEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommCdlRobotBlockedEventResultCore
+<hr>
+@section CommCdlRobotBlockedState CommCdlRobotBlockedState
+- newState: @ref CdlRobotBlockEventType (Enum) 
+
+Class Reference: CommNavigationObjects::CommCdlRobotBlockedStateCore
+<hr>
+@section OctomapTagType OctomapTagType
+- RESET 
+
+Class Reference: CommNavigationObjects::OctomapTagType
+<hr>
+@section CdlTagType CdlTagType
+- CDL_SET_MODE_STRATEGY 
+- CDL_SET_FREE_BEHAVIOUR 
+- CDL_SET_LOOKUP_TABLE 
+- CDL_SET_TRANS_VELOCITY 
+- CDL_SET_ROT_VELOCITY 
+- CDL_SET_MODE_GOAL 
+- CDL_SET_ID 
+- CDL_SET_GOAL 
+- CDL_SET_APPROACH_DIST 
+- CDL_SAVE_CURRENT_POS 
+- CDL_SET_SAFETY_CLEARENCE 
+- CDL_NEUTRAL 
+- CDL_REACTIVE 
+- CDL_JOYSTICK 
+- CDL_TURN 
+- CDL_APPROACH_FLAT_SURF 
+- CDL_APPROACH_HALT 
+- CDL_APPROACH 
+- CDL_ROTATE 
+- CDL_FOLLOW 
+- CDL_BACKWARD 
+- CDL_ABSOLUTE 
+- CDL_PLANNER 
+- CDL_PERSON 
+- CDL_SAVED 
+- CDL_ANGLE_ABSOLUTE 
+- CDL_ANGLE_RELATIVE 
+- CDL_DEFAULT_LOOKUP 
+- CDL_SECOND_LOOKUP 
+- CDL_NO_FREE_BEHAVIOUR 
+- CDL_FREE_BEHAVIOR 
+- CDL_APPROACH_COVERAGE 
+
+Class Reference: CommNavigationObjects::CdlTagType
+<hr>
+@section PlannerTagType PlannerTagType
+- PLANNER_DELETE_GOAL 
+- PLANNER_SET_DESTINATION_LINE 
+- PLANNER_SET_DESTINATION_CIRCLE 
+- PLANNER_ID 
+
+Class Reference: CommNavigationObjects::PlannerTagType
+<hr>
+@section SLAM6DOFTag SLAM6DOFTag
+- INITALPOSE_6DOF 
+- SLAM_MODE 
+- POSETRACKING_MODE 
+
+Class Reference: CommNavigationObjects::SLAM6DOFTag
+<hr>
+@section MapperTagType MapperTagType
+- MAPPER_CUR_PARAMETER 
+- MAPPER_CUR_LTM 
+- MAPPER_CUR_SAVE 
+- MAPPER_CUR_LOAD 
+- MAPPER_CUR_LOAD_LTM 
+- MAPPER_CTR_SAVE_XPM 
+- MAPPER_LTM_PARAMETER 
+- MAPPER_LTM_INITIALIZE 
+- MAPPER_LTM_SAVE 
+- MAPPER_LTM_LOAD 
+- MAPPER_LTM_SAVE_XPM 
+- MAPPER_LTM_SAVE_YAML_PGM 
+- MAPPER_LTM_SAVE_YAML_PPM 
+- MAPPER_LTM_LOAD_YAML 
+
+Class Reference: CommNavigationObjects::MapperTagType
+<hr>
+@section PlannerEventType PlannerEventType
+- PLANNER_NO_ERROR 
+- PLANNER_UNKNOWN_ERROR 
+- PLANNER_NO_GOAL_AVAILABLE 
+- PLANNER_GOAL_OK 
+- PLANNER_GOAL_NOT_MARKED 
+- PLANNER_START_OCCUPIED_OBSTACLE 
+- PLANNER_START_OCCUPIED_GOAL 
+- PLANNER_NO_PATH 
+- PLANNER_PATH_FOUND 
+- PLANNER_WRONG_MAPID 
+- PLANNER_INVALID_MAP 
+- PLANNER_UNKNOWN 
+
+Class Reference: CommNavigationObjects::PlannerEventType
+<hr>
+@section CdlGoalEventType CdlGoalEventType
+- CDL_GOAL_UNKNOWN 
+- CDL_GOAL_REACHED 
+- CDL_GOAL_NOT_REACHED 
+
+Class Reference: CommNavigationObjects::CdlGoalEventType
+<hr>
+@section CdlRobotBlockEventType CdlRobotBlockEventType
+- CDL_ROBOT_UNKNOWN 
+- CDL_ROBOT_BLOCKED 
+- CDL_ROBOT_NOT_BLOCKED 
+- CDL_ROBOT_BLOCKED_PATH 
+- CDL_ROBOT_UNBLOCKED_PATH 
+
+Class Reference: CommNavigationObjects::CdlRobotBlockEventType
+<hr>
+
+
+@}
+*/
+

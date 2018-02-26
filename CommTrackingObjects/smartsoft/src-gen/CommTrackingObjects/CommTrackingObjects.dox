@@ -1,0 +1,164 @@
+/** 
+\class CommTrackingObjects::CommLaserTrackingDataCore
+
+Structure of Communication Object:
+- scan: CommBasicObjects::CommMobileLaserScan 
+- objects: CommTrackingObjects::CommLaserTrackedObject[*] 
+
+\class CommTrackingObjects::CommTrackingGoalCore
+
+Structure of Communication Object:
+- trackingType: CommTrackingObjects::TrackingGoalType  = XY_MAP_RAW 
+- angle: Double 
+- distance: Double 
+- x: Double 
+- y: Double 
+- isValid: Boolean 
+- cov: Double[*] 
+
+\class CommTrackingObjects::CommLaserTrackedObjectCore
+
+Structure of Communication Object:
+- id: UInt32 
+- first_point: UInt16 
+- last_point: UInt16 
+
+\class CommTrackingObjects::CommTrackedPersonCore
+
+Structure of Communication Object:
+- id: UInt32 
+- x: Double 
+- y: Double 
+- z: Double  = 0.0 
+
+\class CommTrackingObjects::CommPersonTrackingListCore
+
+Structure of Communication Object:
+- trackedPersons: CommTrackingObjects::CommTrackedPerson[*] 
+- followedPerson: Int32 
+- isValid: Boolean  = false 
+
+\class CommTrackingObjects::PersonLostEventStateCore
+
+Structure of Communication Object:
+- newState: CommTrackingObjects::PersonLostEventType 
+
+\class CommTrackingObjects::CommPersonLostEventParameterCore
+
+Structure of Communication Object:
+- oldState: CommTrackingObjects::PersonLostEventType 
+
+\class CommTrackingObjects::CommPersonLostEventResultCore
+
+Structure of Communication Object:
+- state: CommTrackingObjects::PersonLostEventType 
+
+\class CommTrackingObjects::TrackingGoalType
+
+Structure of Enumeration:
+- XY_ROBOT 
+- XY_MAP 
+- XY_MAP_RAW 
+- ANGLE_DIST 
+
+\class CommTrackingObjects::PersonLostEventType
+
+Structure of Enumeration:
+- PERSON_LOST 
+- PERSON_FOUND 
+- PERSON_LOST_CROWD 
+
+\class CommTrackingObjects::FollowMeRegainTagType
+
+Structure of Enumeration:
+- REGAIN_RESET 
+
+
+
+
+@defgroup CommTrackingObjects
+@ingroup commObjGroup
+@{
+\page CommTrackingObjectsPage CommTrackingObjects
+Class Reference: CommTrackingObjects
+<hr>
+
+@section CommLaserTrackingData CommLaserTrackingData
+- scan: @ref CommMobileLaserScan (CommObj) 
+- objects: @ref CommLaserTrackedObject[*] (CommObj) 
+
+Class Reference: CommTrackingObjects::CommLaserTrackingDataCore
+<hr>
+@section CommTrackingGoal CommTrackingGoal
+- trackingType: @ref TrackingGoalType (Enum)  = XY_MAP_RAW 
+- angle: Double  
+- distance: Double  
+- x: Double  
+- y: Double  
+- isValid: Boolean  
+- cov: Double[*]  
+
+Class Reference: CommTrackingObjects::CommTrackingGoalCore
+<hr>
+@section CommLaserTrackedObject CommLaserTrackedObject
+- id: UInt32  
+- first_point: UInt16  
+- last_point: UInt16  
+
+Class Reference: CommTrackingObjects::CommLaserTrackedObjectCore
+<hr>
+@section CommTrackedPerson CommTrackedPerson
+- id: UInt32  
+- x: Double  
+- y: Double  
+- z: Double   = 0.0 
+
+Class Reference: CommTrackingObjects::CommTrackedPersonCore
+<hr>
+@section CommPersonTrackingList CommPersonTrackingList
+- trackedPersons: @ref CommTrackedPerson[*] (CommObj) 
+- followedPerson: Int32  
+- isValid: Boolean   = false 
+
+Class Reference: CommTrackingObjects::CommPersonTrackingListCore
+<hr>
+@section PersonLostEventState PersonLostEventState
+- newState: @ref PersonLostEventType (Enum) 
+
+Class Reference: CommTrackingObjects::PersonLostEventStateCore
+<hr>
+@section CommPersonLostEventParameter CommPersonLostEventParameter
+- oldState: @ref PersonLostEventType (Enum) 
+
+Class Reference: CommTrackingObjects::CommPersonLostEventParameterCore
+<hr>
+@section CommPersonLostEventResult CommPersonLostEventResult
+- state: @ref PersonLostEventType (Enum) 
+
+Class Reference: CommTrackingObjects::CommPersonLostEventResultCore
+<hr>
+@section TrackingGoalType TrackingGoalType
+- XY_ROBOT 
+- XY_MAP 
+- XY_MAP_RAW 
+- ANGLE_DIST 
+
+Class Reference: CommTrackingObjects::TrackingGoalType
+<hr>
+@section PersonLostEventType PersonLostEventType
+- PERSON_LOST 
+- PERSON_FOUND 
+- PERSON_LOST_CROWD 
+
+Class Reference: CommTrackingObjects::PersonLostEventType
+<hr>
+@section FollowMeRegainTagType FollowMeRegainTagType
+- REGAIN_RESET 
+
+Class Reference: CommTrackingObjects::FollowMeRegainTagType
+<hr>
+
+
+@}
+*/
+

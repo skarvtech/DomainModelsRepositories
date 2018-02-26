@@ -1,0 +1,203 @@
+/** 
+\class CommLocalizationObjects::CommViewpointLocationsCore
+
+Structure of Communication Object:
+- database: CommLocalizationObjects::ViewpointLocation[*] 
+
+\class CommLocalizationObjects::ViewpointLocationCore
+
+Structure of Communication Object:
+- id: Int32 
+- mean: CommLocalizationObjects::CPose2D 
+- cov: CommLocalizationObjects::CMatrixDouble22 
+- invCov: CommLocalizationObjects::CMatrixDouble22 
+- observationCount: Int32 
+- possibleObservations: Int32 
+
+\class CommLocalizationObjects::CPose2DCore
+
+Structure of Communication Object:
+- m_phi: Double 
+- m_is3D: Boolean 
+- m_x: Double 
+- m_y: Double 
+- m_z: Double 
+
+\class CommLocalizationObjects::CMatrixDouble22Core
+
+Structure of Communication Object:
+- m_00: Double 
+- m_01: Double 
+- m_10: Double 
+- m_11: Double 
+
+\class CommLocalizationObjects::CommLocalizationEventParameterCore
+
+Structure of Communication Object:
+- oldState: CommLocalizationObjects::LocalizationEventType 
+
+\class CommLocalizationObjects::CommLocalizationEventResultCore
+
+Structure of Communication Object:
+- state: CommLocalizationObjects::LocalizationEventType 
+
+\class CommLocalizationObjects::LocalizationEventStateCore
+
+Structure of Communication Object:
+- newState: CommLocalizationObjects::LocalizationEventType 
+
+\class CommLocalizationObjects::CommGpsFixCore
+Communication object to read a gps device. Inspired by struct gps_fix_t from libgps
+
+Structure of Communication Object:
+- gps_timestamp: Double 
+<i> Timestamp as received from GPS device in unix format + fractional part </i>
+- is_2D: Boolean 
+<i> Values for latitude and longitude are valid. </i>
+- is_3D: Boolean 
+<i> Values for latitude, longitude and elevation are valid. </i>
+- satellites_visible: Int32 
+<i> Number of visible satellites </i>
+- satellites_used: Int32 
+<i> Number of satellites that were used for calculating the position </i>
+- latitude: Double 
+<i> Latitude. Only valid if is_2D = true </i>
+- longitude: Double 
+<i> Longitude. Only valid if is_2D = true </i>
+- altitude: Double 
+<i> Altitude [meters]. Only valid if is_3D = [true] </i>
+- speed: Double 
+<i> Speed over ground. [meters/second] </i>
+- climb: Double 
+<i> Vertical speed. [meters/second] </i>
+- latitude_uncertainty: Double 
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- longitude_uncertainty: Double 
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- altitude_uncertainty: Double 
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- speed_uncertainty: Double 
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- climb_uncertainty: Double 
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+
+\class CommLocalizationObjects::BearingOnlySLAMTag
+
+Structure of Enumeration:
+- LANDMARKCOUNT 
+
+\class CommLocalizationObjects::LocalizationEventType
+
+Structure of Enumeration:
+- LOCALIZATION_UNKNOWN 
+- LOCALIZATION_LOST 
+- LOCALIZATION_OK 
+
+
+
+
+@defgroup CommLocalizationObjects
+@ingroup commObjGroup
+@{
+\page CommLocalizationObjectsPage CommLocalizationObjects
+Class Reference: CommLocalizationObjects
+<hr>
+
+@section CommViewpointLocations CommViewpointLocations
+- database: @ref ViewpointLocation[*] (CommObj) 
+
+Class Reference: CommLocalizationObjects::CommViewpointLocationsCore
+<hr>
+@section ViewpointLocation ViewpointLocation
+- id: Int32  
+- mean: @ref CPose2D (CommObj) 
+- cov: @ref CMatrixDouble22 (CommObj) 
+- invCov: @ref CMatrixDouble22 (CommObj) 
+- observationCount: Int32  
+- possibleObservations: Int32  
+
+Class Reference: CommLocalizationObjects::ViewpointLocationCore
+<hr>
+@section CPose2D CPose2D
+- m_phi: Double  
+- m_is3D: Boolean  
+- m_x: Double  
+- m_y: Double  
+- m_z: Double  
+
+Class Reference: CommLocalizationObjects::CPose2DCore
+<hr>
+@section CMatrixDouble22 CMatrixDouble22
+- m_00: Double  
+- m_01: Double  
+- m_10: Double  
+- m_11: Double  
+
+Class Reference: CommLocalizationObjects::CMatrixDouble22Core
+<hr>
+@section CommLocalizationEventParameter CommLocalizationEventParameter
+- oldState: @ref LocalizationEventType (Enum) 
+
+Class Reference: CommLocalizationObjects::CommLocalizationEventParameterCore
+<hr>
+@section CommLocalizationEventResult CommLocalizationEventResult
+- state: @ref LocalizationEventType (Enum) 
+
+Class Reference: CommLocalizationObjects::CommLocalizationEventResultCore
+<hr>
+@section LocalizationEventState LocalizationEventState
+- newState: @ref LocalizationEventType (Enum) 
+
+Class Reference: CommLocalizationObjects::LocalizationEventStateCore
+<hr>
+@section CommGpsFix CommGpsFix
+- gps_timestamp: Double  
+<i> Timestamp as received from GPS device in unix format + fractional part </i>
+- is_2D: Boolean  
+<i> Values for latitude and longitude are valid. </i>
+- is_3D: Boolean  
+<i> Values for latitude, longitude and elevation are valid. </i>
+- satellites_visible: Int32  
+<i> Number of visible satellites </i>
+- satellites_used: Int32  
+<i> Number of satellites that were used for calculating the position </i>
+- latitude: Double  
+<i> Latitude. Only valid if is_2D = true </i>
+- longitude: Double  
+<i> Longitude. Only valid if is_2D = true </i>
+- altitude: Double  
+<i> Altitude [meters]. Only valid if is_3D = [true] </i>
+- speed: Double  
+<i> Speed over ground. [meters/second] </i>
+- climb: Double  
+<i> Vertical speed. [meters/second] </i>
+- latitude_uncertainty: Double  
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- longitude_uncertainty: Double  
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- altitude_uncertainty: Double  
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- speed_uncertainty: Double  
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+- climb_uncertainty: Double  
+<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
+
+Class Reference: CommLocalizationObjects::CommGpsFixCore
+<hr>
+@section BearingOnlySLAMTag BearingOnlySLAMTag
+- LANDMARKCOUNT 
+
+Class Reference: CommLocalizationObjects::BearingOnlySLAMTag
+<hr>
+@section LocalizationEventType LocalizationEventType
+- LOCALIZATION_UNKNOWN 
+- LOCALIZATION_LOST 
+- LOCALIZATION_OK 
+
+Class Reference: CommLocalizationObjects::LocalizationEventType
+<hr>
+
+
+@}
+*/
+
