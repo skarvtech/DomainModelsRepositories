@@ -1,8 +1,10 @@
 # Set of Repositories for DomainModels
 
-**DomainModels** ([Composition Tier 2](http://robmosys.eu/wiki/general_principles:ecosystem:start)) consist of **CommunicationObjects**, **ServiceDefinitions**, **Parameters** and **StateDefinitions**.
+**DomainModels** consist of **CommunicationObjects**, **ServiceDefinitions**, **Parameters** and **StateDefinitions**.
 
-**DomainModels** specify robotics domain-specific structures. More precisely, DomainModels structure the particular domains within service robotics and are shaped by the experts of these robotics-domains, for example experts from object recognition, from manipulation, or from SLAM. This is a community effort which structures each robotics domain by creating domain-models. Experts working at this level define concrete service definition models, for example a service definition for robot localization.
+**DomainModels** specify domain-specific structures for a particular sub-fomain in robotics like mobile manipulation, object recognition, SLAM, etc. (see also [Composition Tier 2](http://robmosys.eu/wiki/general_principles:ecosystem:start)). DomainModels are shaped by the experts of these robotics sub-domains. This is typically a community effort which structures each robotics domain by creating domain-models. Domain-models, for example, are “Service Definitions” that cover data structure, communication semantics and additional properties for specific services such as “robot localization”. To find such a service definition, domain experts of each particular domain discuss how to represent the location/position of a robot and what additional attributes are required and how they are represented (e.g. how the accuracy is represented).
+
+All the **DomainModels** in this repository have been modelled and developed with the [**SmartMDSD Toolchain v3**](http://robmosys.eu/wiki/baseline:environment_tools:smartsoft:smartmdsd-toolchain:start).
 
 **DomainModels** are used by [**Component**](https://github.com/Servicerobotics-Ulm/ComponentRepository) projects as an external dependency.
 
