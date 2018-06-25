@@ -2,7 +2,7 @@
 
 **DomainModels** consist of **CommunicationObjects**, **ServiceDefinitions**, **Parameters** and **StateDefinitions**.
 
-**DomainModels** specify domain-specific structures for a particular sub-fomain in robotics like mobile manipulation, object recognition, SLAM, etc. (see also [Composition Tier 2](http://robmosys.eu/wiki/general_principles:ecosystem:start)). DomainModels are shaped by the experts of these robotics sub-domains. This is typically a community effort which structures each robotics domain by creating domain-models. Domain-models, for example, are “Service Definitions” that cover data structure, communication semantics and additional properties for specific services such as “robot localization”. To find such a service definition, domain experts of each particular robotics sub-domain discuss how to represent the location/position of a robot and what additional attributes are required and how they are represented (e.g. how the accuracy is represented).
+**DomainModels** specify domain-specific structures for a particular sub-domain in robotics like mobile manipulation, object recognition, SLAM, etc. (see also [Composition Tier 2](http://robmosys.eu/wiki/general_principles:ecosystem:start)). DomainModels are shaped by the experts of these robotics sub-domains. This is typically a community effort which structures each robotics domain by creating domain-models. Domain-models, for example, are “Service Definitions” that cover data structure, communication semantics and additional properties for specific services such as “robot localization”. To find such a service definition, domain experts of each particular robotics sub-domain discuss how to represent the location/position of a robot and what additional attributes are required and how they are represented (e.g. how the accuracy is represented).
 
 All the **DomainModels** in this repository have been modelled and developed with the [**SmartMDSD Toolchain v3**](http://robmosys.eu/wiki/baseline:environment_tools:smartsoft:smartmdsd-toolchain:start).
 
@@ -17,7 +17,7 @@ Moreover, CommunicationObjects additionally depend on some of the [**UtilityRepo
 ```
 > mkdir ~/SOFTWARE/smartsoft/src
 > cd ~/SOFTWARE/smartsoft/src
-> echo "export SMART_PACKAGE_PATH=$SMART_PACKAGE_PATH:$PWD" > .profile
+> echo "export SMART_PACKAGE_PATH=$SMART_PACKAGE_PATH:$PWD" > ~/.profile
 > git clone https://github.com/Servicerobotics-Ulm/DomainModelsRepositories.git
 > cd DomainModelsRepositories
 > mkdir build; cd build
