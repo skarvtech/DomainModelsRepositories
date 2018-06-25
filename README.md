@@ -6,7 +6,7 @@
 
 All the **DomainModels** in this repository have been modelled and developed with the [**SmartMDSD Toolchain v3**](http://robmosys.eu/wiki/baseline:environment_tools:smartsoft:smartmdsd-toolchain:start).
 
-**DomainModels** are used by [**Component**](https://github.com/Servicerobotics-Ulm/ComponentRepository) projects as an external dependency.
+**DomainModels** depend on some of the [**UtilityRepositories**](https://github.com/Servicerobotics-Ulm/UtilityRepository) (which need to be checked out first before compiling the domain models), and are used by [**Component**](https://github.com/Servicerobotics-Ulm/ComponentRepository) projects as an external dependency.
 
 ## Installation instructions
 
