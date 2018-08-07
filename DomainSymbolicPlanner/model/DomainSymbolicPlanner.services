@@ -1,0 +1,14 @@
+ServiceDefRepository DomainSymbolicPlanner version 1.0
+ {
+	RequestAnswerServiceDefinition SymbolicPannerService 
+	{
+		QueryPattern <RequestType=DomainSymbolicPlanner.CommSymbolicPlannerRequest AnswerType=DomainSymbolicPlanner.CommSymbolicPlannerPlan>
+	
+	}
+
+	CoordinationServiceDefinition DefaultService {
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle  >
+	}
+
+}

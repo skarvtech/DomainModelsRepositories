@@ -1,0 +1,12 @@
+ServiceDefRepository DomainSpeech version 1.0 
+{
+	JoiningServiceDefinition SpeechSendService 
+	{
+		SendPattern <DataType=DomainSpeech.CommSpeechOutputMessage>
+	}
+	
+	RequestAnswerServiceDefinition SpeechQueryService 
+	{
+		QueryPattern <RequestType=DomainSpeech.CommSpeechOutputMessage AnswerType=CommBasicObjects.CommPropertySet>
+	}
+}

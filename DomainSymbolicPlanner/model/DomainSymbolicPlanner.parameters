@@ -1,0 +1,4 @@
+ParameterSetRepository DomainSymbolicPlanner 
+{
+	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+}

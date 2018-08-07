@@ -1,0 +1,6 @@
+ComponentModeRepository DomainSymbolicPlanner 
+{
+	ComponentModeCollection DefaultModes {
+		ComponentModeDefinition Active;
+	}
+}

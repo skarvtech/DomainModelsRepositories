@@ -1,0 +1,13 @@
+CommObjectsRepository DomainSymbolicPlanner version 1.0
+ {
+	CommObject CommSymbolicPlannerRequest
+	{
+		plannertype: String
+		domaindescription: String
+		factdescription: String
+	}
+	CommObject CommSymbolicPlannerPlan 
+	{
+		plan: String
+	}
+}

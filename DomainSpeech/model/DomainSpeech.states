@@ -1,0 +1,3 @@
+StateDefinitionRepository DomainSpeech {
+	ExtendedMainStateCollection MyStates extends ComponentLifecycle.Alive { }
+}
