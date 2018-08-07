@@ -23,16 +23,16 @@
 //
 // --------------------------------------------------------------------------
 
-ServiceDefRepository CommNavigationObjects version 1.0 
+ServiceDefRepository CommNavigationObjects version 1.0
 {
 	/**
 	 * Base-related service-definitions
 	 */
-	JoyningServiceDefinition NavigationVelocityService {
+	JoiningServiceDefinition NavigationVelocityService {
 		SendPattern <DataType=CommBasicObjects.CommNavigationVelocity>
 	}
-	
-	JoyningServiceDefinition LocalizationUpdateService {
+
+	JoiningServiceDefinition LocalizationUpdateService {
 		SendPattern < DataType = CommBasicObjects.CommBasePositionUpdate >
 	}
 
@@ -46,11 +46,11 @@ ServiceDefRepository CommNavigationObjects version 1.0
 
 	/**
 	 * Planner service definitions
-	 */	
+	 */
 	ForkingServiceDefinition PlannerGoalService {
 		PushPattern < DataType = CommNavigationObjects.CommPlannerGoal >
 	}
-	
+
 	ForkingServiceDefinition PlannerEventService {
 		EventPattern <
 			ActivationType=CommNavigationObjects.CommPlannerEventParameter
@@ -58,20 +58,22 @@ ServiceDefRepository CommNavigationObjects version 1.0
 			EventStateType=CommNavigationObjects.PlannerEventState
 		>
 	}
-	
+
 	/**
 	 * Mapping service-definitions
 	 */
 	ForkingServiceDefinition CurrGridMapPushService {
 		PushPattern <DataType=CommNavigationObjects.CommGridMap>
 	}
+
 	RequestAnswerServiceDefinition CurrGridMapQueryService {
 		QueryPattern <RequestType=CommNavigationObjects.CommGridMapRequest AnswerType=CommNavigationObjects.CommGridMap>
 	}
+
 	RequestAnswerServiceDefinition LongTermGridMapQueryService {
 		QueryPattern <RequestType=CommNavigationObjects.CommGridMapRequest AnswerType=CommNavigationObjects.CommGridMap>
 	}
-	
+
 	/**
 	 * CDL-related service-definitions
 	 */
@@ -82,7 +84,7 @@ ServiceDefRepository CommNavigationObjects version 1.0
 			EventStateType=CommNavigationObjects.CdlGoalEventState
 		> 
 	}
-	
+
 	ForkingServiceDefinition RobotBlockedEventService {
 		EventPattern <
 			ActivationType=CommNavigationObjects.CommCdlRobotBlockedEventParameter 
@@ -90,31 +92,33 @@ ServiceDefRepository CommNavigationObjects version 1.0
 			EventStateType=CommNavigationObjects.CommCdlRobotBlockedState
 		>
 	}
-	
+
 	ForkingServiceDefinition IRService {
 		PushPattern<DataType=CommBasicObjects.CommMobileIRScan>
 	}
-	
+
 	/**
 	 * Coordination service-definitions
 	 */
 	CoordinationServiceDefinition CdlCoordinationService {
 		ParameterPattern < CommNavigationObjects.CdlParameter >
-		StatePattern < stateMachine ComponentLifecycle with CommNavigationObjects.CdlStates >
+		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.CdlStates >
+//		ServiceReference CurrGridMapQueryService
 	}
-	
+
 	CoordinationServiceDefinition MapperCoordinationService {
 		ParameterPattern < CommNavigationObjects.MapperParams >
-		StatePattern < stateMachine ComponentLifecycle with CommNavigationObjects.MapperStates >
+		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.MapperStates >
 	}
-	
+
 	CoordinationServiceDefinition PlannerCoordinationService {
-		StatePattern < stateMachine ComponentLifecycle with CommNavigationObjects.PathPlannerStates>
+		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.PathPlannerStates>
 		ParameterPattern < CommNavigationObjects.PlannerParams>
 	}
-	
+
 	CoordinationServiceDefinition AmclCoordinationService {
 		ParameterPattern < CommNavigationObjects.AmclParameter >
-		StatePattern < stateMachine ComponentLifecycle >
+		StatePattern < lifecycle ComponentLifecycle >
 	}
+
 }

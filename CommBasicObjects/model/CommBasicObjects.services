@@ -51,12 +51,12 @@ ServiceDefRepository CommBasicObjects version 1.0
 	}
 
 	CoordinationServiceDefinition DefaultCoordinationService {
-		StatePattern < stateMachine ComponentLifecycle >
+		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.BasicModes >
 		ParameterPattern < EmptyDefaultParameterSet >
 	}
 	
 	CoordinationServiceDefinition BaseCoordinationService {
-		StatePattern < stateMachine ComponentLifecycle >
+		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.BasicModes >
 		ParameterPattern < CommBasicObjects.BaseParams >
 	}
 
