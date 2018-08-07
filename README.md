@@ -12,12 +12,13 @@ All the **DomainModels** in this repository have been modelled and developed wit
 
 DomainModels are generally independent of specific components or systems. However, some predefined C++ structures such as the digital-data representations (also called CommunicationObjects) for service-definitions, need to be compiled. The CommunicationObjects of one repository might depend on other CommunicationObject from another repository. These dependencies are automatically resolved by the CMake scripts using the environment variable called **SMART_PACKAGE_PATH**. Therefore this variable should point to one (or several) root folders containing domain-models repositories (multiple folders should be separated by a "**:**" within the varaible value).
 
-Moreover, CommunicationObjects additionally depend on some of the [**UtilityRepositories**](https://github.com/Servicerobotics-Ulm/UtilityRepository). Therefore, the location of the cloned UtilityRepositories should be stored within the same environment variable called **SMART_PACKAGE_PATH**. You can specify one **parent** location such as e.g. **~/SOFTWARE/smartsoft/src** for all the repositories and point the **SMART_PACKAGE_PATH** to this top-level folder only. All the subfolders will be searched recursivelly for the matching dependencies. Alltogether, DomainModels can be compiled as follows:
+Moreover, CommunicationObjects additionally depend on some of the [**UtilityRepositories**](https://github.com/Servicerobotics-Ulm/UtilityRepository). Therefore, the location of the cloned UtilityRepositories should be stored within the same environment variable called **SMART_PACKAGE_PATH**. You can specify one **parent** location such as e.g. **~/SOFTWARE/smartsoft/repos** for all the repositories and point the **SMART_PACKAGE_PATH** to this top-level folder only. All the subfolders will be searched recursivelly for the matching dependencies. Alltogether, DomainModels can be compiled as follows:
 
 ```
-> mkdir ~/SOFTWARE/smartsoft/src
-> cd ~/SOFTWARE/smartsoft/src
-> echo "export SMART_PACKAGE_PATH=$SMART_PACKAGE_PATH:$PWD" > .profile
+> mkdir -p ~/SOFTWARE/smartsoft/repos
+> cd ~/SOFTWARE/smartsoft/repos
+> echo "export SMART_PACKAGE_PATH=$SMART_PACKAGE_PATH:$PWD" > ~/.profile
+> source ~/.profile
 > git clone https://github.com/Servicerobotics-Ulm/DomainModelsRepositories.git
 > cd DomainModelsRepositories
 > mkdir build; cd build
@@ -26,5 +27,11 @@ Moreover, CommunicationObjects additionally depend on some of the [**UtilityRepo
 ```
 
 The resulting libraries and header files will be automatically installed into a location specified by the environment variable named **SMART_ROOT_ACE**. A typical value for this variable is for instance `~/SOFTWARE/smartsoft`.
+
+In order for the components to find the libraries at startup, the **LD_LIBRARY_PATH** can be specified as follows:
+
+```
+> echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SMART_ROOT_ACE/lib" > ~/.bashrc
+```
 
 Now you can continue with checking out and building the [**component projects**](https://github.com/Servicerobotics-Ulm/ComponentRepository).
