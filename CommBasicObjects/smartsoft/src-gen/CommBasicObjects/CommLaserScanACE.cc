@@ -58,8 +58,10 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommBasicObjectsIDL::CommLaserSca
 	good_bit = good_bit && cdr.read_boolean(data.is_valid);
 	// deserialize type element time
 	good_bit = good_bit && cdr >> data.time;
-	// deserialize type element update_count
-	good_bit = good_bit && cdr.read_ulonglong(data.update_count);
+	// deserialize string-type element update_count
+	ACE_CDR::ULongLong data_update_count_ll;
+	good_bit = good_bit && cdr.read_ulonglong(data_update_count_ll);
+	data.update_count = data_update_count_ll;
 	// deserialize type element start_angle
 	good_bit = good_bit && cdr.read_double(data.start_angle);
 	// deserialize type element resolution
