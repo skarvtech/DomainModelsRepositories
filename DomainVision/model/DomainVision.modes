@@ -1,0 +1,5 @@
+ComponentModeRepository DomainVision {
+	ComponentModeCollection DefaultModes {
+		ComponentModeDefinition Active;
+	}
+}

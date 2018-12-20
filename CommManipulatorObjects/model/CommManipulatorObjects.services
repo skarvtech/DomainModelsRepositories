@@ -1,0 +1,49 @@
+ServiceDefRepository CommManipulatorObjects version 1.0 {
+	
+	JoiningServiceDefinition SendTrajectoryService {
+		SendPattern <DataType=CommManipulatorObjects.CommManipulatorTrajectory>
+	}
+	
+	ForkingServiceDefinition ManipulatorEventService {
+		EventPattern <
+			ActivationType=CommManipulatorObjects.CommManipulatorEventParameter 
+			EventType=CommManipulatorObjects.CommManipulatorEventResult 
+			EventStateType=CommManipulatorObjects.ManipulatorEventState
+		>
+	}
+
+	ForkingServiceDefinition MobileManipulatorStateService {
+		PushPattern<DataType=CommManipulatorObjects.CommMobileManipulatorState>
+	}
+	
+	RequestAnswerServiceDefinition MobileManipulatorStateQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = CommManipulatorObjects.CommMobileManipulatorState
+		>
+	}
+	
+	ForkingServiceDefinition GripperStateService {
+		PushPattern<DataType=CommManipulatorObjects.CommGripperState>
+	}
+	
+	RequestAnswerServiceDefinition GripperStateQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = CommManipulatorObjects.CommGripperState
+		>
+	}
+	
+	ForkingServiceDefinition EventService {
+		EventPattern < 
+			ActivationType=CommManipulatorObjects.CommManipulatorEventParameter
+			EventType=CommManipulatorObjects.CommManipulatorEventResult
+			EventStateType=CommManipulatorObjects.ManipulatorEventState
+		> 
+	}
+	
+	CoordinationServiceDefinition ManipulatorCoordinationService {
+		ParameterPattern < CommManipulatorObjects.GripperParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommManipulatorObjects.ManipulatorStates >
+	}
+}

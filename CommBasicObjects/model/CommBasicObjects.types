@@ -343,4 +343,22 @@ CommObjectsRepository CommBasicObjects version 1.0.0 {
 		latestState : String
 		formatingClause :String
 	}
+	
+	CommObject CommKBRequest {
+		request : String
+	}
+	
+	CommObject CommKBResponse {
+		response : String
+	}
+	
+	CommObject CommSkillMsg {
+		msg : String
+	}
+	
+	CommObject CommTrafficLights {
+		red: Boolean
+		yellow: Boolean
+		green: Boolean
+	}
 }

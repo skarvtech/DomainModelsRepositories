@@ -35,7 +35,8 @@
 
 CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 	
-	Enumeration RobotinoDockingEventType {
+	Enumeration RobotinoDockingEventType 
+	{
 		DOCKING_UNKNOWN
 		IR_DOCKING_DONE
 		LASER_DOCKING_DONE
@@ -48,7 +49,8 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		UN_DOCKING_ERROR
 	}
 	
-	Enumeration RobotinoConveyerBeltEventType {
+	Enumeration RobotinoConveyerBeltEventType 
+	{
 		CONVEYER_BELT_UNKNOWN
 		CONVEYER_BELT_LOAD_DONE
 		CONVEYER_BELT_UNLOAD_DONE
@@ -349,5 +351,83 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		tags : CommVisualTag [*]
 		valid : Boolean = false
 	}
+	
+
+
+	CommObject CommAnalogOutputRequest {
+		outputNumber : UInt32
+		outputValue : Double
+	}
+	
+	CommObject CommDigitalOutputRequest {
+		outputNumber : UInt32
+		outputValue : Boolean
+	}
+	
+	CommObject CommRobotinoPowerOutputValue {
+		value : Float
+	}
+	
+
+
+	
+	CommObject CommPathFreeArea{
+		areaID : Int32
+		maxOccupancy : Int32
+		robotIDs : Int32 [*]
+		nodeXvector : Double [*]
+		nodeYvector : Double [*]
+	}
+	
+	Enumeration CoordinatedNavigationResourceRequestActionType {
+		UNKOWN
+		FREE
+		ACQUIRE
+	}
+	
+	Enumeration CoordinatedNavigationResourceResponseActionType {
+		UNKOWN
+		SUCCESS
+		FAILED
+	}
+	
+	Enumeration CoordinatedNavigationResourceStateType {
+		UNKOWN
+		FREE
+		BLOCKED
+	}
+	
+	CommObject CommCoordinatedNavigationResourceRequest {
+		resourceID :  Int32
+		robotID : Int32
+		actionType : CoordinatedNavigationResourceRequestActionType = UNKOWN
+	}
+	
+	CommObject CommCoordinatedNavigationResourceState {
+		resourceID : Int32
+		robotID : Int32
+		state : CoordinatedNavigationResourceStateType = UNKOWN 
+		remainingCapacity : Int32 = 0
+	}
+	
+	CommObject CommCoordinatedNavigationResourceResponse {
+		resourceID :  Int32
+		reservedSuccess : CoordinatedNavigationResourceResponseActionType = UNKOWN
+		remainingCapacity : Int32 = 0
+	}
+	
+	CommObject CommCoordinatedNavigationDataRequest {
+		resourceID :  Int32
+		
+	}
+	
+	CommObject CommCoordinatedNavigationDataResponse{
+		isValid : Boolean
+		area : CommPathFreeArea
+	}
+
+
+
+
 	
 }

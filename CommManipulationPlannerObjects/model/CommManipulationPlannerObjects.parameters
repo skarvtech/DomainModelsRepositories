@@ -1,0 +1,82 @@
+ParameterSetRepository CommManipulationPlannerObjects {
+	ParameterSet ManipulationPlannerParameter {
+		Trigger CONSTRAINED_PATH {
+			fromHeight:Double
+			toHeight:Double
+			fromDepth:Double
+			toDepth:Double
+			fromSide:Double
+			toSide:Double
+			fromAzimuth:Double
+			toAzimuth:Double
+			fromElevation:Double
+			toElevation:Double
+			fromRoll:Double
+			toRoll:Double
+		}
+		Trigger ENV_CLEAR {}
+		Trigger ENV_LOAD_FILE {
+			fileID:Int32
+		}
+		Trigger ENV_LOAD_OBJECTRECOGNITION {
+			envID: Int32
+		}
+		Trigger ENV_SAVE_FILE {}
+		Trigger GRASPING_CENTERED {
+			fromHeight:Double
+			toHeight:Double
+			fromDepth:Double
+			toDepth:Double
+			fromSide:Double
+			toSide:Double
+			fromAzimuth:Double
+			toAzimuth:Double
+			fromElevation:Double
+			toElevation:Double
+			fromRoll:Double
+			toRoll:Double
+		}
+		Trigger GRASPING_NONE {}
+		Trigger GRASPING_SIMPLE {
+			fromHeight:Double
+			toHeight:Double
+			fromDepth:Double
+			toDepth:Double
+			fromSide:Double
+			toSide:Double
+			fromAzimuth:Double
+			toAzimuth:Double
+			fromElevation:Double
+			toElevation:Double
+			fromRoll:Double
+			toRoll:Double
+		}
+		Trigger NORMAL_PATH {}
+		Trigger OBJ_ADD {
+			objectID:Int32
+		}
+		Trigger OBJ_COMPUTEGRASPTABLE {
+			objectID:Int32
+		}
+		Trigger OBJ_DELETE {
+			objectID : Int32
+		}
+		Trigger OBJ_MOVE {
+			objectID:Int32
+			x:Double
+			y:Double
+			z:Double
+			yaw:Double
+			pitch:Double
+			roll:Double
+		}
+		Trigger OPENRAVE_GRASPOBJ {
+			objectID:Int32
+		}
+		Trigger OPENRAVE_RELEASEOBJ {
+			objectID:Int32
+		}
+		Trigger SIMULATION_PLAN_ALL {}
+		Trigger SIMULATION_TEST_IK_ONLY {}
+	}
+}

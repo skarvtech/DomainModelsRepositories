@@ -1,0 +1,96 @@
+// --------------------------------------------------------------------------
+//
+//  Copyright (C) 2018 Servicerobotik Ulm
+//
+//  Service Robotics Research Center
+//  University of Applied Sciences Ulm
+//  Prittwitzstr. 10
+//  89075 Ulm (Germany)
+//
+//  This library is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU Lesser General Public
+//  License as published by the Free Software Foundation; either
+//  version 2.1 of the License, or (at your option) any later version.
+//
+//  This library is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+//  Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with this library; if not, write to the Free Software
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// --------------------------------------------------------------------------
+
+#import CommBasicObjects.*;
+
+CommObjectsRepository DomainPTU version 1.0 {
+
+	CommObject CommPTUMoveRequest {
+		pan: Double
+		tilt: Double
+		point: CommPosition3d
+		flag: PTUMoveFlag
+	}
+	
+	CommObject CommPTUGoalEventParameter 
+	{
+		oldState: PTUMoveStatus
+	}
+	CommObject CommPTUState {
+		pan: Double
+		tilt: Double
+		pose_PTU: CommPose3d
+		is_valid: Boolean
+	}
+	CommObject CommMobilePTUState {
+		ptu_state: CommPTUState
+		base_state: CommBaseState
+	}
+	CommObject CommPTUMoveResponse {
+		devicePose: CommPose3d
+		stateBase: CommBaseState
+		status: PTUMoveStatus
+	}
+	CommObject PTUGoalEventState {
+		newState: PTUMoveStatus
+	}
+	CommObject CommPTUGoalEventResult {
+		state: PTUMoveStatus
+	}
+	Enumeration PTUTagType {
+		UNSET
+		RESET
+		ACCELERATION_PAN
+		ACCLERATION_TILT
+		SPEED_PAN
+		SPEED_TILT
+		SPEED_LIMIT_PAN
+		SPEED_LIMIT_TILT
+		START_UP_SPEED_PAN
+		START_UP_SPEED_TILT
+		SENSOR_OFFSET
+	}
+	Enumeration PTUMoveStatus {
+		GOAL_REACHED
+		GOAL_NOT_REACHED
+		TILT_OUT_OF_RANGE
+		PAN_OUT_OF_RANGE
+		PAN_TILT_OUT_OF_RANGE
+		HALTED
+		FAILURE
+		UNKNOWN
+	}
+	Enumeration PTUMoveFlag {
+		PAN_RELATIVE
+		PAN_ABSOLUTE
+		TILT_RELATIVE
+		TILT_ABSOLUTE
+		PAN_TILT_RELATIVE
+		PAN_TILT_ABSOLUTE
+		POSITION_ROBOT
+		POSITION_WORLD
+	}
+
+}

@@ -1,0 +1,42 @@
+ServiceDefRepository CommVisionObjects version 1.0 {
+
+	RequestAnswerServiceDefinition RGBDImageQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = CommVisionObjects.CommRGBDImage
+		>
+	}
+	
+	RequestAnswerServiceDefinition RGBImageQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = CommVisionObjects.CommVideoImage
+		>
+	}
+	
+	RequestAnswerServiceDefinition PointCloudQueryService {
+		QueryPattern <
+			RequestType = CommManipulatorObjects.CommManipulatorId
+			AnswerType = CommVisionObjects.Comm3dPointCloud
+		>
+	}
+	
+	ForkingServiceDefinition RGBDImagePushService {
+		PushPattern<DataType=CommVisionObjects.CommRGBDImage>
+	}
+	
+	ForkingServiceDefinition RGBImagePushService {
+		PushPattern<DataType=CommVisionObjects.CommVideoImage>
+	}
+	
+	CoordinationServiceDefinition VisionCoordinationService {
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle with CommVisionObjects.DefaultModes >
+	}
+	
+	CoordinationServiceDefinition ImageProvisionCoordinationService {
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle with CommVisionObjects.ImageProvisionModes >
+	}
+	
+}

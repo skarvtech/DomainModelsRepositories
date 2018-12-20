@@ -1,0 +1,67 @@
+ParameterSetRepository CommObjectRecognitionObjects {
+	
+	ParameterSet ObjectRecognitionParameter {
+		
+		Parameter CLOUD{
+			id : UInt32
+		}
+		
+		Trigger ADDOBJECT {
+			type : String
+		}
+		
+		Trigger DELOBJECTS {
+
+		}
+		
+		Trigger BEHAVIOR {
+			type : InlineEnumeration {
+				SEARCH
+				FULLSEARCH
+			}
+		}
+		
+		Parameter CLUSTERING {
+			doClustering : Boolean
+		}
+		
+		Parameter ESTIMATEFILLING {
+			estimateObjectProperties : Boolean
+		}
+		
+		Trigger ADDSENSOR {
+			sensor : InlineEnumeration {
+				KINECT
+				MANIPULATOR_CAMERA
+				MANIPULATOR_LASER
+			}
+		}
+		
+		Trigger DELSENSORS {
+		}
+		
+		Trigger ADDALGORITHM {
+			algorithm : String
+		}
+		
+		Trigger DELALGORITHMS {
+			
+		}
+		
+		Trigger RECOGNIZE {
+			viewPointID : String
+		}
+		
+		Trigger CAPTURE {
+			
+		}
+		
+		Parameter BELIEF_THRESHOLD {
+			threshold : Double
+		}
+		
+		Parameter SETOBJECTID {
+			id : UInt32
+		}
+	}
+}

@@ -1,0 +1,29 @@
+ServiceDefRepository CommObjectRecognitionObjects version 1.0 {
+	
+	RequestAnswerServiceDefinition ObjectQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommObjectRecognitionId
+			AnswerType = CommObjectRecognitionObjects.CommObjectRecognitionObjectProperties
+		>
+	}
+
+	RequestAnswerServiceDefinition EnvironmentQueryService {
+		QueryPattern <
+			RequestType = CommObjectRecognitionObjects.CommObjectRecognitionId
+			AnswerType = CommObjectRecognitionObjects.CommObjectRecognitionEnvironment
+		>
+	}
+	
+	ForkingServiceDefinition ObjectEventService {
+		EventPattern < 
+			ActivationType=CommBasicObjects.CommVoid
+			EventType=CommObjectRecognitionObjects.CommObjectRecognitionEventResult
+			EventStateType=CommObjectRecognitionObjects.CommObjectRecognitionEventState
+		> 
+	}
+	
+	CoordinationServiceDefinition ObjectRecognitionCoordinationService {
+		ParameterPattern < CommObjectRecognitionObjects.ObjectRecognitionParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommObjectRecognitionObjects.DefaultModes >
+	}
+}
