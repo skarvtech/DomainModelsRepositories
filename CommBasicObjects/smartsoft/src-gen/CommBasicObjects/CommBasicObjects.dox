@@ -349,6 +349,28 @@ Structure of Communication Object:
 - latestState: String 
 - formatingClause: String 
 
+\class CommBasicObjects::CommKBRequestCore
+
+Structure of Communication Object:
+- request: String 
+
+\class CommBasicObjects::CommKBResponseCore
+
+Structure of Communication Object:
+- response: String 
+
+\class CommBasicObjects::CommSkillMsgCore
+
+Structure of Communication Object:
+- msg: String 
+
+\class CommBasicObjects::CommTrafficLightsCore
+
+Structure of Communication Object:
+- red: Boolean 
+- yellow: Boolean 
+- green: Boolean 
+
 \class CommBasicObjects::RobotComponentEnum
 
 Structure of Enumeration:
@@ -759,6 +781,28 @@ Class Reference: CommBasicObjects::CommKBEventResultCore
 - formatingClause: String  
 
 Class Reference: CommBasicObjects::CommKBEventParamCore
+<hr>
+@section CommKBRequest CommKBRequest
+- request: String  
+
+Class Reference: CommBasicObjects::CommKBRequestCore
+<hr>
+@section CommKBResponse CommKBResponse
+- response: String  
+
+Class Reference: CommBasicObjects::CommKBResponseCore
+<hr>
+@section CommSkillMsg CommSkillMsg
+- msg: String  
+
+Class Reference: CommBasicObjects::CommSkillMsgCore
+<hr>
+@section CommTrafficLights CommTrafficLights
+- red: Boolean  
+- yellow: Boolean  
+- green: Boolean  
+
+Class Reference: CommBasicObjects::CommTrafficLightsCore
 <hr>
 @section RobotComponentEnum RobotComponentEnum
 - ROBOT_BASE_COMPONENT 

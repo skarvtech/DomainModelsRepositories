@@ -1,0 +1,8 @@
+ComponentModeRepository CommManipulationPlannerObjects {
+	
+	ComponentModeCollection OpenRaveStates {
+		ComponentModeDefinition Trajectory;
+		ComponentModeDefinition Demonstration;
+		ComponentModeDefinition Simulation;
+	}
+}

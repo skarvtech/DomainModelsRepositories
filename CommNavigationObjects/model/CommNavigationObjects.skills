@@ -1,0 +1,35 @@
+SkillDefinitionRepository CommNavigationObjects {
+
+	SkillDefinitionSet MovementSkills {
+
+		/*
+		 * approach location (id, resolved using knowledge-base)
+		 */
+		SkillDefinition moverobot {
+			in {
+				location : Int32	
+			} 
+			results {
+				ERROR value = "UNKNOWN LOCATION";
+				ERROR value = "ROBOT BLOCKED";
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+		
+		/*
+		 * rotate the robot according to the locations setup (id, resolved using knowledge-base)
+		 */
+		SkillDefinition orientaterobot{
+			in {
+				location : Int32	
+			} 
+			results {
+				ERROR value = "UNKNOWN LOCATION";
+				ERROR value = "ROBOT BLOCKED";
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+	}
+}

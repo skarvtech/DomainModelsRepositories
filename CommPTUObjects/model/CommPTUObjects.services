@@ -1,0 +1,27 @@
+ServiceDefRepository CommPTUObjects version 1.0 {
+	
+	RequestAnswerServiceDefinition MovePTUQueryService {
+		QueryPattern <
+			RequestType = CommPTUObjects.CommPTUMoveRequest
+			AnswerType = CommPTUObjects.CommPTUMoveResponse
+		>
+	}
+	
+	JoiningServiceDefinition MovePTUSendService {
+		SendPattern <DataType=CommPTUObjects.CommPTUMoveRequest>
+	}
+	
+	ForkingServiceDefinition GoalEventService {
+		EventPattern < 
+			ActivationType=CommPTUObjects.CommPTUGoalEventParameter
+			EventType=CommPTUObjects.CommPTUGoalEventResult
+			EventStateType=CommPTUObjects.PTUGoalEventState
+		> 
+	}
+	
+	CoordinationServiceDefinition PTUCoordinationService {
+		ParameterPattern < CommPTUObjects.PTUParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommPTUObjects.PTUStates >
+	}
+
+}

@@ -1,0 +1,146 @@
+#import CommBasicObjects.*;
+
+CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
+	
+	CommObject CommObjectRecognitionEventResult {
+//		behavior: ObjectRecognitionBehavior
+		state: ObjectRecognitionState
+		environment_id: UInt32= 0
+		object_id: UInt32[*]
+	}
+	
+	CommObject CommObjectRecognitionEventState {
+//		behavior: ObjectRecognitionBehavior
+		state: ObjectRecognitionState
+		object_id: UInt32[*]
+	}
+	
+	CommObject CommObjectRecognitionId {
+		id: UInt32
+	}
+	
+	CommObject CommSimpleObjectEventParameter {
+		oldState: SimpleObjectState
+	}
+	
+	CommObject CommObjectRecognitionObjectProperties {
+		is_valid: Boolean= false
+		object_id: UInt32
+		object_type: String
+		pose: CommPose3d
+		dimension: CommPosition3d
+		beliefs: ObjectBelief[*]
+		mesh: TriMesh
+		relations: Relation[*]
+		fill_level: Double= -1.0
+		//@doc "Used for grasping at an surface of the object"
+		objectSurfacePoses : CommPose3d[*]
+	}
+	
+	CommObject CommObjectRecognitionEnvironment {
+		is_valid: Boolean= false
+		objects: CommObjectRecognitionObjectProperties[*]
+	}
+	
+	CommObject CommSimpleObjectEventResult {
+		state: SimpleObjectState
+		x: Int32
+		y: Int32
+	}
+	
+	CommObject SimpleObjectEventState {
+		newState: SimpleObjectState
+		x: Int32
+		y: Int32
+	}
+	
+	CommObject OcrEventState {
+		environment_id: Int32
+	}
+	
+	CommObject CommOcrText {
+		text: String
+		belief: Double
+	}
+	
+	//event reply and query request
+	CommObject CommOcrId {
+		environment_id: Int32
+	}
+	
+	Enumeration ObjectRecognitionState {
+		VISIBLE
+		INVISIBLE
+		FINISHED
+	}
+	
+//	Enum ObjectRecognitionBehavior {
+//		SEARCH
+//		FULLSEARCH
+//		UNSET
+//		CLUSTERING_ON
+//		CLUSTERING_OFF
+//		ESTIMATEFILLING_ON
+//		ESTIMATEFILLING_OFF
+//	}
+	Enumeration RelationType {
+		ON_TOP_OF
+		BELOW_OF
+	}
+	
+	Enumeration SimpleObjectState {
+		UNKOWN
+		OBJECT_FOUND
+		OBJECT_NOT_FOUND
+	}
+	
+	CommObject ObjectBelief {
+		type: String
+		probability: Double
+		pose: CommPose3d
+		cov: Double[*]
+		validPosePdf: Boolean= false
+	}
+	
+	CommObject TriMesh {
+		vertices_p1: UInt32[*]
+		vertices_p2: UInt32[*]
+		vertices_p3: UInt32[*]
+		points_x: Double[*]
+		points_y: Double[*]
+		points_z: Double[*]
+	}
+	
+	CommObject Relation {
+		type: RelationType
+		relatedObjectId: UInt32
+	}
+	
+	//RoboCup Objects below this comment
+	
+	CommObject CommSymbolDetectorEventResult {
+		goal_x: Double
+		goal_y: Double
+		goal_z: Double
+		type: SymbolDetectorEventType
+	}
+	
+	CommObject SymbolDetectorEventState {
+		goal_x: Double
+		goal_y: Double
+		goal_z: Double
+		type: SymbolDetectorEventType
+	}
+	
+	CommObject CommSymbolDetectorEventParam {
+		type: SymbolDetectorEventType
+	}
+	
+	Enumeration SymbolDetectorEventType {
+		SYMBOL_UNKNOWN
+		SYMBOL_OBJECT_UNKNOWN
+		SYMBOL_OBJECT_FOUND
+		SYMBOL_OBJECT_NOT_FOUND
+		SYMBOL_UNABLE_TO_GET_POS
+	}
+}

@@ -1,0 +1,254 @@
+/** 
+\class CommManipulatorObjects::CommMobileManipulatorStateCore
+
+Structure of Communication Object:
+- manipulator_state: CommManipulatorObjects::CommManipulatorState 
+- base_state: CommBasicObjects::CommBaseState 
+
+\class CommManipulatorObjects::CommManipulatorTrajectoryCore
+
+Structure of Communication Object:
+- joint_angles: CommManipulatorObjects::JointValues[*] 
+- pose_tcp: CommBasicObjects::CommPose3d 
+- gripper_angles: CommManipulatorObjects::CommGripperTrajectory 
+- flag: CommManipulatorObjects::ManipulatorTrajectoryFlag 
+
+\class CommManipulatorObjects::CommManipulatorStateCore
+
+Structure of Communication Object:
+- id: UInt32 
+- joint_angles: Double[*] 
+- pose_tcp: CommBasicObjects::CommPose3d 
+- pose_manipulator: CommBasicObjects::CommPose3d 
+- is_valid: Boolean  = false 
+
+\class CommManipulatorObjects::CommManipulatorEventParameterCore
+
+Structure of Communication Object:
+- event: CommManipulatorObjects::ManipulatorEvent 
+
+\class CommManipulatorObjects::CommManipulatorEventResultCore
+
+Structure of Communication Object:
+- event: CommManipulatorObjects::ManipulatorEvent 
+
+\class CommManipulatorObjects::ManipulatorEventStateCore
+
+Structure of Communication Object:
+- event: CommManipulatorObjects::ManipulatorEvent 
+
+\class CommManipulatorObjects::CommManipulatorRequestScan3dCore
+
+Structure of Communication Object:
+- begin_joint_angles: Double[*] 
+- end_joint_angles: Double[*] 
+- laser_begin_angle: Double 
+- laser_end_angle: Double 
+- number_of_steps: UInt16 
+
+\class CommManipulatorObjects::CommManipulatorIdCore
+
+Structure of Communication Object:
+- id: UInt32 
+- valid: Boolean  = false 
+
+\class CommManipulatorObjects::ScanEventStateCore
+
+Structure of Communication Object:
+- id: UInt32 
+- valid: Boolean  = false 
+
+\class CommManipulatorObjects::CommGripperEventCore
+
+Structure of Communication Object:
+- gripper_event: CommManipulatorObjects::GripperEvent 
+- pos: Float  = 0.0 
+
+\class CommManipulatorObjects::CommGripperEventParameterCore
+
+Structure of Communication Object:
+- gripper_event: CommManipulatorObjects::GripperEvent 
+
+\class CommManipulatorObjects::CommGripperStateCore
+
+Structure of Communication Object:
+- pos: Float[*] 
+- is_valid: Boolean  = false 
+- graspState: CommManipulatorObjects::GripperGraspState 
+- graspState_valid: Boolean  = false 
+
+\class CommManipulatorObjects::CommGripperTrajectoryCore
+
+Structure of Communication Object:
+- joint_angles: CommManipulatorObjects::JointValues[*] 
+
+\class CommManipulatorObjects::JointValuesCore
+
+Structure of Communication Object:
+- values: Double[*] 
+- time: Float 
+
+\class CommManipulatorObjects::ManipulatorTrajectoryFlag
+
+Structure of Enumeration:
+- JOINT_ANGLES 
+- POSE_TCP 
+
+\class CommManipulatorObjects::ManipulatorEvent
+
+Structure of Enumeration:
+- COLLISION 
+- NO_SOLUTION_FOUND 
+- VALUE_OUT_OF_RANGE 
+- GOAL_REACHED 
+- GOAL_NOT_REACHED 
+- UNKNOWN 
+
+\class CommManipulatorObjects::GripperEvent
+
+Structure of Enumeration:
+- GRIPPER_GOAL_REACHED 
+- GRIPPER_GOAL_NOT_REACHED 
+- GRIPPER_GOAL_REACHED_EMPTY 
+- GRIPPER_UNKNOWN 
+
+\class CommManipulatorObjects::GripperGraspState
+
+Structure of Enumeration:
+- GRIPPER_EMTPY 
+- GRIPPER_FULL 
+
+
+
+
+@defgroup CommManipulatorObjects
+@ingroup commObjGroup
+@{
+\page CommManipulatorObjectsPage CommManipulatorObjects
+Class Reference: CommManipulatorObjects
+<hr>
+
+@section CommMobileManipulatorState CommMobileManipulatorState
+- manipulator_state: @ref CommManipulatorState (CommObj) 
+- base_state: @ref CommBaseState (CommObj) 
+
+Class Reference: CommManipulatorObjects::CommMobileManipulatorStateCore
+<hr>
+@section CommManipulatorTrajectory CommManipulatorTrajectory
+- joint_angles: @ref JointValues[*] (CommObj) 
+- pose_tcp: @ref CommPose3d (CommObj) 
+- gripper_angles: @ref CommGripperTrajectory (CommObj) 
+- flag: @ref ManipulatorTrajectoryFlag (Enum) 
+
+Class Reference: CommManipulatorObjects::CommManipulatorTrajectoryCore
+<hr>
+@section CommManipulatorState CommManipulatorState
+- id: UInt32  
+- joint_angles: Double[*]  
+- pose_tcp: @ref CommPose3d (CommObj) 
+- pose_manipulator: @ref CommPose3d (CommObj) 
+- is_valid: Boolean   = false 
+
+Class Reference: CommManipulatorObjects::CommManipulatorStateCore
+<hr>
+@section CommManipulatorEventParameter CommManipulatorEventParameter
+- event: @ref ManipulatorEvent (Enum) 
+
+Class Reference: CommManipulatorObjects::CommManipulatorEventParameterCore
+<hr>
+@section CommManipulatorEventResult CommManipulatorEventResult
+- event: @ref ManipulatorEvent (Enum) 
+
+Class Reference: CommManipulatorObjects::CommManipulatorEventResultCore
+<hr>
+@section ManipulatorEventState ManipulatorEventState
+- event: @ref ManipulatorEvent (Enum) 
+
+Class Reference: CommManipulatorObjects::ManipulatorEventStateCore
+<hr>
+@section CommManipulatorRequestScan3d CommManipulatorRequestScan3d
+- begin_joint_angles: Double[*]  
+- end_joint_angles: Double[*]  
+- laser_begin_angle: Double  
+- laser_end_angle: Double  
+- number_of_steps: UInt16  
+
+Class Reference: CommManipulatorObjects::CommManipulatorRequestScan3dCore
+<hr>
+@section CommManipulatorId CommManipulatorId
+- id: UInt32  
+- valid: Boolean   = false 
+
+Class Reference: CommManipulatorObjects::CommManipulatorIdCore
+<hr>
+@section ScanEventState ScanEventState
+- id: UInt32  
+- valid: Boolean   = false 
+
+Class Reference: CommManipulatorObjects::ScanEventStateCore
+<hr>
+@section CommGripperEvent CommGripperEvent
+- gripper_event: @ref GripperEvent (Enum) 
+- pos: Float   = 0.0 
+
+Class Reference: CommManipulatorObjects::CommGripperEventCore
+<hr>
+@section CommGripperEventParameter CommGripperEventParameter
+- gripper_event: @ref GripperEvent (Enum) 
+
+Class Reference: CommManipulatorObjects::CommGripperEventParameterCore
+<hr>
+@section CommGripperState CommGripperState
+- pos: Float[*]  
+- is_valid: Boolean   = false 
+- graspState: @ref GripperGraspState (Enum) 
+- graspState_valid: Boolean   = false 
+
+Class Reference: CommManipulatorObjects::CommGripperStateCore
+<hr>
+@section CommGripperTrajectory CommGripperTrajectory
+- joint_angles: @ref JointValues[*] (CommObj) 
+
+Class Reference: CommManipulatorObjects::CommGripperTrajectoryCore
+<hr>
+@section JointValues JointValues
+- values: Double[*]  
+- time: Float  
+
+Class Reference: CommManipulatorObjects::JointValuesCore
+<hr>
+@section ManipulatorTrajectoryFlag ManipulatorTrajectoryFlag
+- JOINT_ANGLES 
+- POSE_TCP 
+
+Class Reference: CommManipulatorObjects::ManipulatorTrajectoryFlag
+<hr>
+@section ManipulatorEvent ManipulatorEvent
+- COLLISION 
+- NO_SOLUTION_FOUND 
+- VALUE_OUT_OF_RANGE 
+- GOAL_REACHED 
+- GOAL_NOT_REACHED 
+- UNKNOWN 
+
+Class Reference: CommManipulatorObjects::ManipulatorEvent
+<hr>
+@section GripperEvent GripperEvent
+- GRIPPER_GOAL_REACHED 
+- GRIPPER_GOAL_NOT_REACHED 
+- GRIPPER_GOAL_REACHED_EMPTY 
+- GRIPPER_UNKNOWN 
+
+Class Reference: CommManipulatorObjects::GripperEvent
+<hr>
+@section GripperGraspState GripperGraspState
+- GRIPPER_EMTPY 
+- GRIPPER_FULL 
+
+Class Reference: CommManipulatorObjects::GripperGraspState
+<hr>
+
+
+@}
+*/
+

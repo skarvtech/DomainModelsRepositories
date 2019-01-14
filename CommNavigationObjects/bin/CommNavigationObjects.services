@@ -102,8 +102,9 @@ ServiceDefRepository CommNavigationObjects version 1.0
 	 */
 	CoordinationServiceDefinition CdlCoordinationService {
 		ParameterPattern < CommNavigationObjects.CdlParameter >
-		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.CdlStates >
-//		ServiceReference CurrGridMapQueryService
+		StatePattern < lifecycle ComponentLifecycle with  CommNavigationObjects.CdlStates >
+		CommunicationServiceUsage goalEvent uses GoalEventService
+		CommunicationServiceUsage blockedEvent uses RobotBlockedEventService
 	}
 
 	CoordinationServiceDefinition MapperCoordinationService {

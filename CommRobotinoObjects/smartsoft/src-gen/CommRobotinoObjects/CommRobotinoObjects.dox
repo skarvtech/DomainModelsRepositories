@@ -272,6 +272,65 @@ Structure of Communication Object:
 - tags: CommRobotinoObjects::CommVisualTag[*] 
 - valid: Boolean  = false 
 
+\class CommRobotinoObjects::CommAnalogOutputRequestCore
+
+Structure of Communication Object:
+- outputNumber: UInt32 
+- outputValue: Double 
+
+\class CommRobotinoObjects::CommDigitalOutputRequestCore
+
+Structure of Communication Object:
+- outputNumber: UInt32 
+- outputValue: Boolean 
+
+\class CommRobotinoObjects::CommRobotinoPowerOutputValueCore
+
+Structure of Communication Object:
+- value: Float 
+
+\class CommRobotinoObjects::CommPathFreeAreaCore
+
+Structure of Communication Object:
+- areaID: Int32 
+- maxOccupancy: Int32 
+- robotIDs: Int32[*] 
+- nodeXvector: Double[*] 
+- nodeYvector: Double[*] 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- robotID: Int32 
+- actionType: CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType  = UNKOWN 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- robotID: Int32 
+- state: CommRobotinoObjects::CoordinatedNavigationResourceStateType  = UNKOWN 
+- remainingCapacity: Int32  = 0 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- reservedSuccess: CommRobotinoObjects::CoordinatedNavigationResourceResponseActionType  = UNKOWN 
+- remainingCapacity: Int32  = 0 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
+
+Structure of Communication Object:
+- isValid: Boolean 
+- area: CommRobotinoObjects::CommPathFreeArea 
+
 \class CommRobotinoObjects::RobotinoDockingEventType
 
 Structure of Enumeration:
@@ -354,6 +413,27 @@ Structure of Enumeration:
 - SUCCESS 
 - FAILED 
 - INVOKE 
+
+\class CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType
+
+Structure of Enumeration:
+- UNKOWN 
+- FREE 
+- ACQUIRE 
+
+\class CommRobotinoObjects::CoordinatedNavigationResourceResponseActionType
+
+Structure of Enumeration:
+- UNKOWN 
+- SUCCESS 
+- FAILED 
+
+\class CommRobotinoObjects::CoordinatedNavigationResourceStateType
+
+Structure of Enumeration:
+- UNKOWN 
+- FREE 
+- BLOCKED 
 
 
 
@@ -638,6 +718,65 @@ Class Reference: CommRobotinoObjects::CommVisualTagCore
 
 Class Reference: CommRobotinoObjects::CommDetectedTagsCore
 <hr>
+@section CommAnalogOutputRequest CommAnalogOutputRequest
+- outputNumber: UInt32  
+- outputValue: Double  
+
+Class Reference: CommRobotinoObjects::CommAnalogOutputRequestCore
+<hr>
+@section CommDigitalOutputRequest CommDigitalOutputRequest
+- outputNumber: UInt32  
+- outputValue: Boolean  
+
+Class Reference: CommRobotinoObjects::CommDigitalOutputRequestCore
+<hr>
+@section CommRobotinoPowerOutputValue CommRobotinoPowerOutputValue
+- value: Float  
+
+Class Reference: CommRobotinoObjects::CommRobotinoPowerOutputValueCore
+<hr>
+@section CommPathFreeArea CommPathFreeArea
+- areaID: Int32  
+- maxOccupancy: Int32  
+- robotIDs: Int32[*]  
+- nodeXvector: Double[*]  
+- nodeYvector: Double[*]  
+
+Class Reference: CommRobotinoObjects::CommPathFreeAreaCore
+<hr>
+@section CommCoordinatedNavigationResourceRequest CommCoordinatedNavigationResourceRequest
+- resourceID: Int32  
+- robotID: Int32  
+- actionType: @ref CoordinatedNavigationResourceRequestActionType (Enum)  = UNKOWN 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
+<hr>
+@section CommCoordinatedNavigationResourceState CommCoordinatedNavigationResourceState
+- resourceID: Int32  
+- robotID: Int32  
+- state: @ref CoordinatedNavigationResourceStateType (Enum)  = UNKOWN 
+- remainingCapacity: Int32   = 0 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
+<hr>
+@section CommCoordinatedNavigationResourceResponse CommCoordinatedNavigationResourceResponse
+- resourceID: Int32  
+- reservedSuccess: @ref CoordinatedNavigationResourceResponseActionType (Enum)  = UNKOWN 
+- remainingCapacity: Int32   = 0 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
+<hr>
+@section CommCoordinatedNavigationDataRequest CommCoordinatedNavigationDataRequest
+- resourceID: Int32  
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
+<hr>
+@section CommCoordinatedNavigationDataResponse CommCoordinatedNavigationDataResponse
+- isValid: Boolean  
+- area: @ref CommPathFreeArea (CommObj) 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
+<hr>
 @section RobotinoDockingEventType RobotinoDockingEventType
 - DOCKING_UNKNOWN 
 - IR_DOCKING_DONE 
@@ -720,6 +859,27 @@ Class Reference: CommRobotinoObjects::PathNavigationEventType
 - INVOKE 
 
 Class Reference: CommRobotinoObjects::RemoteOperatorEventType
+<hr>
+@section CoordinatedNavigationResourceRequestActionType CoordinatedNavigationResourceRequestActionType
+- UNKOWN 
+- FREE 
+- ACQUIRE 
+
+Class Reference: CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType
+<hr>
+@section CoordinatedNavigationResourceResponseActionType CoordinatedNavigationResourceResponseActionType
+- UNKOWN 
+- SUCCESS 
+- FAILED 
+
+Class Reference: CommRobotinoObjects::CoordinatedNavigationResourceResponseActionType
+<hr>
+@section CoordinatedNavigationResourceStateType CoordinatedNavigationResourceStateType
+- UNKOWN 
+- FREE 
+- BLOCKED 
+
+Class Reference: CommRobotinoObjects::CoordinatedNavigationResourceStateType
 <hr>
 
 

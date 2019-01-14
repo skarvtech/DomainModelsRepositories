@@ -27,4 +27,8 @@ ComponentModeRepository CommBasicObjects {
 	ComponentModeCollection BasicModes {
 		ComponentModeDefinition Active;
 	}
+	
+	ComponentModeCollection RobotBaseModes {
+		ComponentModeDefinition emergencyStop;
+	}
 }

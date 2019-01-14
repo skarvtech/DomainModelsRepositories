@@ -1,0 +1,19 @@
+ServiceDefRepository CommManipulationPlannerObjects version 1.0 {
+	
+	JoiningServiceDefinition SendTaskPlanningService {
+		SendPattern <DataType=CommManipulationPlannerObjects.CommManipulationTaskPlanning>
+	}
+	
+	ForkingServiceDefinition EventService {
+		EventPattern < 
+			ActivationType=CommManipulationPlannerObjects.CommManipulationPlannerEventParameter 
+			EventType=CommManipulationPlannerObjects.CommManipulationPlannerEventResult
+			EventStateType=CommManipulationPlannerObjects.CommManipulationPlannerEventState
+		> 
+	}
+	
+	CoordinationServiceDefinition OpenRaveCoordinationService {
+		ParameterPattern < CommManipulationPlannerObjects.ManipulationPlannerParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommManipulationPlannerObjects.OpenRaveStates >
+	}
+}

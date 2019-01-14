@@ -1,0 +1,65 @@
+SkillDefinitionRepository CommRobotinoObjects {
+	SkillDefinitionSet MPSSkills {
+
+		SkillDefinition mps_station_undock {
+			results {
+				ERROR value = "UNDOCKING FAILED"
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+			
+		SkillDefinition mps_station_dock {
+			in {
+				stationid : Int32
+				beltid : Int32
+			}
+			results {
+				ERROR value = "DOCKING FAILED"
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+		
+		SkillDefinition mps_station_load {
+			in {
+				stationid : Int32
+			}
+			results {
+				ERROR value = "LOAD LOADING"
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+		
+		SkillDefinition mps_station_unload {
+			in {
+				stationid : Int32
+			}
+			results {
+				ERROR value = "UNLOAD LOADING"
+				SUCCESS value = "OK";
+				SUCCESS value = "";
+			}
+		}
+		
+		SkillDefinition manual_load {
+			results {
+				ERROR value = "LOAD LOADING"
+				SUCCESS value ="OK"
+				SUCCESS value =""
+				
+			}
+		}
+		
+		SkillDefinition manual_unload {
+			results {
+				ERROR value = "LOAD UNLOADING"
+				SUCCESS value ="OK"
+				SUCCESS value =""
+				
+			}
+		}
+	}
+}
+		

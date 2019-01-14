@@ -1,0 +1,38 @@
+ParameterSetRepository CommManipulatorObjects {
+	
+	ParameterSet GripperParameter {
+		
+		Trigger GRIPPER_OPEN {
+		}
+		
+		Trigger GRIPPER_CLOSE {
+		}
+		
+		Trigger SET_ACCELERATION {
+			//@doc "Acceleration in mm/s^2"
+			accel : Float
+		}
+		
+		Trigger SET_CURRENT {
+			//@doc "Motor current in A"
+			current : Float
+		}
+		
+		Trigger SET_SPEED {
+			//@doc "Speed in mm/s^2"
+			speed : Float
+		}
+	}
+	
+	
+	ParameterSet ManipulatorParameter{
+	/*
+	 * TODO move this to parameter
+		Enum ManipulatorParameterMode {
+			TRAJECTORY
+			SINGLE_POSE
+			SET_ALL_JOINT_VELOCITY_LIMITS
+		}
+		*/
+	}
+}

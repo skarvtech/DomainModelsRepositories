@@ -1,0 +1,106 @@
+#import CommBasicObjects.*;
+
+CommObjectsRepository CommManipulatorObjects version 1.0 {
+	
+	CommObject CommMobileManipulatorState {
+		manipulator_state: CommManipulatorState
+		base_state: CommBaseState
+	}
+	
+	CommObject CommManipulatorTrajectory {
+		joint_angles: JointValues[*]
+		pose_tcp: CommPose3d
+		gripper_angles: CommGripperTrajectory
+		flag: ManipulatorTrajectoryFlag
+	}
+	
+	CommObject CommManipulatorState {
+		id: UInt32
+		joint_angles: Double[*]
+		pose_tcp: CommPose3d
+		pose_manipulator: CommPose3d
+		is_valid: Boolean= false
+	}
+	
+	CommObject CommManipulatorEventParameter {
+		event: ManipulatorEvent
+	}
+	
+	CommObject CommManipulatorEventResult {
+		event: ManipulatorEvent
+	}
+	
+	CommObject ManipulatorEventState {
+		event: ManipulatorEvent
+	}
+	
+	CommObject CommManipulatorRequestScan3d {
+		begin_joint_angles: Double[*]
+		end_joint_angles: Double[*]
+		laser_begin_angle: Double
+		laser_end_angle: Double
+		number_of_steps: UInt16
+	}
+	
+	CommObject CommManipulatorId {
+		id: UInt32
+		valid: Boolean= false
+	}
+	
+	CommObject ScanEventState {
+		id: UInt32
+		valid: Boolean= false
+	}
+	
+	CommObject CommGripperEvent {
+		gripper_event: GripperEvent
+		pos: Float=0.0
+	}
+	
+	CommObject CommGripperEventParameter {
+		gripper_event: GripperEvent
+	}
+	
+	CommObject CommGripperState {
+		pos: Float[*]
+		is_valid: Boolean= false
+		
+		graspState : GripperGraspState
+		graspState_valid : Boolean = false
+	}
+	
+	CommObject CommGripperTrajectory {
+		joint_angles: JointValues[*]
+	}
+	
+	Enumeration ManipulatorTrajectoryFlag {
+		JOINT_ANGLES
+		POSE_TCP
+	}
+	
+	Enumeration ManipulatorEvent {
+		COLLISION
+		NO_SOLUTION_FOUND
+		VALUE_OUT_OF_RANGE
+		GOAL_REACHED
+		GOAL_NOT_REACHED
+		UNKNOWN
+	}
+	
+	Enumeration GripperEvent {
+		GRIPPER_GOAL_REACHED
+		GRIPPER_GOAL_NOT_REACHED
+		GRIPPER_GOAL_REACHED_EMPTY
+		GRIPPER_UNKNOWN
+	}
+	
+	CommObject JointValues {
+		values: Double[*]
+		time: Float
+	}
+	
+	Enumeration GripperGraspState {
+		GRIPPER_EMTPY
+		GRIPPER_FULL
+	}
+}

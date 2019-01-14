@@ -1,0 +1,3 @@
+ParameterSetRepository CommVisionObjects {
+	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+}

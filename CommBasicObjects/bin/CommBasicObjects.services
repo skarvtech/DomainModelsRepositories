@@ -35,6 +35,10 @@ ServiceDefRepository CommBasicObjects version 1.0
 		>
 	}
 	
+	ForkingServiceDefinition TrafficLightsService {
+		PushPattern <DataType=CommBasicObjects.CommTrafficLights>
+	}
+	
 	ForkingServiceDefinition JoystickService {
 		PushPattern <DataType=CommBasicObjects.CommJoystick>
 	}
@@ -43,10 +47,26 @@ ServiceDefRepository CommBasicObjects version 1.0
 		PushPattern<DataType=CommBasicObjects.CommBaseState>
 	}
 	
+	
+	// Do not use BasePositionUpdateService and Use CommNavigationObjects::LocalizationUpdateService instead
+	// Dennis 31 Oct. 2018
+	/*ForkingServiceDefinition BasePositionUpdateService {
+		PushPattern<DataType=CommBasicObjects.CommBasePositionUpdate>
+	}*/
+	
+	
+	
 	RequestAnswerServiceDefinition BaseStateQueryService {
 		QueryPattern <
 			RequestType = CommBasicObjects.CommVoid
 			AnswerType = CommBasicObjects.CommBaseState
+		>
+	}
+	
+	RequestAnswerServiceDefinition DevicePoseStateQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = CommBasicObjects.CommDevicePoseState
 		>
 	}
 
@@ -58,6 +78,91 @@ ServiceDefRepository CommBasicObjects version 1.0
 	CoordinationServiceDefinition BaseCoordinationService {
 		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.BasicModes >
 		ParameterPattern < CommBasicObjects.BaseParams >
+		CommunicationServiceUsage baseState uses BaseStateQueryService
+		//OptionalCoordinationService bumperEvent references 
+		//OptionalCoordinationService batteryEvent references 
+		
+	}
+	
+	ForkingServiceDefinition IMUData {
+		PushPattern<DataType=CommBasicObjects.CommIMUData>
+	}
+	
+	ForkingServiceDefinition BumperEventService {
+		EventPattern < 
+			ActivationType = 	CommBasicObjects.CommBumperEventParameter
+			EventType = 		CommBasicObjects.CommBumperEventResult
+			EventStateType = 	CommBasicObjects.CommBumperEventState
+		>
+	}
+	
+
+	ForkingServiceDefinition LaserSafetyEventService {
+		EventPattern < 
+			ActivationType = 	CommBasicObjects.CommLaserSafetyEventParam
+			EventType = 		CommBasicObjects.CommLaserSafetyField
+			EventStateType = 	CommBasicObjects.CommLaserSafetyEventState
+		>
 	}
 
+	RequestAnswerServiceDefinition CommFileReadQuery {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommFileReadRequest
+			AnswerType = CommBasicObjects.CommFileReadAnswer
+		>
+	}
+	
+	RequestAnswerServiceDefinition CommFileWriteQuery {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommFileWriteRequest
+			AnswerType = CommBasicObjects.CommFileWriteAnswer
+		>
+	}
+	
+	ForkingServiceDefinition CommFileMoveEvent {
+		EventPattern < 
+			ActivationType = 	CommBasicObjects.CommFileMoverEventParameter
+			EventType = 		CommBasicObjects.CommFileMoverEventResult
+			EventStateType = 	CommBasicObjects.CommFileMoverEventState
+		>
+	}
+	
+	CoordinationServiceDefinition KBCoordinationService {
+		ParameterPattern <EmptyDefaultParameterSet>
+		StatePattern <lifecycle ComponentLifecycle with CommBasicObjects.BasicModes>
+		CommunicationServiceUsage kbEvent uses CommKBEvent
+		CommunicationServiceUsage kbQuery uses CommKBQuery
+	}
+
+	ForkingServiceDefinition CommKBEvent {
+		EventPattern < 
+			ActivationType = 	CommBasicObjects.CommKBEventParam
+			EventType = 		CommBasicObjects.CommKBEventResult
+			EventStateType = 	CommBasicObjects.CommVoid
+		>
+	}
+	
+	RequestAnswerServiceDefinition CommKBQuery {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommKBRequest
+			AnswerType = CommBasicObjects.CommKBResponse
+		>
+	}
+	
+	ForkingServiceDefinition CommMobIR {
+		PushPattern<DataType=CommBasicObjects.CommMobileIRScan>
+	}
+	
+	ForkingServiceDefinition SequnecerHLInterfaceEvent {
+		EventPattern < 
+			ActivationType = CommBasicObjects.CommSkillMsg
+			EventStateType = CommBasicObjects.CommSkillMsg
+			EventType = CommBasicObjects.CommSkillMsg
+			>
+	}
+	
+	JoiningServiceDefinition SequnecerHLInterfaceSend {
+		SendPattern < DataType = CommBasicObjects.CommSkillMsg>
+	}
+	
 }
