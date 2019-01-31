@@ -18,14 +18,14 @@
 
 #include "CommManipulatorObjects/CommGripperTrajectoryData.hh"
 #include "CommManipulatorObjects/enumManipulatorTrajectoryFlagData.hh"
-#include "CommManipulatorObjects/JointValuesData.hh"
+#include "CommManipulatorObjects/CommJointValuesData.hh"
 #include "CommBasicObjects/CommPose3dData.hh"
 
 #include <vector>
 
 namespace CommManipulatorObjectsIDL 
 {
-	typedef std::vector<CommManipulatorObjectsIDL::JointValues> CommManipulatorTrajectory_joint_angles_type;
+	typedef std::vector<CommManipulatorObjectsIDL::CommJointValues> CommManipulatorTrajectory_joint_angles_type;
 	struct CommManipulatorTrajectory
 	{
 		CommManipulatorTrajectory_joint_angles_type joint_angles;

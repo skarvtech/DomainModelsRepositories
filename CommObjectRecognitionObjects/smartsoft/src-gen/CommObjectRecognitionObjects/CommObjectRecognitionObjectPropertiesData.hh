@@ -16,19 +16,19 @@
 #ifndef COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONOBJECTPROPERTIES_DATA_H_
 #define COMMOBJECTRECOGNITIONOBJECTS_COMMOBJECTRECOGNITIONOBJECTPROPERTIES_DATA_H_
 
-#include "CommObjectRecognitionObjects/RelationData.hh"
-#include "CommObjectRecognitionObjects/TriMeshData.hh"
+#include "CommObjectRecognitionObjects/CommObjectRelationData.hh"
+#include "CommObjectRecognitionObjects/CommObjectBeliefData.hh"
 #include "CommBasicObjects/CommPose3dData.hh"
-#include "CommObjectRecognitionObjects/ObjectBeliefData.hh"
 #include "CommBasicObjects/CommPosition3dData.hh"
+#include "CommObjectRecognitionObjects/CommTriMeshData.hh"
 
 #include <vector>
 #include <string>
 
 namespace CommObjectRecognitionObjectsIDL 
 {
-	typedef std::vector<CommObjectRecognitionObjectsIDL::ObjectBelief> CommObjectRecognitionObjectProperties_beliefs_type;
-	typedef std::vector<CommObjectRecognitionObjectsIDL::Relation> CommObjectRecognitionObjectProperties_relations_type;
+	typedef std::vector<CommObjectRecognitionObjectsIDL::CommObjectBelief> CommObjectRecognitionObjectProperties_beliefs_type;
+	typedef std::vector<CommObjectRecognitionObjectsIDL::CommObjectRelation> CommObjectRecognitionObjectProperties_relations_type;
 	typedef std::vector<CommBasicObjectsIDL::CommPose3d> CommObjectRecognitionObjectProperties_objectSurfacePoses_type;
 	struct CommObjectRecognitionObjectProperties
 	{
@@ -38,7 +38,7 @@ namespace CommObjectRecognitionObjectsIDL
 		CommBasicObjectsIDL::CommPose3d pose;
 		CommBasicObjectsIDL::CommPosition3d dimension;
 		CommObjectRecognitionObjectProperties_beliefs_type beliefs;
-		CommObjectRecognitionObjectsIDL::TriMesh mesh;
+		CommObjectRecognitionObjectsIDL::CommTriMesh mesh;
 		CommObjectRecognitionObjectProperties_relations_type relations;
 		double fill_level;
 		CommObjectRecognitionObjectProperties_objectSurfacePoses_type objectSurfacePoses;

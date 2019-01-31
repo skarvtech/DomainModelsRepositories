@@ -15,11 +15,11 @@
 //--------------------------------------------------------------------------
 #include "CommObjectRecognitionObjects/CommObjectRecognitionObjectPropertiesACE.hh"
 #include <ace/SString.h>
-#include "CommObjectRecognitionObjects/RelationACE.hh"
 #include "CommBasicObjects/CommPose3dACE.hh"
-#include "CommObjectRecognitionObjects/ObjectBeliefACE.hh"
 #include "CommBasicObjects/CommPosition3dACE.hh"
-#include "CommObjectRecognitionObjects/TriMeshACE.hh"
+#include "CommObjectRecognitionObjects/CommObjectRelationACE.hh"
+#include "CommObjectRecognitionObjects/CommTriMeshACE.hh"
+#include "CommObjectRecognitionObjects/CommObjectBeliefACE.hh"
 
 // serialization operator for element CommObjectRecognitionObjectProperties
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommObjectRecognitionObjectsIDL::CommObjectRecognitionObjectProperties &data)
@@ -37,7 +37,7 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommObjectRecognitionObjec
 	good_bit = good_bit && cdr << data.dimension;
 	// serialize list-element beliefs
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.beliefs.size());
-	std::vector<CommObjectRecognitionObjectsIDL::ObjectBelief>::const_iterator data_beliefsIt;
+	std::vector<CommObjectRecognitionObjectsIDL::CommObjectBelief>::const_iterator data_beliefsIt;
 	for(data_beliefsIt=data.beliefs.begin(); data_beliefsIt!=data.beliefs.end(); data_beliefsIt++) {
 		good_bit = good_bit && cdr << *data_beliefsIt;
 	}
@@ -45,7 +45,7 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommObjectRecognitionObjec
 	good_bit = good_bit && cdr << data.mesh;
 	// serialize list-element relations
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.relations.size());
-	std::vector<CommObjectRecognitionObjectsIDL::Relation>::const_iterator data_relationsIt;
+	std::vector<CommObjectRecognitionObjectsIDL::CommObjectRelation>::const_iterator data_relationsIt;
 	for(data_relationsIt=data.relations.begin(); data_relationsIt!=data.relations.end(); data_relationsIt++) {
 		good_bit = good_bit && cdr << *data_relationsIt;
 	}
@@ -81,7 +81,7 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommObjectRecognitionObjectsIDL::
 	ACE_CDR::ULong data_beliefsNbr;
 	good_bit = good_bit && cdr >> data_beliefsNbr;
 	data.beliefs.clear();
-	CommObjectRecognitionObjectsIDL::ObjectBelief data_beliefsItem;
+	CommObjectRecognitionObjectsIDL::CommObjectBelief data_beliefsItem;
 	for(ACE_CDR::ULong i=0; i<data_beliefsNbr; ++i) {
 		good_bit = good_bit && cdr >> data_beliefsItem;
 		data.beliefs.push_back(data_beliefsItem);
@@ -92,7 +92,7 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommObjectRecognitionObjectsIDL::
 	ACE_CDR::ULong data_relationsNbr;
 	good_bit = good_bit && cdr >> data_relationsNbr;
 	data.relations.clear();
-	CommObjectRecognitionObjectsIDL::Relation data_relationsItem;
+	CommObjectRecognitionObjectsIDL::CommObjectRelation data_relationsItem;
 	for(ACE_CDR::ULong i=0; i<data_relationsNbr; ++i) {
 		good_bit = good_bit && cdr >> data_relationsItem;
 		data.relations.push_back(data_relationsItem);

@@ -16,13 +16,13 @@
 #ifndef COMMMANIPULATOROBJECTS_COMMGRIPPERTRAJECTORY_DATA_H_
 #define COMMMANIPULATOROBJECTS_COMMGRIPPERTRAJECTORY_DATA_H_
 
-#include "CommManipulatorObjects/JointValuesData.hh"
+#include "CommManipulatorObjects/CommJointValuesData.hh"
 
 #include <vector>
 
 namespace CommManipulatorObjectsIDL 
 {
-	typedef std::vector<CommManipulatorObjectsIDL::JointValues> CommGripperTrajectory_joint_angles_type;
+	typedef std::vector<CommManipulatorObjectsIDL::CommJointValues> CommGripperTrajectory_joint_angles_type;
 	struct CommGripperTrajectory
 	{
 		CommGripperTrajectory_joint_angles_type joint_angles;

@@ -30,11 +30,12 @@ Structure of Communication Object:
 - object_type: String 
 - pose: CommBasicObjects::CommPose3d 
 - dimension: CommBasicObjects::CommPosition3d 
-- beliefs: CommObjectRecognitionObjects::ObjectBelief[*] 
-- mesh: CommObjectRecognitionObjects::TriMesh 
-- relations: CommObjectRecognitionObjects::Relation[*] 
+- beliefs: CommObjectRecognitionObjects::CommObjectBelief[*] 
+- mesh: CommObjectRecognitionObjects::CommTriMesh 
+- relations: CommObjectRecognitionObjects::CommObjectRelation[*] 
 - fill_level: Double  = -1.0 
 - objectSurfacePoses: CommBasicObjects::CommPose3d[*] 
+<i> "Used for grasping at an surface of the object" </i>
 
 \class CommObjectRecognitionObjects::CommObjectRecognitionEnvironmentCore
 
@@ -72,7 +73,7 @@ Structure of Communication Object:
 Structure of Communication Object:
 - environment_id: Int32 
 
-\class CommObjectRecognitionObjects::ObjectBeliefCore
+\class CommObjectRecognitionObjects::CommObjectBeliefCore
 
 Structure of Communication Object:
 - type: String 
@@ -81,7 +82,7 @@ Structure of Communication Object:
 - cov: Double[*] 
 - validPosePdf: Boolean  = false 
 
-\class CommObjectRecognitionObjects::TriMeshCore
+\class CommObjectRecognitionObjects::CommTriMeshCore
 
 Structure of Communication Object:
 - vertices_p1: UInt32[*] 
@@ -91,32 +92,11 @@ Structure of Communication Object:
 - points_y: Double[*] 
 - points_z: Double[*] 
 
-\class CommObjectRecognitionObjects::RelationCore
+\class CommObjectRecognitionObjects::CommObjectRelationCore
 
 Structure of Communication Object:
 - type: CommObjectRecognitionObjects::RelationType 
 - relatedObjectId: UInt32 
-
-\class CommObjectRecognitionObjects::CommSymbolDetectorEventResultCore
-
-Structure of Communication Object:
-- goal_x: Double 
-- goal_y: Double 
-- goal_z: Double 
-- type: CommObjectRecognitionObjects::SymbolDetectorEventType 
-
-\class CommObjectRecognitionObjects::SymbolDetectorEventStateCore
-
-Structure of Communication Object:
-- goal_x: Double 
-- goal_y: Double 
-- goal_z: Double 
-- type: CommObjectRecognitionObjects::SymbolDetectorEventType 
-
-\class CommObjectRecognitionObjects::CommSymbolDetectorEventParamCore
-
-Structure of Communication Object:
-- type: CommObjectRecognitionObjects::SymbolDetectorEventType 
 
 \class CommObjectRecognitionObjects::ObjectRecognitionState
 
@@ -137,15 +117,6 @@ Structure of Enumeration:
 - UNKOWN 
 - OBJECT_FOUND 
 - OBJECT_NOT_FOUND 
-
-\class CommObjectRecognitionObjects::SymbolDetectorEventType
-
-Structure of Enumeration:
-- SYMBOL_UNKNOWN 
-- SYMBOL_OBJECT_UNKNOWN 
-- SYMBOL_OBJECT_FOUND 
-- SYMBOL_OBJECT_NOT_FOUND 
-- SYMBOL_UNABLE_TO_GET_POS 
 
 
 
@@ -186,11 +157,12 @@ Class Reference: CommObjectRecognitionObjects::CommSimpleObjectEventParameterCor
 - object_type: String  
 - pose: @ref CommPose3d (CommObj) 
 - dimension: @ref CommPosition3d (CommObj) 
-- beliefs: @ref ObjectBelief[*] (CommObj) 
-- mesh: @ref TriMesh (CommObj) 
-- relations: @ref Relation[*] (CommObj) 
+- beliefs: @ref CommObjectBelief[*] (CommObj) 
+- mesh: @ref CommTriMesh (CommObj) 
+- relations: @ref CommObjectRelation[*] (CommObj) 
 - fill_level: Double   = -1.0 
 - objectSurfacePoses: @ref CommPose3d[*] (CommObj) 
+<i> "Used for grasping at an surface of the object" </i>
 
 Class Reference: CommObjectRecognitionObjects::CommObjectRecognitionObjectPropertiesCore
 <hr>
@@ -230,16 +202,16 @@ Class Reference: CommObjectRecognitionObjects::CommOcrTextCore
 
 Class Reference: CommObjectRecognitionObjects::CommOcrIdCore
 <hr>
-@section ObjectBelief ObjectBelief
+@section CommObjectBelief CommObjectBelief
 - type: String  
 - probability: Double  
 - pose: @ref CommPose3d (CommObj) 
 - cov: Double[*]  
 - validPosePdf: Boolean   = false 
 
-Class Reference: CommObjectRecognitionObjects::ObjectBeliefCore
+Class Reference: CommObjectRecognitionObjects::CommObjectBeliefCore
 <hr>
-@section TriMesh TriMesh
+@section CommTriMesh CommTriMesh
 - vertices_p1: UInt32[*]  
 - vertices_p2: UInt32[*]  
 - vertices_p3: UInt32[*]  
@@ -247,34 +219,13 @@ Class Reference: CommObjectRecognitionObjects::ObjectBeliefCore
 - points_y: Double[*]  
 - points_z: Double[*]  
 
-Class Reference: CommObjectRecognitionObjects::TriMeshCore
+Class Reference: CommObjectRecognitionObjects::CommTriMeshCore
 <hr>
-@section Relation Relation
+@section CommObjectRelation CommObjectRelation
 - type: @ref RelationType (Enum) 
 - relatedObjectId: UInt32  
 
-Class Reference: CommObjectRecognitionObjects::RelationCore
-<hr>
-@section CommSymbolDetectorEventResult CommSymbolDetectorEventResult
-- goal_x: Double  
-- goal_y: Double  
-- goal_z: Double  
-- type: @ref SymbolDetectorEventType (Enum) 
-
-Class Reference: CommObjectRecognitionObjects::CommSymbolDetectorEventResultCore
-<hr>
-@section SymbolDetectorEventState SymbolDetectorEventState
-- goal_x: Double  
-- goal_y: Double  
-- goal_z: Double  
-- type: @ref SymbolDetectorEventType (Enum) 
-
-Class Reference: CommObjectRecognitionObjects::SymbolDetectorEventStateCore
-<hr>
-@section CommSymbolDetectorEventParam CommSymbolDetectorEventParam
-- type: @ref SymbolDetectorEventType (Enum) 
-
-Class Reference: CommObjectRecognitionObjects::CommSymbolDetectorEventParamCore
+Class Reference: CommObjectRecognitionObjects::CommObjectRelationCore
 <hr>
 @section ObjectRecognitionState ObjectRecognitionState
 - VISIBLE 
@@ -295,15 +246,6 @@ Class Reference: CommObjectRecognitionObjects::RelationType
 - OBJECT_NOT_FOUND 
 
 Class Reference: CommObjectRecognitionObjects::SimpleObjectState
-<hr>
-@section SymbolDetectorEventType SymbolDetectorEventType
-- SYMBOL_UNKNOWN 
-- SYMBOL_OBJECT_UNKNOWN 
-- SYMBOL_OBJECT_FOUND 
-- SYMBOL_OBJECT_NOT_FOUND 
-- SYMBOL_UNABLE_TO_GET_POS 
-
-Class Reference: CommObjectRecognitionObjects::SymbolDetectorEventType
 <hr>
 
 

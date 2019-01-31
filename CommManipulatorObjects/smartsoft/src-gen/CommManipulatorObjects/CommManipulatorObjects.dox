@@ -8,7 +8,7 @@ Structure of Communication Object:
 \class CommManipulatorObjects::CommManipulatorTrajectoryCore
 
 Structure of Communication Object:
-- joint_angles: CommManipulatorObjects::JointValues[*] 
+- joint_angles: CommManipulatorObjects::CommJointValues[*] 
 - pose_tcp: CommBasicObjects::CommPose3d 
 - gripper_angles: CommManipulatorObjects::CommGripperTrajectory 
 - flag: CommManipulatorObjects::ManipulatorTrajectoryFlag 
@@ -32,7 +32,7 @@ Structure of Communication Object:
 Structure of Communication Object:
 - event: CommManipulatorObjects::ManipulatorEvent 
 
-\class CommManipulatorObjects::ManipulatorEventStateCore
+\class CommManipulatorObjects::CommManipulatorEventStateCore
 
 Structure of Communication Object:
 - event: CommManipulatorObjects::ManipulatorEvent 
@@ -52,7 +52,7 @@ Structure of Communication Object:
 - id: UInt32 
 - valid: Boolean  = false 
 
-\class CommManipulatorObjects::ScanEventStateCore
+\class CommManipulatorObjects::CommScanEventStateCore
 
 Structure of Communication Object:
 - id: UInt32 
@@ -80,9 +80,9 @@ Structure of Communication Object:
 \class CommManipulatorObjects::CommGripperTrajectoryCore
 
 Structure of Communication Object:
-- joint_angles: CommManipulatorObjects::JointValues[*] 
+- joint_angles: CommManipulatorObjects::CommJointValues[*] 
 
-\class CommManipulatorObjects::JointValuesCore
+\class CommManipulatorObjects::CommJointValuesCore
 
 Structure of Communication Object:
 - values: Double[*] 
@@ -135,7 +135,7 @@ Class Reference: CommManipulatorObjects
 Class Reference: CommManipulatorObjects::CommMobileManipulatorStateCore
 <hr>
 @section CommManipulatorTrajectory CommManipulatorTrajectory
-- joint_angles: @ref JointValues[*] (CommObj) 
+- joint_angles: @ref CommJointValues[*] (CommObj) 
 - pose_tcp: @ref CommPose3d (CommObj) 
 - gripper_angles: @ref CommGripperTrajectory (CommObj) 
 - flag: @ref ManipulatorTrajectoryFlag (Enum) 
@@ -161,10 +161,10 @@ Class Reference: CommManipulatorObjects::CommManipulatorEventParameterCore
 
 Class Reference: CommManipulatorObjects::CommManipulatorEventResultCore
 <hr>
-@section ManipulatorEventState ManipulatorEventState
+@section CommManipulatorEventState CommManipulatorEventState
 - event: @ref ManipulatorEvent (Enum) 
 
-Class Reference: CommManipulatorObjects::ManipulatorEventStateCore
+Class Reference: CommManipulatorObjects::CommManipulatorEventStateCore
 <hr>
 @section CommManipulatorRequestScan3d CommManipulatorRequestScan3d
 - begin_joint_angles: Double[*]  
@@ -181,11 +181,11 @@ Class Reference: CommManipulatorObjects::CommManipulatorRequestScan3dCore
 
 Class Reference: CommManipulatorObjects::CommManipulatorIdCore
 <hr>
-@section ScanEventState ScanEventState
+@section CommScanEventState CommScanEventState
 - id: UInt32  
 - valid: Boolean   = false 
 
-Class Reference: CommManipulatorObjects::ScanEventStateCore
+Class Reference: CommManipulatorObjects::CommScanEventStateCore
 <hr>
 @section CommGripperEvent CommGripperEvent
 - gripper_event: @ref GripperEvent (Enum) 
@@ -207,15 +207,15 @@ Class Reference: CommManipulatorObjects::CommGripperEventParameterCore
 Class Reference: CommManipulatorObjects::CommGripperStateCore
 <hr>
 @section CommGripperTrajectory CommGripperTrajectory
-- joint_angles: @ref JointValues[*] (CommObj) 
+- joint_angles: @ref CommJointValues[*] (CommObj) 
 
 Class Reference: CommManipulatorObjects::CommGripperTrajectoryCore
 <hr>
-@section JointValues JointValues
+@section CommJointValues CommJointValues
 - values: Double[*]  
 - time: Float  
 
-Class Reference: CommManipulatorObjects::JointValuesCore
+Class Reference: CommManipulatorObjects::CommJointValuesCore
 <hr>
 @section ManipulatorTrajectoryFlag ManipulatorTrajectoryFlag
 - JOINT_ANGLES 

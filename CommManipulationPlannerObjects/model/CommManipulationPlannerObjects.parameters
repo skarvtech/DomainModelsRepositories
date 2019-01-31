@@ -1,5 +1,22 @@
 ParameterSetRepository CommManipulationPlannerObjects {
 	ParameterSet ManipulationPlannerParameter {
+		
+		Trigger PLAN_PATH_TARGET_TCP_POSE {
+			pose : Double [6]
+		}
+		
+		Trigger PLAN_PATH_TARGET_JOINT_ANGLES {
+			angles : Double [*] 
+		}
+		
+		Trigger PLAN_FURNITURE_MANIPUATION_TASK {
+			mode : InlineEnumeration{OPEN_FURNITURE}
+			furnitureIdentifier: UInt32
+			doorIdentifier: UInt32
+			openAmount: Double
+		}
+		
+		
 		Trigger CONSTRAINED_PATH {
 			fromHeight:Double
 			toHeight:Double
@@ -70,10 +87,10 @@ ParameterSetRepository CommManipulationPlannerObjects {
 			pitch:Double
 			roll:Double
 		}
-		Trigger OPENRAVE_GRASPOBJ {
+		Trigger PLANNING_GRASPOBJ {
 			objectID:Int32
 		}
-		Trigger OPENRAVE_RELEASEOBJ {
+		Trigger PLANNING_RELEASEOBJ {
 			objectID:Int32
 		}
 		Trigger SIMULATION_PLAN_ALL {}

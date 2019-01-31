@@ -69,6 +69,10 @@ ServiceDefRepository CommBasicObjects version 1.0
 			AnswerType = CommBasicObjects.CommDevicePoseState
 		>
 	}
+	
+	ForkingServiceDefinition DevicePoseUpdateService {
+		PushPattern < DataType=CommBasicObjects.CommDevicePoseState >
+	}
 
 	CoordinationServiceDefinition DefaultCoordinationService {
 		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.BasicModes >

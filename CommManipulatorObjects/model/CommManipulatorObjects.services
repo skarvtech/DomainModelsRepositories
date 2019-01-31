@@ -4,14 +4,26 @@ ServiceDefRepository CommManipulatorObjects version 1.0 {
 		SendPattern <DataType=CommManipulatorObjects.CommManipulatorTrajectory>
 	}
 	
+	JoiningServiceDefinition SendManipulatorRequestScan3dService {
+		SendPattern < DataType=CommManipulatorObjects.CommManipulatorRequestScan3d>
+	}
+	
 	ForkingServiceDefinition ManipulatorEventService {
 		EventPattern <
 			ActivationType=CommManipulatorObjects.CommManipulatorEventParameter 
 			EventType=CommManipulatorObjects.CommManipulatorEventResult 
-			EventStateType=CommManipulatorObjects.ManipulatorEventState
+			EventStateType=CommManipulatorObjects.CommManipulatorEventState
 		>
 	}
-
+	
+	ForkingServiceDefinition Scan3dEventService {
+		EventPattern <
+			ActivationType = CommBasicObjects.CommVoid
+			EventType = CommManipulatorObjects.CommManipulatorId
+			EventStateType = CommManipulatorObjects.CommScanEventState
+		>
+	}
+	
 	ForkingServiceDefinition MobileManipulatorStateService {
 		PushPattern<DataType=CommManipulatorObjects.CommMobileManipulatorState>
 	}
@@ -34,16 +46,16 @@ ServiceDefRepository CommManipulatorObjects version 1.0 {
 		>
 	}
 	
-	ForkingServiceDefinition EventService {
+	ForkingServiceDefinition GripperEventService {
 		EventPattern < 
 			ActivationType=CommManipulatorObjects.CommManipulatorEventParameter
 			EventType=CommManipulatorObjects.CommManipulatorEventResult
-			EventStateType=CommManipulatorObjects.ManipulatorEventState
+			EventStateType=CommManipulatorObjects.CommManipulatorEventState
 		> 
 	}
 	
 	CoordinationServiceDefinition ManipulatorCoordinationService {
-		ParameterPattern < CommManipulatorObjects.GripperParameter >
+		ParameterPattern < EmptyDefaultParameterSet >
 		StatePattern < lifecycle ComponentLifecycle with CommManipulatorObjects.ManipulatorStates >
 	}
 }

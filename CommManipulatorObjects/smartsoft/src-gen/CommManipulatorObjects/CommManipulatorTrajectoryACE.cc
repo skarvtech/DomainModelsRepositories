@@ -15,10 +15,10 @@
 //--------------------------------------------------------------------------
 #include "CommManipulatorObjects/CommManipulatorTrajectoryACE.hh"
 #include <ace/SString.h>
-#include "CommManipulatorObjects/JointValuesACE.hh"
 #include "CommBasicObjects/CommPose3dACE.hh"
 #include "CommManipulatorObjects/enumManipulatorTrajectoryFlagData.hh"
 #include "CommManipulatorObjects/CommGripperTrajectoryACE.hh"
+#include "CommManipulatorObjects/CommJointValuesACE.hh"
 
 // serialization operator for element CommManipulatorTrajectory
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommManipulatorObjectsIDL::CommManipulatorTrajectory &data)
@@ -26,7 +26,7 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommManipulatorObjectsIDL:
 	ACE_CDR::Boolean good_bit = true;
 	// serialize list-element joint_angles
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.joint_angles.size());
-	std::vector<CommManipulatorObjectsIDL::JointValues>::const_iterator data_joint_anglesIt;
+	std::vector<CommManipulatorObjectsIDL::CommJointValues>::const_iterator data_joint_anglesIt;
 	for(data_joint_anglesIt=data.joint_angles.begin(); data_joint_anglesIt!=data.joint_angles.end(); data_joint_anglesIt++) {
 		good_bit = good_bit && cdr << *data_joint_anglesIt;
 	}
@@ -48,7 +48,7 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommManipulatorObjectsIDL::CommMa
 	ACE_CDR::ULong data_joint_anglesNbr;
 	good_bit = good_bit && cdr >> data_joint_anglesNbr;
 	data.joint_angles.clear();
-	CommManipulatorObjectsIDL::JointValues data_joint_anglesItem;
+	CommManipulatorObjectsIDL::CommJointValues data_joint_anglesItem;
 	for(ACE_CDR::ULong i=0; i<data_joint_anglesNbr; ++i) {
 		good_bit = good_bit && cdr >> data_joint_anglesItem;
 		data.joint_angles.push_back(data_joint_anglesItem);

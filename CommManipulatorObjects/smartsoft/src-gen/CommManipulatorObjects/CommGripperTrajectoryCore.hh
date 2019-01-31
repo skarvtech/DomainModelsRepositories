@@ -17,7 +17,7 @@
 #define COMMMANIPULATOROBJECTS_COMMGRIPPERTRAJECTORY_CORE_H_
 
 #include "CommManipulatorObjects/CommGripperTrajectoryData.hh"
-#include "CommManipulatorObjects/JointValues.hh"
+#include "CommManipulatorObjects/CommJointValues.hh"
 
 #include <iostream>
 #include <string>
@@ -67,31 +67,31 @@ public:
 	
 	// getter and setter for element Joint_angles
 	/**
-	 * Getter methods for element idl_CommGripperTrajectory.joint_angles of type vector<CommManipulatorObjects::JointValues>
+	 * Getter methods for element idl_CommGripperTrajectory.joint_angles of type vector<CommManipulatorObjects::CommJointValues>
 	 */
-	inline std::vector<CommManipulatorObjects::JointValues> getJoint_anglesCopy() const { 
-		return std::vector<CommManipulatorObjects::JointValues>(idl_CommGripperTrajectory.joint_angles.begin(), idl_CommGripperTrajectory.joint_angles.end());
+	inline std::vector<CommManipulatorObjects::CommJointValues> getJoint_anglesCopy() const { 
+		return std::vector<CommManipulatorObjects::CommJointValues>(idl_CommGripperTrajectory.joint_angles.begin(), idl_CommGripperTrajectory.joint_angles.end());
 	}
-	inline CommManipulatorObjects::JointValues getJoint_anglesElemAtPos(const size_t &pos) const {
-		return CommManipulatorObjects::JointValues(idl_CommGripperTrajectory.joint_angles[pos]);
+	inline CommManipulatorObjects::CommJointValues getJoint_anglesElemAtPos(const size_t &pos) const {
+		return CommManipulatorObjects::CommJointValues(idl_CommGripperTrajectory.joint_angles[pos]);
 	}
 	inline size_t getJoint_anglesSize() const { return idl_CommGripperTrajectory.joint_angles.size(); }
 	inline bool isJoint_anglesEmpty() const { return idl_CommGripperTrajectory.joint_angles.empty(); }
 	/**
-	 * Setter methods for idl_CommGripperTrajectory.joint_angles of type vector<CommManipulatorObjects::JointValues>
+	 * Setter methods for idl_CommGripperTrajectory.joint_angles of type vector<CommManipulatorObjects::CommJointValues>
 	 */
-	inline CommGripperTrajectoryCore& setJoint_angles(const std::vector<CommManipulatorObjects::JointValues> &joint_angles) { 
+	inline CommGripperTrajectoryCore& setJoint_angles(const std::vector<CommManipulatorObjects::CommJointValues> &joint_angles) { 
 		idl_CommGripperTrajectory.joint_angles.assign(joint_angles.begin(), joint_angles.end());
 		return *this;
 	}
-	inline bool setJoint_anglesElemAtPos(const size_t &pos, const CommManipulatorObjects::JointValues &elem) {
+	inline bool setJoint_anglesElemAtPos(const size_t &pos, const CommManipulatorObjects::CommJointValues &elem) {
 		if(pos < idl_CommGripperTrajectory.joint_angles.size()) {
 			idl_CommGripperTrajectory.joint_angles[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertJoint_anglesVectorAtPos(const size_t &pos, const std::vector<CommManipulatorObjects::JointValues> &data) {
+	inline bool insertJoint_anglesVectorAtPos(const size_t &pos, const std::vector<CommManipulatorObjects::CommJointValues> &data) {
 		if(pos < idl_CommGripperTrajectory.joint_angles.size()) {
 			idl_CommGripperTrajectory.joint_angles.insert(idl_CommGripperTrajectory.joint_angles.begin()+pos, data.begin(), data.end());
 			return true;

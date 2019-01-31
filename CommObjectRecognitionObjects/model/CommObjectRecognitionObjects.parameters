@@ -2,7 +2,7 @@ ParameterSetRepository CommObjectRecognitionObjects {
 	
 	ParameterSet ObjectRecognitionParameter {
 		
-		Parameter CLOUD{
+		Parameter CLOUD {
 			id : UInt32
 		}
 		

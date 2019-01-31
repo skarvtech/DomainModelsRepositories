@@ -59,14 +59,14 @@ class CommObjectRecognitionObjectProperties : public CommObjectRecognitionObject
 			{
 				return idl_CommObjectRecognitionObjectProperties.beliefs.size();
 			}
-			inline CommObjectRecognitionObjectsIDL::ObjectBelief getBeliefsElementFromPos(
+			inline CommObjectRecognitionObjectsIDL::CommObjectBelief getBeliefsElementFromPos(
 					const unsigned &pos) const
 			{
-				return CommObjectRecognitionObjectsIDL::ObjectBelief(
+				return CommObjectRecognitionObjectsIDL::CommObjectBelief(
 						idl_CommObjectRecognitionObjectProperties.beliefs[pos]);
 			}
 			inline bool setBeliefsElementOnPos(
-					const CommObjectRecognitionObjectsIDL::ObjectBelief &beliefs,
+					const CommObjectRecognitionObjectsIDL::CommObjectBelief &beliefs,
 					const unsigned &pos)
 			{
 				if (pos < getBeliefsNbrElements())
@@ -105,12 +105,12 @@ class CommObjectRecognitionObjectProperties : public CommObjectRecognitionObject
 				idl_CommObjectRecognitionObjectProperties.is_valid = is_valid;
 			}
 
-			inline CommObjectRecognitionObjectsIDL::TriMesh getMesh() const
+			inline CommObjectRecognitionObjectsIDL::CommTriMesh getMesh() const
 			{
-				return CommObjectRecognitionObjectsIDL::TriMesh(
+				return CommObjectRecognitionObjectsIDL::CommTriMesh(
 						idl_CommObjectRecognitionObjectProperties.mesh);
 			}
-			inline void setMesh(const CommObjectRecognitionObjectsIDL::TriMesh &mesh)
+			inline void setMesh(const CommObjectRecognitionObjectsIDL::CommTriMesh &mesh)
 			{
 				idl_CommObjectRecognitionObjectProperties.mesh = mesh;
 			}
@@ -148,14 +148,14 @@ class CommObjectRecognitionObjectProperties : public CommObjectRecognitionObject
 			{
 				return idl_CommObjectRecognitionObjectProperties.relations.size();
 			}
-			inline CommObjectRecognitionObjectsIDL::Relation getRelationsElementFromPos(
+			inline CommObjectRecognitionObjectsIDL::CommObjectRelation getRelationsElementFromPos(
 					const unsigned &pos) const
 			{
-				return CommObjectRecognitionObjectsIDL::Relation(
+				return CommObjectRecognitionObjectsIDL::CommObjectRelation(
 						idl_CommObjectRecognitionObjectProperties.relations[pos]);
 			}
 			inline bool setRelationsElementOnPos(
-					const CommObjectRecognitionObjectsIDL::Relation &relations,
+					const CommObjectRecognitionObjectsIDL::CommObjectRelation &relations,
 					const unsigned &pos)
 			{
 				if (pos < getRelationsNbrElements())

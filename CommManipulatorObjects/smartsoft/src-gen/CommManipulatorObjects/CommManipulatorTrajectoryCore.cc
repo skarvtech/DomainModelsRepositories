@@ -42,8 +42,8 @@ namespace CommManipulatorObjects
 	{
 		// get own hash value
 		hashes.push_back(getCompiledHash());
-		// get hash value(s) for CommManipulatorObjects::JointValues(idl_CommManipulatorTrajectory.joint_angles)
-		CommManipulatorObjects::JointValues::getAllHashValues(hashes);
+		// get hash value(s) for CommManipulatorObjects::CommJointValues(idl_CommManipulatorTrajectory.joint_angles)
+		CommManipulatorObjects::CommJointValues::getAllHashValues(hashes);
 		// get hash value(s) for CommBasicObjects::CommPose3d(idl_CommManipulatorTrajectory.pose_tcp)
 		CommBasicObjects::CommPose3d::getAllHashValues(hashes);
 		// get hash value(s) for CommManipulatorObjects::CommGripperTrajectory(idl_CommManipulatorTrajectory.gripper_angles)
@@ -65,8 +65,8 @@ namespace CommManipulatorObjects
 		assert(strcmp(getCompiledHash(), hashes.front().c_str()) == 0);
 		hashes.pop_front();
 		
-		// check hash value(s) for CommManipulatorObjects::JointValues(idl_CommManipulatorTrajectory.joint_angles)
-		CommManipulatorObjects::JointValues::checkAllHashValues(hashes);
+		// check hash value(s) for CommManipulatorObjects::CommJointValues(idl_CommManipulatorTrajectory.joint_angles)
+		CommManipulatorObjects::CommJointValues::checkAllHashValues(hashes);
 		// check hash value(s) for CommBasicObjects::CommPose3d(idl_CommManipulatorTrajectory.pose_tcp)
 		CommBasicObjects::CommPose3d::checkAllHashValues(hashes);
 		// check hash value(s) for CommManipulatorObjects::CommGripperTrajectory(idl_CommManipulatorTrajectory.gripper_angles)
@@ -78,9 +78,9 @@ namespace CommManipulatorObjects
 	{
 		size_t seed = 0;
 		
-		std::vector<CommManipulatorObjectsIDL::JointValues>::const_iterator data_joint_anglesIt;
+		std::vector<CommManipulatorObjectsIDL::CommJointValues>::const_iterator data_joint_anglesIt;
 		for(data_joint_anglesIt=data.joint_angles.begin(); data_joint_anglesIt!=data.joint_angles.end(); data_joint_anglesIt++) {
-			seed += CommManipulatorObjects::JointValues::generateDataHash(*data_joint_anglesIt);
+			seed += CommManipulatorObjects::CommJointValues::generateDataHash(*data_joint_anglesIt);
 		}
 		seed += CommBasicObjects::CommPose3d::generateDataHash(data.pose_tcp);
 		seed += CommManipulatorObjects::CommGripperTrajectory::generateDataHash(data.gripper_angles);
@@ -94,7 +94,7 @@ namespace CommManipulatorObjects
 	CommManipulatorTrajectoryCore::CommManipulatorTrajectoryCore()
 	:	idl_CommManipulatorTrajectory()
 	{  
-		setJoint_angles(std::vector<CommManipulatorObjects::JointValues>());
+		setJoint_angles(std::vector<CommManipulatorObjects::CommJointValues>());
 		setPose_tcp(CommBasicObjects::CommPose3d());
 		setGripper_angles(CommManipulatorObjects::CommGripperTrajectory());
 		setFlag(CommManipulatorObjects::ManipulatorTrajectoryFlag());
@@ -110,8 +110,8 @@ namespace CommManipulatorObjects
 	void CommManipulatorTrajectoryCore::to_ostream(std::ostream &os) const
 	{
 	  os << "CommManipulatorTrajectory(";
-	  std::vector<CommManipulatorObjects::JointValues>::const_iterator joint_anglesIt;
-	  std::vector<CommManipulatorObjects::JointValues> joint_anglesList = getJoint_anglesCopy();
+	  std::vector<CommManipulatorObjects::CommJointValues>::const_iterator joint_anglesIt;
+	  std::vector<CommManipulatorObjects::CommJointValues> joint_anglesList = getJoint_anglesCopy();
 	  for(joint_anglesIt=joint_anglesList.begin(); joint_anglesIt!=joint_anglesList.end(); joint_anglesIt++) {
 	  	joint_anglesIt->to_ostream(os);
 	  }
@@ -125,8 +125,8 @@ namespace CommManipulatorObjects
 	void CommManipulatorTrajectoryCore::to_xml(std::ostream &os, const std::string &indent) const {
 		size_t counter = 0;
 		
-		std::vector<CommManipulatorObjects::JointValues>::const_iterator joint_anglesIt;
-		std::vector<CommManipulatorObjects::JointValues> joint_anglesList = getJoint_anglesCopy();
+		std::vector<CommManipulatorObjects::CommJointValues>::const_iterator joint_anglesIt;
+		std::vector<CommManipulatorObjects::CommJointValues> joint_anglesList = getJoint_anglesCopy();
 		counter = 0;
 		os << indent << "<joint_anglesList n=\"" << joint_anglesList.size() << "\">";
 		for(joint_anglesIt=joint_anglesList.begin(); joint_anglesIt!=joint_anglesList.end(); joint_anglesIt++) {
@@ -159,8 +159,8 @@ namespace CommManipulatorObjects
 		if(kmp_joint_anglesList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommManipulatorObjects::JointValues joint_anglesItem;
-			std::vector<CommManipulatorObjects::JointValues> joint_anglesList;
+			CommManipulatorObjects::CommJointValues joint_anglesItem;
+			std::vector<CommManipulatorObjects::CommJointValues> joint_anglesList;
 			kmp_joint_angles.search(is);
 			for(counter=0; counter<numberElements; counter++) {
 				if(kmp_joint_angles.search(is)) {

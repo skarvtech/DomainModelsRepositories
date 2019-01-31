@@ -8,7 +8,7 @@ CommObjectsRepository CommManipulatorObjects version 1.0 {
 	}
 	
 	CommObject CommManipulatorTrajectory {
-		joint_angles: JointValues[*]
+		joint_angles: CommJointValues[*]
 		pose_tcp: CommPose3d
 		gripper_angles: CommGripperTrajectory
 		flag: ManipulatorTrajectoryFlag
@@ -30,7 +30,7 @@ CommObjectsRepository CommManipulatorObjects version 1.0 {
 		event: ManipulatorEvent
 	}
 	
-	CommObject ManipulatorEventState {
+	CommObject CommManipulatorEventState {
 		event: ManipulatorEvent
 	}
 	
@@ -47,7 +47,7 @@ CommObjectsRepository CommManipulatorObjects version 1.0 {
 		valid: Boolean= false
 	}
 	
-	CommObject ScanEventState {
+	CommObject CommScanEventState {
 		id: UInt32
 		valid: Boolean= false
 	}
@@ -70,7 +70,7 @@ CommObjectsRepository CommManipulatorObjects version 1.0 {
 	}
 	
 	CommObject CommGripperTrajectory {
-		joint_angles: JointValues[*]
+		joint_angles: CommJointValues[*]
 	}
 	
 	Enumeration ManipulatorTrajectoryFlag {
@@ -94,7 +94,7 @@ CommObjectsRepository CommManipulatorObjects version 1.0 {
 		GRIPPER_UNKNOWN
 	}
 	
-	CommObject JointValues {
+	CommObject CommJointValues {
 		values: Double[*]
 		time: Float
 	}

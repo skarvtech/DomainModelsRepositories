@@ -3,14 +3,12 @@
 CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 	
 	CommObject CommObjectRecognitionEventResult {
-//		behavior: ObjectRecognitionBehavior
 		state: ObjectRecognitionState
 		environment_id: UInt32= 0
 		object_id: UInt32[*]
 	}
 	
 	CommObject CommObjectRecognitionEventState {
-//		behavior: ObjectRecognitionBehavior
 		state: ObjectRecognitionState
 		object_id: UInt32[*]
 	}
@@ -29,11 +27,13 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		object_type: String
 		pose: CommPose3d
 		dimension: CommPosition3d
-		beliefs: ObjectBelief[*]
-		mesh: TriMesh
-		relations: Relation[*]
+		beliefs: CommObjectBelief[*]
+		mesh: CommTriMesh
+		relations: CommObjectRelation[*]
 		fill_level: Double= -1.0
-		//@doc "Used for grasping at an surface of the object"
+		/*
+		 * "Used for grasping at an surface of the object"
+		 */
 		objectSurfacePoses : CommPose3d[*]
 	}
 	
@@ -74,15 +74,6 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		FINISHED
 	}
 	
-//	Enum ObjectRecognitionBehavior {
-//		SEARCH
-//		FULLSEARCH
-//		UNSET
-//		CLUSTERING_ON
-//		CLUSTERING_OFF
-//		ESTIMATEFILLING_ON
-//		ESTIMATEFILLING_OFF
-//	}
 	Enumeration RelationType {
 		ON_TOP_OF
 		BELOW_OF
@@ -94,7 +85,7 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		OBJECT_NOT_FOUND
 	}
 	
-	CommObject ObjectBelief {
+	CommObject CommObjectBelief {
 		type: String
 		probability: Double
 		pose: CommPose3d
@@ -102,7 +93,7 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		validPosePdf: Boolean= false
 	}
 	
-	CommObject TriMesh {
+	CommObject CommTriMesh {
 		vertices_p1: UInt32[*]
 		vertices_p2: UInt32[*]
 		vertices_p3: UInt32[*]
@@ -111,36 +102,9 @@ CommObjectsRepository CommObjectRecognitionObjects version 1.0 {
 		points_z: Double[*]
 	}
 	
-	CommObject Relation {
+	CommObject CommObjectRelation {
 		type: RelationType
 		relatedObjectId: UInt32
 	}
 	
-	//RoboCup Objects below this comment
-	
-	CommObject CommSymbolDetectorEventResult {
-		goal_x: Double
-		goal_y: Double
-		goal_z: Double
-		type: SymbolDetectorEventType
-	}
-	
-	CommObject SymbolDetectorEventState {
-		goal_x: Double
-		goal_y: Double
-		goal_z: Double
-		type: SymbolDetectorEventType
-	}
-	
-	CommObject CommSymbolDetectorEventParam {
-		type: SymbolDetectorEventType
-	}
-	
-	Enumeration SymbolDetectorEventType {
-		SYMBOL_UNKNOWN
-		SYMBOL_OBJECT_UNKNOWN
-		SYMBOL_OBJECT_FOUND
-		SYMBOL_OBJECT_NOT_FOUND
-		SYMBOL_UNABLE_TO_GET_POS
-	}
 }

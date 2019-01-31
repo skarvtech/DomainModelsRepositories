@@ -46,12 +46,12 @@ namespace CommObjectRecognitionObjects
 		CommBasicObjects::CommPose3d::getAllHashValues(hashes);
 		// get hash value(s) for CommBasicObjects::CommPosition3d(idl_CommObjectRecognitionObjectProperties.dimension)
 		CommBasicObjects::CommPosition3d::getAllHashValues(hashes);
-		// get hash value(s) for CommObjectRecognitionObjects::ObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs)
-		CommObjectRecognitionObjects::ObjectBelief::getAllHashValues(hashes);
-		// get hash value(s) for CommObjectRecognitionObjects::TriMesh(idl_CommObjectRecognitionObjectProperties.mesh)
-		CommObjectRecognitionObjects::TriMesh::getAllHashValues(hashes);
-		// get hash value(s) for CommObjectRecognitionObjects::Relation(idl_CommObjectRecognitionObjectProperties.relations)
-		CommObjectRecognitionObjects::Relation::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::CommObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs)
+		CommObjectRecognitionObjects::CommObjectBelief::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::CommTriMesh(idl_CommObjectRecognitionObjectProperties.mesh)
+		CommObjectRecognitionObjects::CommTriMesh::getAllHashValues(hashes);
+		// get hash value(s) for CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectRecognitionObjectProperties.relations)
+		CommObjectRecognitionObjects::CommObjectRelation::getAllHashValues(hashes);
 		// get hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectRecognitionObjectProperties.objectSurfacePoses)
 		CommBasicObjects::CommPose3d::getAllHashValues(hashes);
 	}
@@ -75,12 +75,12 @@ namespace CommObjectRecognitionObjects
 		CommBasicObjects::CommPose3d::checkAllHashValues(hashes);
 		// check hash value(s) for CommBasicObjects::CommPosition3d(idl_CommObjectRecognitionObjectProperties.dimension)
 		CommBasicObjects::CommPosition3d::checkAllHashValues(hashes);
-		// check hash value(s) for CommObjectRecognitionObjects::ObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs)
-		CommObjectRecognitionObjects::ObjectBelief::checkAllHashValues(hashes);
-		// check hash value(s) for CommObjectRecognitionObjects::TriMesh(idl_CommObjectRecognitionObjectProperties.mesh)
-		CommObjectRecognitionObjects::TriMesh::checkAllHashValues(hashes);
-		// check hash value(s) for CommObjectRecognitionObjects::Relation(idl_CommObjectRecognitionObjectProperties.relations)
-		CommObjectRecognitionObjects::Relation::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::CommObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs)
+		CommObjectRecognitionObjects::CommObjectBelief::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::CommTriMesh(idl_CommObjectRecognitionObjectProperties.mesh)
+		CommObjectRecognitionObjects::CommTriMesh::checkAllHashValues(hashes);
+		// check hash value(s) for CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectRecognitionObjectProperties.relations)
+		CommObjectRecognitionObjects::CommObjectRelation::checkAllHashValues(hashes);
 		// check hash value(s) for CommBasicObjects::CommPose3d(idl_CommObjectRecognitionObjectProperties.objectSurfacePoses)
 		CommBasicObjects::CommPose3d::checkAllHashValues(hashes);
 	}
@@ -95,14 +95,14 @@ namespace CommObjectRecognitionObjects
 		boost::hash_combine(seed, std::string(data.object_type.c_str()));
 		seed += CommBasicObjects::CommPose3d::generateDataHash(data.pose);
 		seed += CommBasicObjects::CommPosition3d::generateDataHash(data.dimension);
-		std::vector<CommObjectRecognitionObjectsIDL::ObjectBelief>::const_iterator data_beliefsIt;
+		std::vector<CommObjectRecognitionObjectsIDL::CommObjectBelief>::const_iterator data_beliefsIt;
 		for(data_beliefsIt=data.beliefs.begin(); data_beliefsIt!=data.beliefs.end(); data_beliefsIt++) {
-			seed += CommObjectRecognitionObjects::ObjectBelief::generateDataHash(*data_beliefsIt);
+			seed += CommObjectRecognitionObjects::CommObjectBelief::generateDataHash(*data_beliefsIt);
 		}
-		seed += CommObjectRecognitionObjects::TriMesh::generateDataHash(data.mesh);
-		std::vector<CommObjectRecognitionObjectsIDL::Relation>::const_iterator data_relationsIt;
+		seed += CommObjectRecognitionObjects::CommTriMesh::generateDataHash(data.mesh);
+		std::vector<CommObjectRecognitionObjectsIDL::CommObjectRelation>::const_iterator data_relationsIt;
 		for(data_relationsIt=data.relations.begin(); data_relationsIt!=data.relations.end(); data_relationsIt++) {
-			seed += CommObjectRecognitionObjects::Relation::generateDataHash(*data_relationsIt);
+			seed += CommObjectRecognitionObjects::CommObjectRelation::generateDataHash(*data_relationsIt);
 		}
 		boost::hash_combine(seed, data.fill_level);
 		std::vector<CommBasicObjectsIDL::CommPose3d>::const_iterator data_objectSurfacePosesIt;
@@ -123,9 +123,9 @@ namespace CommObjectRecognitionObjects
 		setObject_type("");
 		setPose(CommBasicObjects::CommPose3d());
 		setDimension(CommBasicObjects::CommPosition3d());
-		setBeliefs(std::vector<CommObjectRecognitionObjects::ObjectBelief>());
-		setMesh(CommObjectRecognitionObjects::TriMesh());
-		setRelations(std::vector<CommObjectRecognitionObjects::Relation>());
+		setBeliefs(std::vector<CommObjectRecognitionObjects::CommObjectBelief>());
+		setMesh(CommObjectRecognitionObjects::CommTriMesh());
+		setRelations(std::vector<CommObjectRecognitionObjects::CommObjectRelation>());
 		setFill_level(-1.0);
 		setObjectSurfacePoses(std::vector<CommBasicObjects::CommPose3d>());
 	}
@@ -145,14 +145,14 @@ namespace CommObjectRecognitionObjects
 	  os << getObject_type() << " ";
 	  getPose().to_ostream(os);
 	  getDimension().to_ostream(os);
-	  std::vector<CommObjectRecognitionObjects::ObjectBelief>::const_iterator beliefsIt;
-	  std::vector<CommObjectRecognitionObjects::ObjectBelief> beliefsList = getBeliefsCopy();
+	  std::vector<CommObjectRecognitionObjects::CommObjectBelief>::const_iterator beliefsIt;
+	  std::vector<CommObjectRecognitionObjects::CommObjectBelief> beliefsList = getBeliefsCopy();
 	  for(beliefsIt=beliefsList.begin(); beliefsIt!=beliefsList.end(); beliefsIt++) {
 	  	beliefsIt->to_ostream(os);
 	  }
 	  getMesh().to_ostream(os);
-	  std::vector<CommObjectRecognitionObjects::Relation>::const_iterator relationsIt;
-	  std::vector<CommObjectRecognitionObjects::Relation> relationsList = getRelationsCopy();
+	  std::vector<CommObjectRecognitionObjects::CommObjectRelation>::const_iterator relationsIt;
+	  std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList = getRelationsCopy();
 	  for(relationsIt=relationsList.begin(); relationsIt!=relationsList.end(); relationsIt++) {
 	  	relationsIt->to_ostream(os);
 	  }
@@ -178,8 +178,8 @@ namespace CommObjectRecognitionObjects
 		os << indent << "<dimension>";
 		getDimension().to_xml(os, indent);
 		os << indent << "</dimension>";
-		std::vector<CommObjectRecognitionObjects::ObjectBelief>::const_iterator beliefsIt;
-		std::vector<CommObjectRecognitionObjects::ObjectBelief> beliefsList = getBeliefsCopy();
+		std::vector<CommObjectRecognitionObjects::CommObjectBelief>::const_iterator beliefsIt;
+		std::vector<CommObjectRecognitionObjects::CommObjectBelief> beliefsList = getBeliefsCopy();
 		counter = 0;
 		os << indent << "<beliefsList n=\"" << beliefsList.size() << "\">";
 		for(beliefsIt=beliefsList.begin(); beliefsIt!=beliefsList.end(); beliefsIt++) {
@@ -191,8 +191,8 @@ namespace CommObjectRecognitionObjects
 		os << indent << "<mesh>";
 		getMesh().to_xml(os, indent);
 		os << indent << "</mesh>";
-		std::vector<CommObjectRecognitionObjects::Relation>::const_iterator relationsIt;
-		std::vector<CommObjectRecognitionObjects::Relation> relationsList = getRelationsCopy();
+		std::vector<CommObjectRecognitionObjects::CommObjectRelation>::const_iterator relationsIt;
+		std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList = getRelationsCopy();
 		counter = 0;
 		os << indent << "<relationsList n=\"" << relationsList.size() << "\">";
 		for(relationsIt=relationsList.begin(); relationsIt!=relationsList.end(); relationsIt++) {
@@ -260,8 +260,8 @@ namespace CommObjectRecognitionObjects
 		if(kmp_beliefsList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommObjectRecognitionObjects::ObjectBelief beliefsItem;
-			std::vector<CommObjectRecognitionObjects::ObjectBelief> beliefsList;
+			CommObjectRecognitionObjects::CommObjectBelief beliefsItem;
+			std::vector<CommObjectRecognitionObjects::CommObjectBelief> beliefsList;
 			kmp_beliefs.search(is);
 			for(counter=0; counter<numberElements; counter++) {
 				if(kmp_beliefs.search(is)) {
@@ -272,15 +272,15 @@ namespace CommObjectRecognitionObjects
 			setBeliefs(beliefsList);
 		}
 		if(kmp_mesh.search(is)) {
-			CommObjectRecognitionObjects::TriMesh meshItem;
+			CommObjectRecognitionObjects::CommTriMesh meshItem;
 			meshItem.from_xml(is);
 			setMesh(meshItem);
 		}
 		if(kmp_relationsList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommObjectRecognitionObjects::Relation relationsItem;
-			std::vector<CommObjectRecognitionObjects::Relation> relationsList;
+			CommObjectRecognitionObjects::CommObjectRelation relationsItem;
+			std::vector<CommObjectRecognitionObjects::CommObjectRelation> relationsList;
 			kmp_relations.search(is);
 			for(counter=0; counter<numberElements; counter++) {
 				if(kmp_relations.search(is)) {

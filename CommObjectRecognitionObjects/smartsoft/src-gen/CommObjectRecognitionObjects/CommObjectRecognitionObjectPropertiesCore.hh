@@ -18,10 +18,10 @@
 
 #include "CommObjectRecognitionObjects/CommObjectRecognitionObjectPropertiesData.hh"
 #include "CommBasicObjects/CommPosition3d.hh"
+#include "CommObjectRecognitionObjects/CommObjectBelief.hh"
+#include "CommObjectRecognitionObjects/CommTriMesh.hh"
 #include "CommBasicObjects/CommPose3d.hh"
-#include "CommObjectRecognitionObjects/Relation.hh"
-#include "CommObjectRecognitionObjects/TriMesh.hh"
-#include "CommObjectRecognitionObjects/ObjectBelief.hh"
+#include "CommObjectRecognitionObjects/CommObjectRelation.hh"
 
 #include <iostream>
 #include <string>
@@ -91,31 +91,31 @@ public:
 	
 	// getter and setter for element Beliefs
 	/**
-	 * Getter methods for element idl_CommObjectRecognitionObjectProperties.beliefs of type vector<CommObjectRecognitionObjects::ObjectBelief>
+	 * Getter methods for element idl_CommObjectRecognitionObjectProperties.beliefs of type vector<CommObjectRecognitionObjects::CommObjectBelief>
 	 */
-	inline std::vector<CommObjectRecognitionObjects::ObjectBelief> getBeliefsCopy() const { 
-		return std::vector<CommObjectRecognitionObjects::ObjectBelief>(idl_CommObjectRecognitionObjectProperties.beliefs.begin(), idl_CommObjectRecognitionObjectProperties.beliefs.end());
+	inline std::vector<CommObjectRecognitionObjects::CommObjectBelief> getBeliefsCopy() const { 
+		return std::vector<CommObjectRecognitionObjects::CommObjectBelief>(idl_CommObjectRecognitionObjectProperties.beliefs.begin(), idl_CommObjectRecognitionObjectProperties.beliefs.end());
 	}
-	inline CommObjectRecognitionObjects::ObjectBelief getBeliefsElemAtPos(const size_t &pos) const {
-		return CommObjectRecognitionObjects::ObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs[pos]);
+	inline CommObjectRecognitionObjects::CommObjectBelief getBeliefsElemAtPos(const size_t &pos) const {
+		return CommObjectRecognitionObjects::CommObjectBelief(idl_CommObjectRecognitionObjectProperties.beliefs[pos]);
 	}
 	inline size_t getBeliefsSize() const { return idl_CommObjectRecognitionObjectProperties.beliefs.size(); }
 	inline bool isBeliefsEmpty() const { return idl_CommObjectRecognitionObjectProperties.beliefs.empty(); }
 	/**
-	 * Setter methods for idl_CommObjectRecognitionObjectProperties.beliefs of type vector<CommObjectRecognitionObjects::ObjectBelief>
+	 * Setter methods for idl_CommObjectRecognitionObjectProperties.beliefs of type vector<CommObjectRecognitionObjects::CommObjectBelief>
 	 */
-	inline CommObjectRecognitionObjectPropertiesCore& setBeliefs(const std::vector<CommObjectRecognitionObjects::ObjectBelief> &beliefs) { 
+	inline CommObjectRecognitionObjectPropertiesCore& setBeliefs(const std::vector<CommObjectRecognitionObjects::CommObjectBelief> &beliefs) { 
 		idl_CommObjectRecognitionObjectProperties.beliefs.assign(beliefs.begin(), beliefs.end());
 		return *this;
 	}
-	inline bool setBeliefsElemAtPos(const size_t &pos, const CommObjectRecognitionObjects::ObjectBelief &elem) {
+	inline bool setBeliefsElemAtPos(const size_t &pos, const CommObjectRecognitionObjects::CommObjectBelief &elem) {
 		if(pos < idl_CommObjectRecognitionObjectProperties.beliefs.size()) {
 			idl_CommObjectRecognitionObjectProperties.beliefs[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertBeliefsVectorAtPos(const size_t &pos, const std::vector<CommObjectRecognitionObjects::ObjectBelief> &data) {
+	inline bool insertBeliefsVectorAtPos(const size_t &pos, const std::vector<CommObjectRecognitionObjects::CommObjectBelief> &data) {
 		if(pos < idl_CommObjectRecognitionObjectProperties.beliefs.size()) {
 			idl_CommObjectRecognitionObjectProperties.beliefs.insert(idl_CommObjectRecognitionObjectProperties.beliefs.begin()+pos, data.begin(), data.end());
 			return true;
@@ -133,36 +133,36 @@ public:
 	inline void clearBeliefs() { idl_CommObjectRecognitionObjectProperties.beliefs.clear(); }
 	
 	// getter and setter for element Mesh
-	inline CommObjectRecognitionObjects::TriMesh getMesh() const { return CommObjectRecognitionObjects::TriMesh(idl_CommObjectRecognitionObjectProperties.mesh); }
-	inline CommObjectRecognitionObjectPropertiesCore& setMesh(const CommObjectRecognitionObjects::TriMesh &mesh) { idl_CommObjectRecognitionObjectProperties.mesh = mesh; return *this; }
+	inline CommObjectRecognitionObjects::CommTriMesh getMesh() const { return CommObjectRecognitionObjects::CommTriMesh(idl_CommObjectRecognitionObjectProperties.mesh); }
+	inline CommObjectRecognitionObjectPropertiesCore& setMesh(const CommObjectRecognitionObjects::CommTriMesh &mesh) { idl_CommObjectRecognitionObjectProperties.mesh = mesh; return *this; }
 	
 	// getter and setter for element Relations
 	/**
-	 * Getter methods for element idl_CommObjectRecognitionObjectProperties.relations of type vector<CommObjectRecognitionObjects::Relation>
+	 * Getter methods for element idl_CommObjectRecognitionObjectProperties.relations of type vector<CommObjectRecognitionObjects::CommObjectRelation>
 	 */
-	inline std::vector<CommObjectRecognitionObjects::Relation> getRelationsCopy() const { 
-		return std::vector<CommObjectRecognitionObjects::Relation>(idl_CommObjectRecognitionObjectProperties.relations.begin(), idl_CommObjectRecognitionObjectProperties.relations.end());
+	inline std::vector<CommObjectRecognitionObjects::CommObjectRelation> getRelationsCopy() const { 
+		return std::vector<CommObjectRecognitionObjects::CommObjectRelation>(idl_CommObjectRecognitionObjectProperties.relations.begin(), idl_CommObjectRecognitionObjectProperties.relations.end());
 	}
-	inline CommObjectRecognitionObjects::Relation getRelationsElemAtPos(const size_t &pos) const {
-		return CommObjectRecognitionObjects::Relation(idl_CommObjectRecognitionObjectProperties.relations[pos]);
+	inline CommObjectRecognitionObjects::CommObjectRelation getRelationsElemAtPos(const size_t &pos) const {
+		return CommObjectRecognitionObjects::CommObjectRelation(idl_CommObjectRecognitionObjectProperties.relations[pos]);
 	}
 	inline size_t getRelationsSize() const { return idl_CommObjectRecognitionObjectProperties.relations.size(); }
 	inline bool isRelationsEmpty() const { return idl_CommObjectRecognitionObjectProperties.relations.empty(); }
 	/**
-	 * Setter methods for idl_CommObjectRecognitionObjectProperties.relations of type vector<CommObjectRecognitionObjects::Relation>
+	 * Setter methods for idl_CommObjectRecognitionObjectProperties.relations of type vector<CommObjectRecognitionObjects::CommObjectRelation>
 	 */
-	inline CommObjectRecognitionObjectPropertiesCore& setRelations(const std::vector<CommObjectRecognitionObjects::Relation> &relations) { 
+	inline CommObjectRecognitionObjectPropertiesCore& setRelations(const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &relations) { 
 		idl_CommObjectRecognitionObjectProperties.relations.assign(relations.begin(), relations.end());
 		return *this;
 	}
-	inline bool setRelationsElemAtPos(const size_t &pos, const CommObjectRecognitionObjects::Relation &elem) {
+	inline bool setRelationsElemAtPos(const size_t &pos, const CommObjectRecognitionObjects::CommObjectRelation &elem) {
 		if(pos < idl_CommObjectRecognitionObjectProperties.relations.size()) {
 			idl_CommObjectRecognitionObjectProperties.relations[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertRelationsVectorAtPos(const size_t &pos, const std::vector<CommObjectRecognitionObjects::Relation> &data) {
+	inline bool insertRelationsVectorAtPos(const size_t &pos, const std::vector<CommObjectRecognitionObjects::CommObjectRelation> &data) {
 		if(pos < idl_CommObjectRecognitionObjectProperties.relations.size()) {
 			idl_CommObjectRecognitionObjectProperties.relations.insert(idl_CommObjectRecognitionObjectProperties.relations.begin()+pos, data.begin(), data.end());
 			return true;

@@ -1,10 +1,6 @@
 ServiceDefRepository CommManipulationPlannerObjects version 1.0 {
 	
-	JoiningServiceDefinition SendTaskPlanningService {
-		SendPattern <DataType=CommManipulationPlannerObjects.CommManipulationTaskPlanning>
-	}
-	
-	ForkingServiceDefinition EventService {
+	ForkingServiceDefinition ManipulationPlannerEventService {
 		EventPattern < 
 			ActivationType=CommManipulationPlannerObjects.CommManipulationPlannerEventParameter 
 			EventType=CommManipulationPlannerObjects.CommManipulationPlannerEventResult
