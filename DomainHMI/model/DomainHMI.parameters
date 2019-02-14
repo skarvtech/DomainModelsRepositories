@@ -1,0 +1,3 @@
+ParameterSetRepository DomainHMI {
+	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+}

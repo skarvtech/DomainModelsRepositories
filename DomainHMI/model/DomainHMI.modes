@@ -1,0 +1,5 @@
+ComponentModeRepository DomainHMI {
+	ComponentModeCollection DefaultModes {
+		ComponentModeDefinition Active;
+	}
+}

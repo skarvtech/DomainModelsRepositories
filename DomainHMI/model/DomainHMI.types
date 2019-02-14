@@ -1,0 +1,18 @@
+CommObjectsRepository DomainHMI version 1.0 {
+	
+	/**
+	 * The communication object to set the state of a traffic light. 
+	 * Each boolean variable represents the red/green/yellow light of the traffic light.
+	 */ 
+	CommObject CommTrafficLight {
+		// variable to hold status of the red light. true=on, false=off
+        red: Boolean = false
+        
+        // variable to hold status of the green light. true=on, false=off 
+        green: Boolean = false
+        
+        // variable to hold status of the yellow light. true=on, false=off
+        yellow: Boolean = false
+   }
+
+}

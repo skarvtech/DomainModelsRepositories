@@ -1,0 +1,8 @@
+ServiceDefRepository DomainHMI version 1.0 {
+	
+	// Service definition to command a traffic light
+	JoiningServiceDefinition TrafficLightService {
+        SendPattern <DataType=DomainHMI.CommTrafficLight>
+    }
+	
+}

@@ -1,0 +1,32 @@
+/** 
+\class DomainHMI::CommTrafficLightCore
+The communication object to set the state of a traffic light.
+Each boolean variable represents the red/green/yellow light of the traffic light.
+
+Structure of Communication Object:
+- red: Boolean  = false 
+- green: Boolean  = false 
+- yellow: Boolean  = false 
+
+
+
+
+@defgroup DomainHMI
+@ingroup commObjGroup
+@{
+\page DomainHMIPage DomainHMI
+Class Reference: DomainHMI
+<hr>
+
+@section CommTrafficLight CommTrafficLight
+- red: Boolean   = false 
+- green: Boolean   = false 
+- yellow: Boolean   = false 
+
+Class Reference: DomainHMI::CommTrafficLightCore
+<hr>
+
+
+@}
+*/
+
