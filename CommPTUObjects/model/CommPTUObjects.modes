@@ -1,6 +1,0 @@
-ComponentModeRepository CommPTUObjects {
-	ComponentModeCollection PTUStates {
-		ComponentModeDefinition Move;
-		ComponentModeDefinition Servo;
-	}
-}

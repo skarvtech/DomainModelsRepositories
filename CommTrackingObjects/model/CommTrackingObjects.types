@@ -46,6 +46,7 @@ CommObjectsRepository CommTrackingObjects version 1.0.0 {
 		y: Double
 		isValid: Boolean
 		cov: Double[*]
+		goalCount : UInt64 = 0
 	}
 	CommObject CommLaserTrackedObject {
 		id: UInt32

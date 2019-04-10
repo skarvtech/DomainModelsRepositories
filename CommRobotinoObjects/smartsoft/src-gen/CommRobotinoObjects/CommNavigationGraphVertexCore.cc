@@ -70,6 +70,7 @@ namespace CommRobotinoObjects
 		boost::hash_combine(seed, data.y);
 		boost::hash_combine(seed, data.pose);
 		boost::hash_combine(seed, data.path);
+		boost::hash_combine(seed, data.width);
 		boost::hash_combine(seed, data.type);
 		std::vector<ACE_CDR::Long>::const_iterator data_intersec_pathIt;
 		for(data_intersec_pathIt=data.intersec_path.begin(); data_intersec_pathIt!=data.intersec_path.end(); data_intersec_pathIt++) {
@@ -88,6 +89,7 @@ namespace CommRobotinoObjects
 		setY(0.0);
 		setPose(0);
 		setPath(0);
+		setWidth(0.0);
 		setType(CommRobotinoObjects::NODE_TYPE());
 		setIntersec_path(std::vector<int>());
 	}
@@ -106,6 +108,7 @@ namespace CommRobotinoObjects
 	  os << getY() << " ";
 	  os << getPose() << " ";
 	  os << getPath() << " ";
+	  os << getWidth() << " ";
 	  getType().to_ostream(os);
 	  std::vector<int>::const_iterator intersec_pathIt;
 	  std::vector<int> intersec_pathList = getIntersec_pathCopy();
@@ -123,6 +126,7 @@ namespace CommRobotinoObjects
 		os << indent << "<y>" << getY() << "</y>";
 		os << indent << "<pose>" << getPose() << "</pose>";
 		os << indent << "<path>" << getPath() << "</path>";
+		os << indent << "<width>" << getWidth() << "</width>";
 		os << indent << "<type>";
 		getType().to_xml(os, indent);
 		os << indent << "</type>";
@@ -144,6 +148,7 @@ namespace CommRobotinoObjects
 		static const Smart::KnuthMorrisPratt kmp_y("<y>");
 		static const Smart::KnuthMorrisPratt kmp_pose("<pose>");
 		static const Smart::KnuthMorrisPratt kmp_path("<path>");
+		static const Smart::KnuthMorrisPratt kmp_width("<width>");
 		static const Smart::KnuthMorrisPratt kmp_type("<type>");
 		static const Smart::KnuthMorrisPratt kmp_intersec_pathList("<intersec_pathList n=\"");
 		static const Smart::KnuthMorrisPratt kmp_intersec_path("\">");
@@ -167,6 +172,11 @@ namespace CommRobotinoObjects
 			int pathItem;
 			is >> pathItem;
 			setPath(pathItem);
+		}
+		if(kmp_width.search(is)) {
+			double widthItem;
+			is >> widthItem;
+			setWidth(widthItem);
 		}
 		if(kmp_type.search(is)) {
 			CommRobotinoObjects::NODE_TYPE typeItem;

@@ -1,5 +1,5 @@
 DomainModelsDatasheet CommRobotinoObjects {
 	baseURI : "http://www.servicerobotik-ulm.de"
-	shortDescrition : "Domain Models for the Robotino domain"
+	shortDescription : "Domain Models for the Robotino domain"
 	license : spdx ( "LGPL-3.0-or-later" )
 }

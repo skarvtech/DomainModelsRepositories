@@ -36,6 +36,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommTrackingObjectsIDL::Co
 	// serialize list-element cov
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.cov.size());
 	good_bit = good_bit && cdr.write_double_array(data.cov.data(), data.cov.size());
+	// serialize list-element goalCount
+	good_bit = good_bit && cdr.write_ulonglong(data.goalCount);
 	
 	return good_bit;
 }
@@ -61,6 +63,10 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommTrackingObjectsIDL::CommTrack
 	good_bit = good_bit && cdr >> data_covNbr;
 	data.cov.resize(data_covNbr);
 	good_bit = good_bit && cdr.read_double_array(data.cov.data(), data_covNbr);
+	// deserialize string-type element goalCount
+	ACE_CDR::ULongLong data_goalCount_ll;
+	good_bit = good_bit && cdr.read_ulonglong(data_goalCount_ll);
+	data.goalCount = data_goalCount_ll;
 	
 	return good_bit;
 }

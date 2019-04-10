@@ -23,5 +23,11 @@
 //
 // --------------------------------------------------------------------------
 ComponentModeRepository CommTrackingObjects {
+	
+	ComponentModeCollection TrackerModes
+	{
+		ComponentModeDefinition follow;
+		ComponentModeDefinition detect;
+	}
 
 }

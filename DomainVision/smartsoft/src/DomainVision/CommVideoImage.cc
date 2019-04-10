@@ -45,7 +45,10 @@ using namespace DomainVision;
 
 CommVideoImage::CommVideoImage()
 :	CommVideoImageCore()
-{  }
+{
+	idl_CommVideoImage.intrinsic_m.resize(4*4);
+	idl_CommVideoImage.distortion_m.resize(1*5);
+}
 
 
 /**
@@ -81,3 +84,645 @@ CommVideoImage::CommVideoImage(const DATATYPE &commVideoImage)
 
 CommVideoImage::~CommVideoImage()
 {  }
+
+
+CommVideoImage::CommVideoImage(unsigned int width, unsigned int height, DomainVision::FormatType format, const unsigned char *data)
+{
+  idl_CommVideoImage.intrinsic_m.resize(4*4);
+  set_parameters(width,height,format);
+  if(data) set_data(data);
+}
+
+
+bool CommVideoImage::has_parameters(unsigned int width, unsigned int height, DomainVision::FormatType format) const
+{
+    return (width==get_width()) && (height==get_height()) && (format==get_format());
+}
+
+unsigned int CommVideoImage::get_size_as_rgb24() const
+{
+    return 3 * get_width() * get_height();
+}
+
+void CommVideoImage::get_as_rgb24(unsigned char *target) const
+{
+  _get_as_rgb(target, 0);
+}
+
+unsigned int CommVideoImage::get_size_as_rgb32() const
+{
+    return 4 * get_width() * get_height();
+}
+
+void CommVideoImage::get_as_rgb32(unsigned char *target) const
+{
+  _get_as_rgb(target, 2);
+}
+
+void CommVideoImage::get_as_bgr24(unsigned char *target) const
+{
+  _get_as_bgr(target, 0);
+}
+
+void CommVideoImage::get_as_bgr32(unsigned char *target) const
+{
+  _get_as_bgr(target, 2);
+}
+
+void CommVideoImage::_get_as_rgb(unsigned char *target, int mode) const
+{
+
+
+    const unsigned int w = get_width();
+    const unsigned int h = get_height();
+    const unsigned int num_pixels = w*h; // NB: num_pixels != size
+    DomainVision::FormatType format = get_format();
+
+
+    const unsigned char *source = get_data();
+
+    const unsigned char *source_u = 0;
+    const unsigned char *source_v = 0;
+    const unsigned char *u_line = 0;
+    const unsigned char *v_line = 0;
+
+    // initialize
+    //switch(format.get_value())
+
+    switch(format)
+    {
+      case DomainVision::FormatType::GREY:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB565:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB555:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB24:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB32:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUV422:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUYV:
+      {
+        break;
+      }
+      case DomainVision::FormatType::UYVY:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUV420P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/4);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+      case DomainVision::FormatType::YUV422P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/2);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+      case DomainVision::FormatType::YUV411P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/4);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+    }
+
+    unsigned int x = 0;
+    unsigned int y = 0;
+    while(y<h)
+    {
+      if(mode==1) *target++ = 0;
+      switch(format)
+      {
+        case DomainVision::FormatType::GREY:
+        {
+          target[0] = target[1] = target[2] = *source;
+          target += 3;
+          ++source;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB565:
+        {
+          const unsigned int w = source[0] + (((unsigned int)source[1]) << 8);
+          target[0] = (w & 0x001F) << 3; // >> 0,  * 8
+          target[1] = (w & 0x07E0) >> 3; // >> 5,  * 4
+          target[2] = (w & 0xF800) >> 8; // >> 11, * 8
+          target += 3;
+          source += 2;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB555:
+        {
+          const unsigned int w = source[0] + (((unsigned int)source[1]) << 8);
+          target[0] = (w & 0x001F) << 3; // >> 0,  * 8
+          target[1] = (w & 0x03E0) >> 2; // >> 5,  * 8
+          target[2] = (w & 0x7C00) >> 7; // >> 10, * 8
+          target += 3;
+          source += 2;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB24:
+        {
+          *target++ = *source++;
+          *target++ = *source++;
+          *target++ = *source++;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB32:
+        {
+          ++source;
+          *target++ = *source++;
+          *target++ = *source++;
+          *target++ = *source++;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::YUV422:
+        case DomainVision::FormatType::YUYV:
+        {
+        	// Implementation as of after May 30th 2011 (Dennis Stampfer):
+//            yuv2rgb(source[0],source[1],source[3], *target++,*target++,*target++);
+//            if((mode==1) || (mode==2)) *target++ = 0;
+//            yuv2rgb(source[2],source[1],source[3], *target++,*target++,*target++);
+//            source += 4;
+//            x += 2;
+
+// 			Implementation as of before May 30th 2011:
+          unsigned char* p1,*p2,*p3;
+          p1=target++;
+          p2=target++;
+          p3=target++;
+          //yuv2rgb(source[0],source[1],source[3], *target++,*target++,*target++);
+          yuv2rgb(source[0],source[1],source[3], *p1,*p2,*p3);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          p1=target++;
+          p2=target++;
+          p3=target++;
+          //yuv2rgb(source[2],source[1],source[3], *target++,*target++,*target++);
+          yuv2rgb(source[2],source[1],source[3], *p1,*p2,*p3);
+          source += 4;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::UYVY:
+        {
+          yuv2rgb(source[1],source[0],source[2], *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[3],source[0],source[2], *target++,*target++,*target++);
+          source += 4;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::YUV420P:
+        {
+          yuv2rgb(source[0],*u_line,*v_line, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[1],*u_line,*v_line, *target++,*target++,*target++);
+
+          ++u_line;
+          ++v_line;
+
+          source += 2;
+          x += 2;
+
+          if(x==w)
+          {
+            if(y%2==0)
+            {
+              source_u += w/2;
+            }
+            else
+            {
+              source_v += w/2;
+            }
+            u_line = source_u;
+            v_line = source_v;
+          }
+          break;
+        }
+        case DomainVision::FormatType::YUV422P:
+        {
+          yuv2rgb(source[0],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[1],*source_u,*source_v, *target++,*target++,*target++);
+          ++source_u;
+          ++source_v;
+          source += 2;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::YUV411P:
+        {
+          yuv2rgb(source[0],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[1],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[2],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2rgb(source[3],*source_u,*source_v, *target++,*target++,*target++);
+          ++source_u;
+          ++source_v;
+          source += 4;
+          x += 4;
+          break;
+        }
+        default:
+        {
+          target[0] = target[1] = target[2] = 0;
+          target += 3;
+          x += 1;
+        }
+      }
+      if(mode==2) *target++ = 0;
+      if(x==w)
+      {
+        x = 0;
+        ++y;
+      }
+    }
+
+}
+
+void CommVideoImage::_get_as_bgr(unsigned char *target, int mode) const
+{
+    const unsigned int w = get_width();
+    const unsigned int h = get_height();
+    const unsigned int num_pixels = w*h; // NB: num_pixels != size
+    DomainVision::FormatType format = get_format();
+
+    const unsigned char *source = get_data();
+
+    const unsigned char *source_u = 0;
+    const unsigned char *source_v = 0;
+    const unsigned char *u_line = 0;
+    const unsigned char *v_line = 0;
+
+    // initialize
+    switch(format)
+    {
+      case DomainVision::FormatType::GREY:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB565:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB555:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB24:
+      {
+        break;
+      }
+      case DomainVision::FormatType::RGB32:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUV422:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUYV:
+      {
+        break;
+      }
+      case DomainVision::FormatType::UYVY:
+      {
+        break;
+      }
+      case DomainVision::FormatType::YUV420P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/4);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+      case DomainVision::FormatType::YUV422P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/2);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+      case DomainVision::FormatType::YUV411P:
+      {
+        source_u = source + num_pixels;
+        source_v = source + (num_pixels + num_pixels/4);
+        u_line = source_u;
+        v_line = source_v;
+        break;
+      }
+    }
+
+    unsigned int x = 0;
+    unsigned int y = 0;
+    while(y<h)
+    {
+      if(mode==1) *target++ = 0;
+      switch(format)
+      {
+        case DomainVision::FormatType::GREY:
+        {
+          target[0] = target[1] = target[2] = *source;
+          target += 3;
+          ++source;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB565:
+        {
+          const unsigned int w = source[0] + (((unsigned int)source[1]) << 8);
+          target[2] = (w & 0x001F) << 3; // >> 0,  * 8
+          target[1] = (w & 0x07E0) >> 3; // >> 5,  * 4
+          target[0] = (w & 0xF800) >> 8; // >> 11, * 8
+          target += 3;
+          source += 2;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB555:
+        {
+          const unsigned int w = source[0] + (((unsigned int)source[1]) << 8);
+          target[2] = (w & 0x001F) << 3; // >> 0,  * 8
+          target[1] = (w & 0x03E0) >> 2; // >> 5,  * 8
+          target[0] = (w & 0x7C00) >> 7; // >> 10, * 8
+          target += 3;
+          source += 2;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB24:
+        {
+          target[2] = *source++;
+          target[1] = *source++;
+          target[0] = *source++;
+          target += 3;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::RGB32:
+        {
+          target[2] = *source++;
+          target[1] = *source++;
+          target[0] = *source++;
+          ++source;
+          ++x;
+          break;
+        }
+        case DomainVision::FormatType::YUV422:
+        case DomainVision::FormatType::YUYV:
+        {
+          yuv2bgr(source[0],source[1],source[3], *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[2],source[1],source[3], *target++,*target++,*target++);
+          source += 4;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::UYVY:
+        {
+          yuv2bgr(source[1],source[0],source[2], *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[3],source[0],source[2], *target++,*target++,*target++);
+          source += 4;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::YUV420P:
+        {
+          yuv2bgr(source[0],*u_line,*v_line, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[1],*u_line,*v_line, *target++,*target++,*target++);
+
+          ++u_line;
+          ++v_line;
+
+          source += 2;
+          x += 2;
+
+          if(x==w)
+          {
+            if(y%2==0)
+            {
+              source_u += w/2;
+            }
+            else
+            {
+              source_v += w/2;
+            }
+            u_line = source_u;
+            v_line = source_v;
+          }
+          break;
+        }
+        case DomainVision::FormatType::YUV422P:
+        {
+          yuv2bgr(source[0],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[1],*source_u,*source_v, *target++,*target++,*target++);
+          ++source_u;
+          ++source_v;
+          source += 2;
+          x += 2;
+          break;
+        }
+        case DomainVision::FormatType::YUV411P:
+        {
+          yuv2bgr(source[0],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[1],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[2],*source_u,*source_v, *target++,*target++,*target++);
+          if((mode==1) || (mode==2)) *target++ = 0;
+          yuv2bgr(source[3],*source_u,*source_v, *target++,*target++,*target++);
+          ++source_u;
+          ++source_v;
+          source += 4;
+          x += 4;
+          break;
+        }
+        default:
+        {
+          target[0] = target[1] = target[2] = 0;
+          target += 3;
+          x += 1;
+        }
+      }
+      if(mode==2) *target++ = 0;
+      if(x==w)
+      {
+        x = 0;
+        ++y;
+      }
+    }
+}
+
+bool CommVideoImage::string2format(const std::string &name, DomainVision::FormatType &format)
+{
+  if(name=="grey")    { format = DomainVision::FormatType::GREY;    return true; }
+  if(name=="rgb565")  { format = DomainVision::FormatType::RGB565;  return true; }
+  if(name=="rgb555")  { format = DomainVision::FormatType::RGB555;  return true; }
+  if(name=="rgb24")   { format = DomainVision::FormatType::RGB24;   return true; }
+  if(name=="rgb32")   { format = DomainVision::FormatType::RGB32;   return true; }
+  if(name=="yuv422")  { format = DomainVision::FormatType::YUV422;  return true; }
+  if(name=="yuyv")    { format = DomainVision::FormatType::YUYV;    return true; }
+  if(name=="uyvy")    { format = DomainVision::FormatType::UYVY;    return true; }
+  if(name=="yuv420p") { format = DomainVision::FormatType::YUV420P;  return true; }
+  if(name=="yuv422p") { format = DomainVision::FormatType::YUV422P; return true; }
+  if(name=="yuv411p") { format = DomainVision::FormatType::YUV411P; return true; }
+  return false;
+}
+
+std::string CommVideoImage::format2string(DomainVision::FormatType format)
+{
+  switch(format)
+  {
+    case DomainVision::FormatType::GREY: return "grey";
+    case DomainVision::FormatType::RGB565: return "rgb565";
+    case DomainVision::FormatType::RGB555: return "rgb555";
+    case DomainVision::FormatType::RGB24: return "rgb24";
+    case DomainVision::FormatType::RGB32: return "rgb32";
+    case DomainVision::FormatType::YUV422: return "yuv422";
+    case DomainVision::FormatType::YUYV: return "yuyv";
+    case DomainVision::FormatType::UYVY: return "uyvy";
+    case DomainVision::FormatType::YUV420P: return "yuv420p";
+    case DomainVision::FormatType::YUV422P: return "yuv422p";
+    case DomainVision::FormatType::YUV411P: return "yuv411p";
+    default: return "<unknown>";
+  }
+  return "<unknown>";
+}
+
+unsigned int CommVideoImage::depth(DomainVision::FormatType format)
+{
+  switch(format)
+  {
+    case DomainVision::FormatType::GREY: return 8;
+    case DomainVision::FormatType::RGB565: return 16;
+    case DomainVision::FormatType::RGB555: return 16;
+    case DomainVision::FormatType::RGB24: return 24;
+    case DomainVision::FormatType::RGB32: return 32;
+    case DomainVision::FormatType::YUV422: return 16;
+    case DomainVision::FormatType::YUYV: return 16;
+    case DomainVision::FormatType::UYVY: return 16;
+    case DomainVision::FormatType::YUV420P: return 12;
+    case DomainVision::FormatType::YUV422P: return 16;
+    case DomainVision::FormatType::YUV411P: return 12;
+    default: return 0;
+  }
+  return 0;
+}
+
+void CommVideoImage::adjust_size(unsigned int &width, unsigned int &height, DomainVision::FormatType format)
+{
+  if((format==DomainVision::FormatType::YUV422) || (format==DomainVision::FormatType::YUYV)  || (format==DomainVision::FormatType::UYVY) || (format==DomainVision::FormatType::YUV422P))
+  {
+    // subsampled pixel size: w=2 h=1
+    if(width%2 != 0)
+    {
+      std::cerr << "CommVideoImage: requested image format (YUV422,YUYV,UYVY,YUV422P) requires even width." << std::endl;
+      ++width;
+    }
+  }
+  else if(format==DomainVision::FormatType::YUV420P)
+  {
+    // subsampled pixel size: w=2 h=2
+    if(width%2 != 0)
+    {
+      std::cerr << "CommVideoImage: requested image format (YUV420P) requires even width." << std::endl;
+      ++width;
+    }
+    if(height%2 != 0)
+    {
+      std::cerr << "CommVideoImage: requested image format (YUV420P) requires even height." << std::endl;
+      ++height;
+    }
+  }
+  else if(format==DomainVision::FormatType::YUV411P)
+  {
+    // subsampled pixel size: w=4 h=1
+    if(width%4 != 0)
+    {
+      std::cerr << "CommVideoImage: requested image format (YUV411P) requires width to be a multiple of 4." << std::endl;
+      width = width + 4 - width%4;
+    }
+  }
+}
+
+
+
+
+void CommVideoImage::set_data_invalid()
+{
+   idl_CommVideoImage.is_valid = false;
+}
+
+void CommVideoImage::set_sequence_counter(unsigned long int n)
+{
+   idl_CommVideoImage.seq_count = n;
+}
+
+void CommVideoImage::set_data(const unsigned char *data)
+{
+	//for(unsigned int i=0;i<get_size();++i){
+	//	idl_CommVideoImage.data[i] = data[i];
+	//}
+
+	// does for our usecase only work when float's between corba and c++-type match!
+	assert(sizeof(char) == sizeof(DomainVisionIDL::CommVideoImage_data_type::value_type));
+
+	memcpy(&idl_CommVideoImage.data[0], data, get_size());
+    idl_CommVideoImage.is_valid = true;
+}
+
+
+
+
+void CommVideoImage::set_parameters(unsigned int width, unsigned int height, DomainVision::FormatType format)
+{
+  //std::cout<<"CommVideoImage::set_parameters: w; h ; format: "<<width<<" "<<height<<" "<<format.get_value()<<std::endl;
+  adjust_size(width, height, format);
+  const unsigned int d = depth(format); // d = bits per pixel
+  const unsigned int s = (width * height * d) / 8; // size in bytes
+  idl_CommVideoImage.data.resize(s);
+  //if(CommSharedMemoryBase::alloc(sizeof(ImageParameters) + s)==0)
+
+  idl_CommVideoImage.parameter.width = width;
+  idl_CommVideoImage.parameter.height = height;
+  idl_CommVideoImage.parameter.format = format;
+  idl_CommVideoImage.parameter.depth = d;
+  idl_CommVideoImage.parameter.size = s;
+  idl_CommVideoImage.is_valid = false;
+  idl_CommVideoImage.seq_count = 0;
+
+}

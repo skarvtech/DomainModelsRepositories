@@ -16,8 +16,8 @@
 #ifndef COMMROBOTINOOBJECTS_COMMROBOTINOIOVALUES_DATA_H_
 #define COMMROBOTINOOBJECTS_COMMROBOTINOIOVALUES_DATA_H_
 
-#include "CommRobotinoObjects/AnalogOutputRequestData.hh"
-#include "CommRobotinoObjects/DigitalOutputRequestData.hh"
+#include "CommRobotinoObjects/CommAnalogOutputRequestData.hh"
+#include "CommRobotinoObjects/CommDigitalOutputRequestData.hh"
 
 #include <vector>
 
@@ -25,8 +25,8 @@ namespace CommRobotinoObjectsIDL
 {
 	typedef std::vector<float> CommRobotinoIOValues_analogInputValues_type;
 	typedef std::vector<bool> CommRobotinoIOValues_digitalInputValues_type;
-	typedef std::vector<CommRobotinoObjectsIDL::AnalogOutputRequest> CommRobotinoIOValues_analogOutputValues_type;
-	typedef std::vector<CommRobotinoObjectsIDL::DigitalOutputRequest> CommRobotinoIOValues_digitalOutputValues_type;
+	typedef std::vector<CommRobotinoObjectsIDL::CommAnalogOutputRequest> CommRobotinoIOValues_analogOutputValues_type;
+	typedef std::vector<CommRobotinoObjectsIDL::CommDigitalOutputRequest> CommRobotinoIOValues_digitalOutputValues_type;
 	struct CommRobotinoIOValues
 	{
 		CommRobotinoIOValues_analogInputValues_type analogInputValues;

@@ -86,6 +86,10 @@ public:
 	inline unsigned int getPath() const { return idl_CommPathNode.path; }
 	inline CommPathNodeCore& setPath(const unsigned int &path) { idl_CommPathNode.path = path; return *this; }
 	
+	// getter and setter for element Width
+	inline double getWidth() const { return idl_CommPathNode.width; }
+	inline CommPathNodeCore& setWidth(const double &width) { idl_CommPathNode.width = width; return *this; }
+	
 	// getter and setter for element Type
 	inline CommRobotinoObjects::NODE_TYPE getType() const { return CommRobotinoObjects::NODE_TYPE(idl_CommPathNode.type); }
 	inline CommPathNodeCore& setType(const CommRobotinoObjects::NODE_TYPE &type) { idl_CommPathNode.type = type; return *this; }

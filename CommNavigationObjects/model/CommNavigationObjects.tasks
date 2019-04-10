@@ -1,0 +1,13 @@
+TaskDefinitionRepository CommNavigationObjects {
+	TaskDefinition testTask {
+		in {
+			from : String
+			to : String
+		}
+		results {
+			ERROR value = "unknown location"
+			SUCCESS value = "OK"
+		}
+	}
+
+}

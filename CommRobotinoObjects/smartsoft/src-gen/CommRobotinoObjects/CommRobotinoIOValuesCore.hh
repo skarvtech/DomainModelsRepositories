@@ -17,8 +17,8 @@
 #define COMMROBOTINOOBJECTS_COMMROBOTINOIOVALUES_CORE_H_
 
 #include "CommRobotinoObjects/CommRobotinoIOValuesData.hh"
-#include "CommRobotinoObjects/DigitalOutputRequest.hh"
-#include "CommRobotinoObjects/AnalogOutputRequest.hh"
+#include "CommRobotinoObjects/CommAnalogOutputRequest.hh"
+#include "CommRobotinoObjects/CommDigitalOutputRequest.hh"
 
 #include <iostream>
 #include <string>
@@ -146,31 +146,31 @@ public:
 	
 	// getter and setter for element AnalogOutputValues
 	/**
-	 * Getter methods for element idl_CommRobotinoIOValues.analogOutputValues of type vector<CommRobotinoObjects::AnalogOutputRequest>
+	 * Getter methods for element idl_CommRobotinoIOValues.analogOutputValues of type vector<CommRobotinoObjects::CommAnalogOutputRequest>
 	 */
-	inline std::vector<CommRobotinoObjects::AnalogOutputRequest> getAnalogOutputValuesCopy() const { 
-		return std::vector<CommRobotinoObjects::AnalogOutputRequest>(idl_CommRobotinoIOValues.analogOutputValues.begin(), idl_CommRobotinoIOValues.analogOutputValues.end());
+	inline std::vector<CommRobotinoObjects::CommAnalogOutputRequest> getAnalogOutputValuesCopy() const { 
+		return std::vector<CommRobotinoObjects::CommAnalogOutputRequest>(idl_CommRobotinoIOValues.analogOutputValues.begin(), idl_CommRobotinoIOValues.analogOutputValues.end());
 	}
-	inline CommRobotinoObjects::AnalogOutputRequest getAnalogOutputValuesElemAtPos(const size_t &pos) const {
-		return CommRobotinoObjects::AnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues[pos]);
+	inline CommRobotinoObjects::CommAnalogOutputRequest getAnalogOutputValuesElemAtPos(const size_t &pos) const {
+		return CommRobotinoObjects::CommAnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues[pos]);
 	}
 	inline size_t getAnalogOutputValuesSize() const { return idl_CommRobotinoIOValues.analogOutputValues.size(); }
 	inline bool isAnalogOutputValuesEmpty() const { return idl_CommRobotinoIOValues.analogOutputValues.empty(); }
 	/**
-	 * Setter methods for idl_CommRobotinoIOValues.analogOutputValues of type vector<CommRobotinoObjects::AnalogOutputRequest>
+	 * Setter methods for idl_CommRobotinoIOValues.analogOutputValues of type vector<CommRobotinoObjects::CommAnalogOutputRequest>
 	 */
-	inline CommRobotinoIOValuesCore& setAnalogOutputValues(const std::vector<CommRobotinoObjects::AnalogOutputRequest> &analogOutputValues) { 
+	inline CommRobotinoIOValuesCore& setAnalogOutputValues(const std::vector<CommRobotinoObjects::CommAnalogOutputRequest> &analogOutputValues) { 
 		idl_CommRobotinoIOValues.analogOutputValues.assign(analogOutputValues.begin(), analogOutputValues.end());
 		return *this;
 	}
-	inline bool setAnalogOutputValuesElemAtPos(const size_t &pos, const CommRobotinoObjects::AnalogOutputRequest &elem) {
+	inline bool setAnalogOutputValuesElemAtPos(const size_t &pos, const CommRobotinoObjects::CommAnalogOutputRequest &elem) {
 		if(pos < idl_CommRobotinoIOValues.analogOutputValues.size()) {
 			idl_CommRobotinoIOValues.analogOutputValues[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertAnalogOutputValuesVectorAtPos(const size_t &pos, const std::vector<CommRobotinoObjects::AnalogOutputRequest> &data) {
+	inline bool insertAnalogOutputValuesVectorAtPos(const size_t &pos, const std::vector<CommRobotinoObjects::CommAnalogOutputRequest> &data) {
 		if(pos < idl_CommRobotinoIOValues.analogOutputValues.size()) {
 			idl_CommRobotinoIOValues.analogOutputValues.insert(idl_CommRobotinoIOValues.analogOutputValues.begin()+pos, data.begin(), data.end());
 			return true;
@@ -189,31 +189,31 @@ public:
 	
 	// getter and setter for element DigitalOutputValues
 	/**
-	 * Getter methods for element idl_CommRobotinoIOValues.digitalOutputValues of type vector<CommRobotinoObjects::DigitalOutputRequest>
+	 * Getter methods for element idl_CommRobotinoIOValues.digitalOutputValues of type vector<CommRobotinoObjects::CommDigitalOutputRequest>
 	 */
-	inline std::vector<CommRobotinoObjects::DigitalOutputRequest> getDigitalOutputValuesCopy() const { 
-		return std::vector<CommRobotinoObjects::DigitalOutputRequest>(idl_CommRobotinoIOValues.digitalOutputValues.begin(), idl_CommRobotinoIOValues.digitalOutputValues.end());
+	inline std::vector<CommRobotinoObjects::CommDigitalOutputRequest> getDigitalOutputValuesCopy() const { 
+		return std::vector<CommRobotinoObjects::CommDigitalOutputRequest>(idl_CommRobotinoIOValues.digitalOutputValues.begin(), idl_CommRobotinoIOValues.digitalOutputValues.end());
 	}
-	inline CommRobotinoObjects::DigitalOutputRequest getDigitalOutputValuesElemAtPos(const size_t &pos) const {
-		return CommRobotinoObjects::DigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues[pos]);
+	inline CommRobotinoObjects::CommDigitalOutputRequest getDigitalOutputValuesElemAtPos(const size_t &pos) const {
+		return CommRobotinoObjects::CommDigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues[pos]);
 	}
 	inline size_t getDigitalOutputValuesSize() const { return idl_CommRobotinoIOValues.digitalOutputValues.size(); }
 	inline bool isDigitalOutputValuesEmpty() const { return idl_CommRobotinoIOValues.digitalOutputValues.empty(); }
 	/**
-	 * Setter methods for idl_CommRobotinoIOValues.digitalOutputValues of type vector<CommRobotinoObjects::DigitalOutputRequest>
+	 * Setter methods for idl_CommRobotinoIOValues.digitalOutputValues of type vector<CommRobotinoObjects::CommDigitalOutputRequest>
 	 */
-	inline CommRobotinoIOValuesCore& setDigitalOutputValues(const std::vector<CommRobotinoObjects::DigitalOutputRequest> &digitalOutputValues) { 
+	inline CommRobotinoIOValuesCore& setDigitalOutputValues(const std::vector<CommRobotinoObjects::CommDigitalOutputRequest> &digitalOutputValues) { 
 		idl_CommRobotinoIOValues.digitalOutputValues.assign(digitalOutputValues.begin(), digitalOutputValues.end());
 		return *this;
 	}
-	inline bool setDigitalOutputValuesElemAtPos(const size_t &pos, const CommRobotinoObjects::DigitalOutputRequest &elem) {
+	inline bool setDigitalOutputValuesElemAtPos(const size_t &pos, const CommRobotinoObjects::CommDigitalOutputRequest &elem) {
 		if(pos < idl_CommRobotinoIOValues.digitalOutputValues.size()) {
 			idl_CommRobotinoIOValues.digitalOutputValues[pos] = elem;
 			return true;
 		}
 		return false;
 	}
-	inline bool insertDigitalOutputValuesVectorAtPos(const size_t &pos, const std::vector<CommRobotinoObjects::DigitalOutputRequest> &data) {
+	inline bool insertDigitalOutputValuesVectorAtPos(const size_t &pos, const std::vector<CommRobotinoObjects::CommDigitalOutputRequest> &data) {
 		if(pos < idl_CommRobotinoIOValues.digitalOutputValues.size()) {
 			idl_CommRobotinoIOValues.digitalOutputValues.insert(idl_CommRobotinoIOValues.digitalOutputValues.begin()+pos, data.begin(), data.end());
 			return true;

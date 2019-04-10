@@ -1,5 +1,5 @@
 DomainModelsDatasheet CommLocalizationObjects {
 	baseURI : "http://www.servicerobotik-ulm.de"
-	shortDescrition : "Domain Models for the Localization domain"
+	shortDescription : "Domain Models for the Localization domain"
 	license : spdx ( "LGPL-3.0-or-later" )
 }

@@ -32,6 +32,7 @@ namespace CommTrackingObjectsIDL
 		double y;
 		bool isValid;
 		CommTrackingGoal_cov_type cov;
+		unsigned long int goalCount;
   	};
 };
 

@@ -64,6 +64,7 @@ CommPathNode::CommPathNode(const graphNode &commPathNode){
 	this->setTypeTGraphNode(commPathNode.type);
 	this-> setX(commPathNode.x);
 	this-> setY(commPathNode.y);
+	this->setWidth(commPathNode.width);
 	this->setPose(commPathNode.pose);
 	this->setRobotID(commPathNode.robotID);
 }
@@ -74,6 +75,7 @@ graphNode CommPathNode::getNodeTGraphNode(){
 	node.path = this->getPath();
 	node.sts = this->getStsTGraphNode();
 	node.type = this->getTypeTGraphNode();
+	node.width = this->getWidth();
 	node.x = this->getX();
 	node.y = this->getY();
 	node.pose = this->getPose();

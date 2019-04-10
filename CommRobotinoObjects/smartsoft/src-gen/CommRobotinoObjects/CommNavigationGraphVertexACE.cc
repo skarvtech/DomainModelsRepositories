@@ -29,6 +29,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommRobotinoObjectsIDL::Co
 	good_bit = good_bit && cdr.write_long(data.pose);
 	// serialize list-element path
 	good_bit = good_bit && cdr.write_long(data.path);
+	// serialize list-element width
+	good_bit = good_bit && cdr.write_double(data.width);
 	// serialize list-element type
 	good_bit = good_bit && cdr.write_long(data.type);
 	// serialize list-element intersec_path
@@ -50,6 +52,8 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommRobotinoObjectsIDL::CommNavig
 	good_bit = good_bit && cdr.read_long(data.pose);
 	// deserialize type element path
 	good_bit = good_bit && cdr.read_long(data.path);
+	// deserialize type element width
+	good_bit = good_bit && cdr.read_double(data.width);
 	// deserialize type element type
 	good_bit = good_bit && cdr.read_long(data.type);
 	// deserialize list-type element intersec_path

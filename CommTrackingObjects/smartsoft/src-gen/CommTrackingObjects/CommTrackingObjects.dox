@@ -15,6 +15,7 @@ Structure of Communication Object:
 - y: Double 
 - isValid: Boolean 
 - cov: Double[*] 
+- goalCount: UInt64  = 0 
 
 \class CommTrackingObjects::CommLaserTrackedObjectCore
 
@@ -97,6 +98,7 @@ Class Reference: CommTrackingObjects::CommLaserTrackingDataCore
 - y: Double  
 - isValid: Boolean  
 - cov: Double[*]  
+- goalCount: UInt64   = 0 
 
 Class Reference: CommTrackingObjects::CommTrackingGoalCore
 <hr>

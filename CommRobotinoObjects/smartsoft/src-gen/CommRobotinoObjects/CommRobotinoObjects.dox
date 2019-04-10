@@ -29,25 +29,30 @@ Structure of Communication Object:
 Structure of Communication Object:
 - newState: CommRobotinoObjects::RobotinoConveyerBeltEventType 
 
-\class CommRobotinoObjects::AnalogOutputRequestCore
+\class CommRobotinoObjects::CommAnalogOutputRequestCore
 
 Structure of Communication Object:
 - outputNumber: UInt32 
 - outputValue: Double 
 
-\class CommRobotinoObjects::DigitalOutputRequestCore
+\class CommRobotinoObjects::CommDigitalOutputRequestCore
 
 Structure of Communication Object:
 - outputNumber: UInt32 
 - outputValue: Boolean 
+
+\class CommRobotinoObjects::CommRobotinoPowerOutputValueCore
+
+Structure of Communication Object:
+- value: Float 
 
 \class CommRobotinoObjects::CommRobotinoIOValuesCore
 
 Structure of Communication Object:
 - analogInputValues: Float[*] 
 - digitalInputValues: Boolean[*] 
-- analogOutputValues: CommRobotinoObjects::AnalogOutputRequest[*] 
-- digitalOutputValues: CommRobotinoObjects::DigitalOutputRequest[*] 
+- analogOutputValues: CommRobotinoObjects::CommAnalogOutputRequest[*] 
+- digitalOutputValues: CommRobotinoObjects::CommDigitalOutputRequest[*] 
 
 \class CommRobotinoObjects::CommDigitalInputEventResultCore
 
@@ -131,6 +136,7 @@ Structure of Communication Object:
 - y: Double 
 - pose: UInt32 
 - path: UInt32 
+- width: Double 
 - type: CommRobotinoObjects::NODE_TYPE 
 - sts: CommRobotinoObjects::NODE_STATUS 
 - robotID: String 
@@ -154,6 +160,7 @@ Structure of Communication Object:
 - y: Double 
 - pose: Int32 
 - path: Int32 
+- width: Double 
 - type: CommRobotinoObjects::NODE_TYPE 
 - intersec_path: Int32[*] 
 
@@ -203,6 +210,48 @@ Structure of Communication Object:
 - startX: Double 
 - startY: Double 
 - start_id: Int32 
+
+\class CommRobotinoObjects::CommPathFreeAreaCore
+
+Structure of Communication Object:
+- areaID: Int32 
+- maxOccupancy: Int32 
+- robotIDs: Int32[*] 
+- nodeXvector: Double[*] 
+- nodeYvector: Double[*] 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- robotID: Int32 
+- actionType: CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType  = UNKOWN 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- robotID: Int32 
+- state: CommRobotinoObjects::CoordinatedNavigationResourceStateType  = UNKOWN 
+- remainingCapacity: Int32  = 0 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+- reservedSuccess: CommRobotinoObjects::CoordinatedNavigationResourceResponseActionType  = UNKOWN 
+- remainingCapacity: Int32  = 0 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
+
+Structure of Communication Object:
+- resourceID: Int32 
+
+\class CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
+
+Structure of Communication Object:
+- isValid: Boolean 
+- area: CommRobotinoObjects::CommPathFreeArea 
 
 \class CommRobotinoObjects::CommPathNetworkLayoutCore
 
@@ -271,65 +320,6 @@ Structure of Communication Object:
 Structure of Communication Object:
 - tags: CommRobotinoObjects::CommVisualTag[*] 
 - valid: Boolean  = false 
-
-\class CommRobotinoObjects::CommAnalogOutputRequestCore
-
-Structure of Communication Object:
-- outputNumber: UInt32 
-- outputValue: Double 
-
-\class CommRobotinoObjects::CommDigitalOutputRequestCore
-
-Structure of Communication Object:
-- outputNumber: UInt32 
-- outputValue: Boolean 
-
-\class CommRobotinoObjects::CommRobotinoPowerOutputValueCore
-
-Structure of Communication Object:
-- value: Float 
-
-\class CommRobotinoObjects::CommPathFreeAreaCore
-
-Structure of Communication Object:
-- areaID: Int32 
-- maxOccupancy: Int32 
-- robotIDs: Int32[*] 
-- nodeXvector: Double[*] 
-- nodeYvector: Double[*] 
-
-\class CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
-
-Structure of Communication Object:
-- resourceID: Int32 
-- robotID: Int32 
-- actionType: CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType  = UNKOWN 
-
-\class CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
-
-Structure of Communication Object:
-- resourceID: Int32 
-- robotID: Int32 
-- state: CommRobotinoObjects::CoordinatedNavigationResourceStateType  = UNKOWN 
-- remainingCapacity: Int32  = 0 
-
-\class CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
-
-Structure of Communication Object:
-- resourceID: Int32 
-- reservedSuccess: CommRobotinoObjects::CoordinatedNavigationResourceResponseActionType  = UNKOWN 
-- remainingCapacity: Int32  = 0 
-
-\class CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
-
-Structure of Communication Object:
-- resourceID: Int32 
-
-\class CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
-
-Structure of Communication Object:
-- isValid: Boolean 
-- area: CommRobotinoObjects::CommPathFreeArea 
 
 \class CommRobotinoObjects::RobotinoDockingEventType
 
@@ -407,13 +397,6 @@ Structure of Enumeration:
 - NO_PATH_FOUND 
 - FATAL_ERROR 
 
-\class CommRobotinoObjects::RemoteOperatorEventType
-
-Structure of Enumeration:
-- SUCCESS 
-- FAILED 
-- INVOKE 
-
 \class CommRobotinoObjects::CoordinatedNavigationResourceRequestActionType
 
 Structure of Enumeration:
@@ -434,6 +417,13 @@ Structure of Enumeration:
 - UNKOWN 
 - FREE 
 - BLOCKED 
+
+\class CommRobotinoObjects::RemoteOperatorEventType
+
+Structure of Enumeration:
+- SUCCESS 
+- FAILED 
+- INVOKE 
 
 
 
@@ -475,23 +465,28 @@ Class Reference: CommRobotinoObjects::CommRobotinoConveyerBeltEventResultCore
 
 Class Reference: CommRobotinoObjects::RobotinoConveyerBeltEventStateCore
 <hr>
-@section AnalogOutputRequest AnalogOutputRequest
+@section CommAnalogOutputRequest CommAnalogOutputRequest
 - outputNumber: UInt32  
 - outputValue: Double  
 
-Class Reference: CommRobotinoObjects::AnalogOutputRequestCore
+Class Reference: CommRobotinoObjects::CommAnalogOutputRequestCore
 <hr>
-@section DigitalOutputRequest DigitalOutputRequest
+@section CommDigitalOutputRequest CommDigitalOutputRequest
 - outputNumber: UInt32  
 - outputValue: Boolean  
 
-Class Reference: CommRobotinoObjects::DigitalOutputRequestCore
+Class Reference: CommRobotinoObjects::CommDigitalOutputRequestCore
+<hr>
+@section CommRobotinoPowerOutputValue CommRobotinoPowerOutputValue
+- value: Float  
+
+Class Reference: CommRobotinoObjects::CommRobotinoPowerOutputValueCore
 <hr>
 @section CommRobotinoIOValues CommRobotinoIOValues
 - analogInputValues: Float[*]  
 - digitalInputValues: Boolean[*]  
-- analogOutputValues: @ref AnalogOutputRequest[*] (CommObj) 
-- digitalOutputValues: @ref DigitalOutputRequest[*] (CommObj) 
+- analogOutputValues: @ref CommAnalogOutputRequest[*] (CommObj) 
+- digitalOutputValues: @ref CommDigitalOutputRequest[*] (CommObj) 
 
 Class Reference: CommRobotinoObjects::CommRobotinoIOValuesCore
 <hr>
@@ -575,6 +570,7 @@ Class Reference: CommRobotinoObjects::CommPathNavigationPoseRequestEventStateCor
 - y: Double  
 - pose: UInt32  
 - path: UInt32  
+- width: Double  
 - type: @ref NODE_TYPE (Enum) 
 - sts: @ref NODE_STATUS (Enum) 
 - robotID: String  
@@ -598,6 +594,7 @@ Class Reference: CommRobotinoObjects::CommNavigationPathsCore
 - y: Double  
 - pose: Int32  
 - path: Int32  
+- width: Double  
 - type: @ref NODE_TYPE (Enum) 
 - intersec_path: Int32[*]  
 
@@ -649,6 +646,48 @@ Class Reference: CommRobotinoObjects::PathNavigationEventStateCore
 - start_id: Int32  
 
 Class Reference: CommRobotinoObjects::CommPathNavigationGoalCore
+<hr>
+@section CommPathFreeArea CommPathFreeArea
+- areaID: Int32  
+- maxOccupancy: Int32  
+- robotIDs: Int32[*]  
+- nodeXvector: Double[*]  
+- nodeYvector: Double[*]  
+
+Class Reference: CommRobotinoObjects::CommPathFreeAreaCore
+<hr>
+@section CommCoordinatedNavigationResourceRequest CommCoordinatedNavigationResourceRequest
+- resourceID: Int32  
+- robotID: Int32  
+- actionType: @ref CoordinatedNavigationResourceRequestActionType (Enum)  = UNKOWN 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
+<hr>
+@section CommCoordinatedNavigationResourceState CommCoordinatedNavigationResourceState
+- resourceID: Int32  
+- robotID: Int32  
+- state: @ref CoordinatedNavigationResourceStateType (Enum)  = UNKOWN 
+- remainingCapacity: Int32   = 0 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
+<hr>
+@section CommCoordinatedNavigationResourceResponse CommCoordinatedNavigationResourceResponse
+- resourceID: Int32  
+- reservedSuccess: @ref CoordinatedNavigationResourceResponseActionType (Enum)  = UNKOWN 
+- remainingCapacity: Int32   = 0 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
+<hr>
+@section CommCoordinatedNavigationDataRequest CommCoordinatedNavigationDataRequest
+- resourceID: Int32  
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
+<hr>
+@section CommCoordinatedNavigationDataResponse CommCoordinatedNavigationDataResponse
+- isValid: Boolean  
+- area: @ref CommPathFreeArea (CommObj) 
+
+Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
 <hr>
 @section CommPathNetworkLayout CommPathNetworkLayout
 - networkStatus: @ref CommPathNetworkStatus (CommObj) 
@@ -717,65 +756,6 @@ Class Reference: CommRobotinoObjects::CommVisualTagCore
 - valid: Boolean   = false 
 
 Class Reference: CommRobotinoObjects::CommDetectedTagsCore
-<hr>
-@section CommAnalogOutputRequest CommAnalogOutputRequest
-- outputNumber: UInt32  
-- outputValue: Double  
-
-Class Reference: CommRobotinoObjects::CommAnalogOutputRequestCore
-<hr>
-@section CommDigitalOutputRequest CommDigitalOutputRequest
-- outputNumber: UInt32  
-- outputValue: Boolean  
-
-Class Reference: CommRobotinoObjects::CommDigitalOutputRequestCore
-<hr>
-@section CommRobotinoPowerOutputValue CommRobotinoPowerOutputValue
-- value: Float  
-
-Class Reference: CommRobotinoObjects::CommRobotinoPowerOutputValueCore
-<hr>
-@section CommPathFreeArea CommPathFreeArea
-- areaID: Int32  
-- maxOccupancy: Int32  
-- robotIDs: Int32[*]  
-- nodeXvector: Double[*]  
-- nodeYvector: Double[*]  
-
-Class Reference: CommRobotinoObjects::CommPathFreeAreaCore
-<hr>
-@section CommCoordinatedNavigationResourceRequest CommCoordinatedNavigationResourceRequest
-- resourceID: Int32  
-- robotID: Int32  
-- actionType: @ref CoordinatedNavigationResourceRequestActionType (Enum)  = UNKOWN 
-
-Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceRequestCore
-<hr>
-@section CommCoordinatedNavigationResourceState CommCoordinatedNavigationResourceState
-- resourceID: Int32  
-- robotID: Int32  
-- state: @ref CoordinatedNavigationResourceStateType (Enum)  = UNKOWN 
-- remainingCapacity: Int32   = 0 
-
-Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceStateCore
-<hr>
-@section CommCoordinatedNavigationResourceResponse CommCoordinatedNavigationResourceResponse
-- resourceID: Int32  
-- reservedSuccess: @ref CoordinatedNavigationResourceResponseActionType (Enum)  = UNKOWN 
-- remainingCapacity: Int32   = 0 
-
-Class Reference: CommRobotinoObjects::CommCoordinatedNavigationResourceResponseCore
-<hr>
-@section CommCoordinatedNavigationDataRequest CommCoordinatedNavigationDataRequest
-- resourceID: Int32  
-
-Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataRequestCore
-<hr>
-@section CommCoordinatedNavigationDataResponse CommCoordinatedNavigationDataResponse
-- isValid: Boolean  
-- area: @ref CommPathFreeArea (CommObj) 
-
-Class Reference: CommRobotinoObjects::CommCoordinatedNavigationDataResponseCore
 <hr>
 @section RobotinoDockingEventType RobotinoDockingEventType
 - DOCKING_UNKNOWN 
@@ -853,13 +833,6 @@ Class Reference: CommRobotinoObjects::EDGE_TYPE
 
 Class Reference: CommRobotinoObjects::PathNavigationEventType
 <hr>
-@section RemoteOperatorEventType RemoteOperatorEventType
-- SUCCESS 
-- FAILED 
-- INVOKE 
-
-Class Reference: CommRobotinoObjects::RemoteOperatorEventType
-<hr>
 @section CoordinatedNavigationResourceRequestActionType CoordinatedNavigationResourceRequestActionType
 - UNKOWN 
 - FREE 
@@ -880,6 +853,13 @@ Class Reference: CommRobotinoObjects::CoordinatedNavigationResourceResponseActio
 - BLOCKED 
 
 Class Reference: CommRobotinoObjects::CoordinatedNavigationResourceStateType
+<hr>
+@section RemoteOperatorEventType RemoteOperatorEventType
+- SUCCESS 
+- FAILED 
+- INVOKE 
+
+Class Reference: CommRobotinoObjects::RemoteOperatorEventType
 <hr>
 
 

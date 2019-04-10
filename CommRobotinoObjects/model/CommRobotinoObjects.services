@@ -48,7 +48,7 @@ ServiceDefRepository CommRobotinoObjects version 1.0
 	
 	
 	
-	ForkingServiceDefinition CommRobotinoDigitalEvent {
+	ForkingServiceDefinition CommRobotinoDigitalInputEvent {
 		EventPattern < 
 			ActivationType 	= CommRobotinoObjects.CommDigitalInputEventParameter
 			EventType 		= CommRobotinoObjects.CommDigitalInputEventResult

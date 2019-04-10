@@ -88,6 +88,24 @@
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
 .
 
+:CommNavigationTopologyConnection a robmosys:CommunicationObject;
+	rdfs:label "CommNavigationTopologyConnection";
+	t1:shortDescription "CommunicationObject CommNavigationTopologyConnection";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
+.
+
+:CommNavigationTopologyMap a robmosys:CommunicationObject;
+	rdfs:label "CommNavigationTopologyMap";
+	t1:shortDescription "CommunicationObject CommNavigationTopologyMap";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
+.
+
+:CommNavigationTopologyPart a robmosys:CommunicationObject;
+	rdfs:label "CommNavigationTopologyPart";
+	t1:shortDescription "CommunicationObject CommNavigationTopologyPart";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
+.
+
 :CommPlannerEventParameter a robmosys:CommunicationObject;
 	rdfs:label "CommPlannerEventParameter";
 	t1:shortDescription "CommunicationObject CommPlannerEventParameter";

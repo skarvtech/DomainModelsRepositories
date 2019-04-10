@@ -40,12 +40,6 @@
 ##### Communication Objects
 # see https://robmosys.eu/wiki/modeling:metamodels:commobject 
 # Note: this will later not be provided by the software component
-:AnalogOutputRequest a robmosys:CommunicationObject;
-	rdfs:label "AnalogOutputRequest";
-	t1:shortDescription "CommunicationObject AnalogOutputRequest";
-	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommRobotinoObjects>;
-.
-
 :CommAnalogOutputRequest a robmosys:CommunicationObject;
 	rdfs:label "CommAnalogOutputRequest";
 	t1:shortDescription "CommunicationObject CommAnalogOutputRequest";
@@ -316,12 +310,6 @@
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommRobotinoObjects>;
 .
 
-:DigitalOutputRequest a robmosys:CommunicationObject;
-	rdfs:label "DigitalOutputRequest";
-	t1:shortDescription "CommunicationObject DigitalOutputRequest";
-	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommRobotinoObjects>;
-.
-
 :JobEventState a robmosys:CommunicationObject;
 	rdfs:label "JobEventState";
 	t1:shortDescription "CommunicationObject JobEventState";
@@ -534,12 +522,12 @@
 	];
 .
 
-:CommRobotinoDigitalEvent a robmosys:ServiceDefinition;
+:CommRobotinoDigitalInputEvent a robmosys:ServiceDefinition;
 	rdf:type rdfs:Class;
 	rdf:type sh:NodeShape;
 	rdfs:subClassOf robmosys:AbstractService;
-	rdfs:label "CommRobotinoDigitalEvent";
-	t1:shortDescription "ServiceDefinition CommRobotinoDigitalEvent";
+	rdfs:label "CommRobotinoDigitalInputEvent";
+	t1:shortDescription "ServiceDefinition CommRobotinoDigitalInputEvent";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommRobotinoObjects>;
 	t1:commPatternUsage [
 		a robmosys:EventPattern;

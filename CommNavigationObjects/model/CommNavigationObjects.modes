@@ -37,4 +37,8 @@ ComponentModeRepository CommNavigationObjects {
 	ComponentModeCollection PathPlannerStates {
 		ComponentModeDefinition PathPlanning;
 	}
+	
+	ComponentModeCollection MappingStates{
+		ComponentModeDefinition active;
+	}
 }

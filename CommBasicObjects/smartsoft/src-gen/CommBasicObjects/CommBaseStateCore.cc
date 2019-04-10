@@ -54,6 +54,8 @@ namespace CommBasicObjects
 		CommBasicObjects::CommBaseVelocity::getAllHashValues(hashes);
 		// get hash value(s) for CommBasicObjects::CommBatteryLevel(idl_CommBaseState.batteryState)
 		CommBasicObjects::CommBatteryLevel::getAllHashValues(hashes);
+		// get hash value(s) for CommBasicObjects::CommBumperState(idl_CommBaseState.baseBumperState)
+		CommBasicObjects::CommBumperState::getAllHashValues(hashes);
 	}
 	
 	void CommBaseStateCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -83,6 +85,8 @@ namespace CommBasicObjects
 		CommBasicObjects::CommBaseVelocity::checkAllHashValues(hashes);
 		// check hash value(s) for CommBasicObjects::CommBatteryLevel(idl_CommBaseState.batteryState)
 		CommBasicObjects::CommBatteryLevel::checkAllHashValues(hashes);
+		// check hash value(s) for CommBasicObjects::CommBumperState(idl_CommBaseState.baseBumperState)
+		CommBasicObjects::CommBumperState::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -96,6 +100,7 @@ namespace CommBasicObjects
 		seed += CommBasicObjects::CommBaseVelocity::generateDataHash(data.baseVelocity);
 		seed += CommBasicObjects::CommBaseVelocity::generateDataHash(data.baseOdomVelocity);
 		seed += CommBasicObjects::CommBatteryLevel::generateDataHash(data.batteryState);
+		seed += CommBasicObjects::CommBumperState::generateDataHash(data.baseBumperState);
 		
 		return seed;
 	}
@@ -111,6 +116,7 @@ namespace CommBasicObjects
 		setBaseVelocity(CommBasicObjects::CommBaseVelocity());
 		setBaseOdomVelocity(CommBasicObjects::CommBaseVelocity());
 		setBatteryState(CommBasicObjects::CommBatteryLevel());
+		setBaseBumperState(CommBasicObjects::CommBumperState());
 	}
 	
 	CommBaseStateCore::CommBaseStateCore(const DATATYPE &data)
@@ -129,6 +135,7 @@ namespace CommBasicObjects
 	  getBaseVelocity().to_ostream(os);
 	  getBaseOdomVelocity().to_ostream(os);
 	  getBatteryState().to_ostream(os);
+	  getBaseBumperState().to_ostream(os);
 	  os << ") ";
 	}
 	
@@ -152,6 +159,9 @@ namespace CommBasicObjects
 		os << indent << "<batteryState>";
 		getBatteryState().to_xml(os, indent);
 		os << indent << "</batteryState>";
+		os << indent << "<baseBumperState>";
+		getBaseBumperState().to_xml(os, indent);
+		os << indent << "</baseBumperState>";
 	}
 	
 	// restore from xml stream
@@ -162,6 +172,7 @@ namespace CommBasicObjects
 		static const Smart::KnuthMorrisPratt kmp_baseVelocity("<baseVelocity>");
 		static const Smart::KnuthMorrisPratt kmp_baseOdomVelocity("<baseOdomVelocity>");
 		static const Smart::KnuthMorrisPratt kmp_batteryState("<batteryState>");
+		static const Smart::KnuthMorrisPratt kmp_baseBumperState("<baseBumperState>");
 		
 		if(kmp_timeStamp.search(is)) {
 			CommBasicObjects::CommTimeStamp timeStampItem;
@@ -192,6 +203,11 @@ namespace CommBasicObjects
 			CommBasicObjects::CommBatteryLevel batteryStateItem;
 			batteryStateItem.from_xml(is);
 			setBatteryState(batteryStateItem);
+		}
+		if(kmp_baseBumperState.search(is)) {
+			CommBasicObjects::CommBumperState baseBumperStateItem;
+			baseBumperStateItem.from_xml(is);
+			setBaseBumperState(baseBumperStateItem);
 		}
 	}
 	

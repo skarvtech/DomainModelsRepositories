@@ -24,7 +24,8 @@
 // --------------------------------------------------------------------------
 
 ComponentModeRepository DomainPTU {
-	ComponentModeCollection DefaultModes {
-		ComponentModeDefinition Active;
+	ComponentModeCollection PTUStates {
+		ComponentModeDefinition Move;
+		ComponentModeDefinition Servo;
 	}
 }

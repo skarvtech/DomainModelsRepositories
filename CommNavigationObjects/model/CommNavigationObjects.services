@@ -100,6 +100,16 @@ ServiceDefRepository CommNavigationObjects version 1.0
 	/**
 	 * Coordination service-definitions
 	 */
+	 
+ 	CoordinationServiceDefinition BaseCoordinationService {
+		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.RobotBaseModes >
+		ParameterPattern < CommBasicObjects.BaseParams >
+		CommunicationServiceUsage baseState uses CommBasicObjects.BaseStateQueryService
+		CommunicationServiceUsage bumperEvent uses CommBasicObjects.BumperEventService
+		CommunicationServiceUsage batteryEvent uses BatteryEventService
+	}
+	 
+	 
 	CoordinationServiceDefinition CdlCoordinationService {
 		ParameterPattern < CommNavigationObjects.CdlParameter >
 		StatePattern < lifecycle ComponentLifecycle with  CommNavigationObjects.CdlStates >
@@ -109,17 +119,13 @@ ServiceDefRepository CommNavigationObjects version 1.0
 
 	CoordinationServiceDefinition MapperCoordinationService {
 		ParameterPattern < CommNavigationObjects.MapperParams >
-		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.MapperStates >
+		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.MappingStates >
 	}
 
 	CoordinationServiceDefinition PlannerCoordinationService {
 		StatePattern < lifecycle ComponentLifecycle with CommNavigationObjects.PathPlannerStates>
 		ParameterPattern < CommNavigationObjects.PlannerParams>
-	}
-
-	CoordinationServiceDefinition AmclCoordinationService {
-		ParameterPattern < CommNavigationObjects.AmclParameter >
-		StatePattern < lifecycle ComponentLifecycle >
+		CommunicationServiceUsage plannerEvent uses PlannerEventService
 	}
 
 }

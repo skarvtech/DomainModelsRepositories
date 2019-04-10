@@ -29,6 +29,7 @@ namespace CommRobotinoObjectsIDL
 		double y;
 		int pose;
 		int path;
+		double width;
 		CommRobotinoObjectsIDL::NODE_TYPE type;
 		CommNavigationGraphVertex_intersec_path_type intersec_path;
   	};

@@ -1,0 +1,42 @@
+SkillDefinitionRepository CommLocalizationObjects {
+	CoordinationModuleDefinition LocalizationModule {
+		SkillDefinition activateLocalization{
+			results {
+				SUCCESS value = "OK"
+				ERROR value = ""
+			}
+		}
+		SkillDefinition deactivateLocalization {
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+		
+		SkillDefinition loadMap {
+			in {
+				mapname : String
+			}
+			results {
+				SUCCESS value = "OK"
+				ERROR value  = "MAP NOT FOUND"
+			}
+		}
+		
+		SkillDefinition triggerGlobalLocalization {
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+		
+		SkillDefinition setRobotPose {
+			in {
+				x : Double
+				y : Double
+				yaw : Double
+			}
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+	}
+}

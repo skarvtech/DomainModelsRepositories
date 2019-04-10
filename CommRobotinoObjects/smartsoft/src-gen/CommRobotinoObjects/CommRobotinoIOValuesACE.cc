@@ -15,8 +15,8 @@
 //--------------------------------------------------------------------------
 #include "CommRobotinoObjects/CommRobotinoIOValuesACE.hh"
 #include <ace/SString.h>
-#include "CommRobotinoObjects/DigitalOutputRequestACE.hh"
-#include "CommRobotinoObjects/AnalogOutputRequestACE.hh"
+#include "CommRobotinoObjects/CommAnalogOutputRequestACE.hh"
+#include "CommRobotinoObjects/CommDigitalOutputRequestACE.hh"
 
 // serialization operator for element CommRobotinoIOValues
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommRobotinoObjectsIDL::CommRobotinoIOValues &data)
@@ -33,13 +33,13 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommRobotinoObjectsIDL::Co
 	}
 	// serialize list-element analogOutputValues
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.analogOutputValues.size());
-	std::vector<CommRobotinoObjectsIDL::AnalogOutputRequest>::const_iterator data_analogOutputValuesIt;
+	std::vector<CommRobotinoObjectsIDL::CommAnalogOutputRequest>::const_iterator data_analogOutputValuesIt;
 	for(data_analogOutputValuesIt=data.analogOutputValues.begin(); data_analogOutputValuesIt!=data.analogOutputValues.end(); data_analogOutputValuesIt++) {
 		good_bit = good_bit && cdr << *data_analogOutputValuesIt;
 	}
 	// serialize list-element digitalOutputValues
 	good_bit = good_bit && cdr << ACE_Utils::truncate_cast<ACE_CDR::ULong>(data.digitalOutputValues.size());
-	std::vector<CommRobotinoObjectsIDL::DigitalOutputRequest>::const_iterator data_digitalOutputValuesIt;
+	std::vector<CommRobotinoObjectsIDL::CommDigitalOutputRequest>::const_iterator data_digitalOutputValuesIt;
 	for(data_digitalOutputValuesIt=data.digitalOutputValues.begin(); data_digitalOutputValuesIt!=data.digitalOutputValues.end(); data_digitalOutputValuesIt++) {
 		good_bit = good_bit && cdr << *data_digitalOutputValuesIt;
 	}
@@ -69,7 +69,7 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommRobotinoObjectsIDL::CommRobot
 	ACE_CDR::ULong data_analogOutputValuesNbr;
 	good_bit = good_bit && cdr >> data_analogOutputValuesNbr;
 	data.analogOutputValues.clear();
-	CommRobotinoObjectsIDL::AnalogOutputRequest data_analogOutputValuesItem;
+	CommRobotinoObjectsIDL::CommAnalogOutputRequest data_analogOutputValuesItem;
 	for(ACE_CDR::ULong i=0; i<data_analogOutputValuesNbr; ++i) {
 		good_bit = good_bit && cdr >> data_analogOutputValuesItem;
 		data.analogOutputValues.push_back(data_analogOutputValuesItem);
@@ -78,7 +78,7 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommRobotinoObjectsIDL::CommRobot
 	ACE_CDR::ULong data_digitalOutputValuesNbr;
 	good_bit = good_bit && cdr >> data_digitalOutputValuesNbr;
 	data.digitalOutputValues.clear();
-	CommRobotinoObjectsIDL::DigitalOutputRequest data_digitalOutputValuesItem;
+	CommRobotinoObjectsIDL::CommDigitalOutputRequest data_digitalOutputValuesItem;
 	for(ACE_CDR::ULong i=0; i<data_digitalOutputValuesNbr; ++i) {
 		good_bit = good_bit && cdr >> data_digitalOutputValuesItem;
 		data.digitalOutputValues.push_back(data_digitalOutputValuesItem);

@@ -19,6 +19,7 @@
 #include "CommBasicObjects/CommBaseVelocityACE.hh"
 #include "CommBasicObjects/CommBasePoseACE.hh"
 #include "CommBasicObjects/CommBatteryLevelACE.hh"
+#include "CommBasicObjects/CommBumperStateACE.hh"
 
 // serialization operator for element CommBaseState
 ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommBasicObjectsIDL::CommBaseState &data)
@@ -36,6 +37,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommBasicObjectsIDL::CommB
 	good_bit = good_bit && cdr << data.baseOdomVelocity;
 	// serialize list-element batteryState
 	good_bit = good_bit && cdr << data.batteryState;
+	// serialize list-element baseBumperState
+	good_bit = good_bit && cdr << data.baseBumperState;
 	
 	return good_bit;
 }
@@ -56,6 +59,8 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommBasicObjectsIDL::CommBaseStat
 	good_bit = good_bit && cdr >> data.baseOdomVelocity;
 	// deserialize type element batteryState
 	good_bit = good_bit && cdr >> data.batteryState;
+	// deserialize type element baseBumperState
+	good_bit = good_bit && cdr >> data.baseBumperState;
 	
 	return good_bit;
 }

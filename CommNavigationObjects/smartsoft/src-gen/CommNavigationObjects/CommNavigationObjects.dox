@@ -85,6 +85,29 @@ Structure of Communication Object:
 Structure of Communication Object:
 - newState: CommNavigationObjects::CdlRobotBlockEventType 
 
+\class CommNavigationObjects::CommNavigationTopologyPartCore
+
+Structure of Communication Object:
+- type: CommNavigationObjects::NavigationPartType 
+- id: UInt32 
+- name: String 
+- contained_location_ids: UInt32[*] 
+
+\class CommNavigationObjects::CommNavigationTopologyConnectionCore
+
+Structure of Communication Object:
+- type: CommNavigationObjects::NavigationConnectonType 
+- locationId: UInt32 
+- fromPart: UInt32 
+- toPart: UInt32 
+
+\class CommNavigationObjects::CommNavigationTopologyMapCore
+
+Structure of Communication Object:
+- isValid: Boolean  = false 
+- vertices: CommNavigationObjects::CommNavigationTopologyPart[*] 
+- edges: CommNavigationObjects::CommNavigationTopologyConnection[*] 
+
 \class CommNavigationObjects::OctomapTagType
 
 Structure of Enumeration:
@@ -191,6 +214,18 @@ Structure of Enumeration:
 - CDL_ROBOT_BLOCKED_PATH 
 - CDL_ROBOT_UNBLOCKED_PATH 
 
+\class CommNavigationObjects::NavigationPartType
+
+Structure of Enumeration:
+- GRID_BASED_FREE_NAV 
+- CORRIDOR_BASED_COORDINATED_NAV 
+- GRID_BASED_COORDINATED_NAV 
+
+\class CommNavigationObjects::NavigationConnectonType
+
+Structure of Enumeration:
+- VIA_LOCATION 
+
 
 
 
@@ -286,6 +321,29 @@ Class Reference: CommNavigationObjects::CommCdlRobotBlockedEventResultCore
 - newState: @ref CdlRobotBlockEventType (Enum) 
 
 Class Reference: CommNavigationObjects::CommCdlRobotBlockedStateCore
+<hr>
+@section CommNavigationTopologyPart CommNavigationTopologyPart
+- type: @ref NavigationPartType (Enum) 
+- id: UInt32  
+- name: String  
+- contained_location_ids: UInt32[*]  
+
+Class Reference: CommNavigationObjects::CommNavigationTopologyPartCore
+<hr>
+@section CommNavigationTopologyConnection CommNavigationTopologyConnection
+- type: @ref NavigationConnectonType (Enum) 
+- locationId: UInt32  
+- fromPart: UInt32  
+- toPart: UInt32  
+
+Class Reference: CommNavigationObjects::CommNavigationTopologyConnectionCore
+<hr>
+@section CommNavigationTopologyMap CommNavigationTopologyMap
+- isValid: Boolean   = false 
+- vertices: @ref CommNavigationTopologyPart[*] (CommObj) 
+- edges: @ref CommNavigationTopologyConnection[*] (CommObj) 
+
+Class Reference: CommNavigationObjects::CommNavigationTopologyMapCore
 <hr>
 @section OctomapTagType OctomapTagType
 - RESET 
@@ -392,6 +450,18 @@ Class Reference: CommNavigationObjects::CdlGoalEventType
 - CDL_ROBOT_UNBLOCKED_PATH 
 
 Class Reference: CommNavigationObjects::CdlRobotBlockEventType
+<hr>
+@section NavigationPartType NavigationPartType
+- GRID_BASED_FREE_NAV 
+- CORRIDOR_BASED_COORDINATED_NAV 
+- GRID_BASED_COORDINATED_NAV 
+
+Class Reference: CommNavigationObjects::NavigationPartType
+<hr>
+@section NavigationConnectonType NavigationConnectonType
+- VIA_LOCATION 
+
+Class Reference: CommNavigationObjects::NavigationConnectonType
 <hr>
 
 

@@ -84,3 +84,44 @@ CommBaseState::CommBaseState(const DATATYPE &commBaseState)
 
 CommBaseState::~CommBaseState()
 {  }
+
+//CommBaseState CommBaseState::extrapolate(const CommTimeStamp &ts) const
+//{
+//	CommBasicObjectsIDL::CommBaseState extrapolated_state;
+//  extrapolated_state.time = ts;
+//  extrapolated_state.base_velocity = idl_CommBaseState.base_velocity;
+//  extrapolated_state.base_position.z = idl_CommBaseState.base_position.z;
+//
+//  const double dt = CommTimeStamp(idl_CommBaseState.time).seconds_before(ts);
+//
+//  extrapolated_state.base_position.a_base   = idl_CommBaseState.base_position.a_base   + dt * idl_CommBaseState.base_velocity.omega_base;
+//  extrapolated_state.base_position.a_steer  = idl_CommBaseState.base_position.a_steer  + dt * idl_CommBaseState.base_velocity.omega_steer;
+//  extrapolated_state.base_position.a_turret = idl_CommBaseState.base_position.a_turret + dt * idl_CommBaseState.base_velocity.omega_turret;
+//
+//  const double sin_steer = sin(idl_CommBaseState.base_position.a_steer);
+//  const double cos_steer = cos(idl_CommBaseState.base_position.a_steer);
+//
+//  if(fabs(idl_CommBaseState.base_velocity.omega_steer)<1e-6)
+//  {
+//    // omega too small, assume only linear motion
+//    const double dx = idl_CommBaseState.base_velocity.v * dt * cos_steer;
+//    const double dy = idl_CommBaseState.base_velocity.v * dt * sin_steer;
+//    extrapolated_state.base_position.x = idl_CommBaseState.base_position.x + dx;
+//    extrapolated_state.base_position.y = idl_CommBaseState.base_position.y + dy;
+//  }
+//  else
+//  {
+//    // rotate the position by da radians around the center (cx,cy) of the circular motion
+//    const double da = idl_CommBaseState.base_velocity.omega_steer * dt;
+//    const double cos_da = cos(da);
+//    const double sin_da = sin(da);
+//    const double r = idl_CommBaseState.base_velocity.v / idl_CommBaseState.base_velocity.omega_steer;
+//    const double cx = idl_CommBaseState.base_position.x - r * sin_steer;
+//    const double cy = idl_CommBaseState.base_position.y + r * cos_steer;
+//    const double xrel = idl_CommBaseState.base_position.x - cx;
+//    const double yrel = idl_CommBaseState.base_position.y - cy;
+//    extrapolated_state.base_position.x = cx + xrel * cos_da - yrel * sin_da;
+//    extrapolated_state.base_position.y = cy + xrel * sin_da + yrel * cos_da;
+//  }
+//  return CommBaseState(extrapolated_state);
+//}

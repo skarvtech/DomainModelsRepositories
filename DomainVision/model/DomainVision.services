@@ -1,3 +1,46 @@
 ServiceDefRepository DomainVision version 1.0 {
 
+	RequestAnswerServiceDefinition RGBDImageQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = DomainVision.CommRGBDImage
+		>
+	}
+	
+	RequestAnswerServiceDefinition RGBImageQueryService {
+		QueryPattern <
+			RequestType = CommBasicObjects.CommVoid
+			AnswerType = DomainVision.CommVideoImage
+		>
+	}
+	
+	RequestAnswerServiceDefinition PointCloudQueryService {
+		QueryPattern <
+			RequestType = CommManipulatorObjects.CommManipulatorId
+			AnswerType = DomainVision.Comm3dPointCloud
+		>
+	}
+	
+	ForkingServiceDefinition RGBDImagePushService {
+		PushPattern<DataType=DomainVision.CommRGBDImage>
+	}
+	
+	ForkingServiceDefinition RGBImagePushService {
+		PushPattern<DataType=DomainVision.CommVideoImage>
+	}
+	
+	ForkingServiceDefinition DepthImagePushService{
+		PushPattern <DataType=DomainVision.CommDepthImage>
+	}
+	
+	CoordinationServiceDefinition VisionCoordinationService {
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle with DomainVision.DefaultModes >
+	}
+	
+	CoordinationServiceDefinition ImageProvisionCoordinationService {
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle with DomainVision.ImageProvisionModes >
+	}
+	
 }

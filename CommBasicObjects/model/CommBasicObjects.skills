@@ -1,0 +1,6 @@
+SkillDefinitionRepository CommBasicObjects {
+
+	CoordinationModuleDefinition KBModule { 
+	// no skills for KB, so far done via language feature
+	}
+}

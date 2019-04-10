@@ -95,21 +95,3 @@ void CommLocalizationEventResult::get(LocalizationEventType& r) const
 {
   r = idl_CommLocalizationEventResult.state;
 }
-
-void CommLocalizationEventResult::get(char* r)const
-{
-  switch(idl_CommLocalizationEventResult.state) {
-    case LocalizationEventType::LOCALIZATION_UNKNOWN:
-      strcpy(r,"(unknown)");
-      break;
-    case LocalizationEventType::LOCALIZATION_LOST:
-      strcpy(r,"(lost)");
-      break;
-    case LocalizationEventType::LOCALIZATION_OK:
-      strcpy(r,"(ok)");
-      break;
-    default:
-      strcpy(r,"(error)");
-      break;
-  }
-}

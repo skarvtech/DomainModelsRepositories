@@ -21,7 +21,11 @@ using namespace DomainVision;
 
 CommDepthImage::CommDepthImage()
 :	CommDepthImageCore()
-{  }
+{
+	idl_CommDepthImage.intrinsic_m.resize(4*4);
+	idl_CommDepthImage.distortion_m.resize(1*5);
+	idl_CommDepthImage.extrinsic_m.resize(12);
+}
 
 
 /**

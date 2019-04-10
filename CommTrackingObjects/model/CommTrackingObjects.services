@@ -27,4 +27,26 @@ ServiceDefRepository CommTrackingObjects version 1.0
 	ForkingServiceDefinition TrackingService {
 		PushPattern<DataType=CommTrackingObjects.CommTrackingGoal>
 	}
+	
+	ForkingServiceDefinition LaserTrackingDataService {
+		PushPattern<DataType=CommTrackingObjects.CommLaserTrackingData>
+	}
+	
+	ForkingServiceDefinition TrackedPersonListService {
+		PushPattern<DataType=CommTrackingObjects.CommPersonTrackingList>
+	}
+	
+	ForkingServiceDefinition PersonLostEventService {
+		EventPattern < 
+			ActivationType = 	CommTrackingObjects.CommPersonLostEventParameter
+			EventType = 		CommTrackingObjects.CommPersonLostEventResult
+			EventStateType = 	CommTrackingObjects.PersonLostEventState
+		>
+	}
+	
+	CoordinationServiceDefinition TrackerCoordinateService{
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern <lifecycle ComponentLifecycle with CommTrackingObjects.TrackerModes>
+		
+	}
 }

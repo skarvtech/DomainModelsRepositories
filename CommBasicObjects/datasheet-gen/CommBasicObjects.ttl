@@ -112,6 +112,12 @@
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommBasicObjects>;
 .
 
+:CommBumperState a robmosys:CommunicationObject;
+	rdfs:label "CommBumperState";
+	t1:shortDescription "CommunicationObject CommBumperState";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommBasicObjects>;
+.
+
 :CommDataFile a robmosys:CommunicationObject;
 	rdfs:label "CommDataFile";
 	t1:shortDescription "CommunicationObject CommDataFile";
@@ -395,6 +401,22 @@
 	];
 .
 
+:BatteryEventService a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "BatteryEventService";
+	t1:shortDescription "ServiceDefinition BatteryEventService";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommBasicObjects>;
+	t1:commPatternUsage [
+		a robmosys:EventPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:eventType :CommBatteryEvent;
+		t1:activationType :CommBatteryParameter;
+		t1:eventStateType :CommBatteryState;
+	];
+.
+
 :BumperEventService a robmosys:ServiceDefinition;
 	rdf:type rdfs:Class;
 	rdf:type sh:NodeShape;
@@ -645,6 +667,20 @@
 		a robmosys:PushPattern;
 		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
 		t1:dataType :CommTrafficLights;
+	];
+.
+
+:UltrasonicService a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "UltrasonicService";
+	t1:shortDescription "ServiceDefinition UltrasonicService";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommBasicObjects>;
+	t1:commPatternUsage [
+		a robmosys:PushPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:dataType :CommUltrasonicScan;
 	];
 .
 

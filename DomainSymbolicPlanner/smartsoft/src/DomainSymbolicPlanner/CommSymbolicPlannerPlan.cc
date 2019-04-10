@@ -183,7 +183,7 @@ std::list < std::string > CommSymbolicPlannerPlan::getPlanSteps(){
 
 	std::string INPUT = getPlan();
 	std::string result("error");
-	unsigned int res = 0;
+	//unsigned int res = 0;
 
 	std::string planString ("(plan (");
 	std::size_t found;

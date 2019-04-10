@@ -25,5 +25,27 @@
 
 
 ServiceDefRepository DomainPTU version 1.0 {
-
+	RequestAnswerServiceDefinition MovePTUQueryService {
+		QueryPattern <
+			RequestType = DomainPTU.CommPTUMoveRequest
+			AnswerType = DomainPTU.CommPTUMoveResponse
+		>
+	}
+	
+	JoiningServiceDefinition MovePTUSendService {
+		SendPattern <DataType=DomainPTU.CommPTUMoveRequest>
+	}
+	
+	ForkingServiceDefinition GoalEventService {
+		EventPattern < 
+			ActivationType=DomainPTU.CommPTUGoalEventParameter
+			EventType=DomainPTU.CommPTUGoalEventResult
+			EventStateType=DomainPTU.PTUGoalEventState
+		> 
+	}
+	
+	CoordinationServiceDefinition PTUCoordinationService {
+		ParameterPattern < DomainPTU.PTUParameter >
+		StatePattern < lifecycle ComponentLifecycle with DomainPTU.PTUStates >
+	}
 }

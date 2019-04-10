@@ -56,6 +56,7 @@ Structure of Communication Object:
 - baseVelocity: CommBasicObjects::CommBaseVelocity 
 - baseOdomVelocity: CommBasicObjects::CommBaseVelocity 
 - batteryState: CommBasicObjects::CommBatteryLevel 
+- baseBumperState: CommBasicObjects::CommBumperState 
 
 \class CommBasicObjects::CommBasePoseCore
 
@@ -102,6 +103,11 @@ Structure of Communication Object:
 - correctedPose: CommBasicObjects::CommBasePose 
 - velocity: CommBasicObjects::CommBaseVelocity 
 - correctedVelocity: CommBasicObjects::CommBaseVelocity 
+
+\class CommBasicObjects::CommBumperStateCore
+
+Structure of Communication Object:
+- bumperState: CommBasicObjects::BumperStateType  = BUMPER_NOT_SUPPORTED 
 
 \class CommBasicObjects::CommBumperEventParameterCore
 
@@ -378,6 +384,13 @@ Structure of Enumeration:
 - ROBOT_STEER_COMPONENT 
 - ROBOT_TURRET_COMPONENT 
 
+\class CommBasicObjects::BumperStateType
+
+Structure of Enumeration:
+- BUMPER_NOT_SUPPORTED 
+- BUMPER_NOT_PRESSED 
+- BUMPER_PRESSED 
+
 \class CommBasicObjects::BumperEventType
 
 Structure of Enumeration:
@@ -487,6 +500,7 @@ Class Reference: CommBasicObjects::CommDevicePoseStateCore
 - baseVelocity: @ref CommBaseVelocity (CommObj) 
 - baseOdomVelocity: @ref CommBaseVelocity (CommObj) 
 - batteryState: @ref CommBatteryLevel (CommObj) 
+- baseBumperState: @ref CommBumperState (CommObj) 
 
 Class Reference: CommBasicObjects::CommBaseStateCore
 <hr>
@@ -535,6 +549,11 @@ Class Reference: CommBasicObjects::CommBatteryLevelCore
 - correctedVelocity: @ref CommBaseVelocity (CommObj) 
 
 Class Reference: CommBasicObjects::CommBasePositionUpdateCore
+<hr>
+@section CommBumperState CommBumperState
+- bumperState: @ref BumperStateType (Enum)  = BUMPER_NOT_SUPPORTED 
+
+Class Reference: CommBasicObjects::CommBumperStateCore
 <hr>
 @section CommBumperEventParameter CommBumperEventParameter
 - oldState: @ref BumperEventType (Enum) 
@@ -810,6 +829,13 @@ Class Reference: CommBasicObjects::CommTrafficLightsCore
 - ROBOT_TURRET_COMPONENT 
 
 Class Reference: CommBasicObjects::RobotComponentEnum
+<hr>
+@section BumperStateType BumperStateType
+- BUMPER_NOT_SUPPORTED 
+- BUMPER_NOT_PRESSED 
+- BUMPER_PRESSED 
+
+Class Reference: CommBasicObjects::BumperStateType
 <hr>
 @section BumperEventType BumperEventType
 - BUMPER_UNKNOWN 

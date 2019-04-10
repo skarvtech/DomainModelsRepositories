@@ -23,5 +23,8 @@
 //
 // --------------------------------------------------------------------------
 ComponentModeRepository CommLocalizationObjects {
+	ComponentModeCollection localizationMode {
+		ComponentModeDefinition Active;
+	}
 
 }

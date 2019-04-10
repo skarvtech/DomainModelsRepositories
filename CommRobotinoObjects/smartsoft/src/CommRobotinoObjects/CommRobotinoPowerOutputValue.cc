@@ -24,6 +24,10 @@ CommRobotinoPowerOutputValue::CommRobotinoPowerOutputValue()
 {  }
 
 
+CommRobotinoPowerOutputValue::CommRobotinoPowerOutputValue(const float & value){
+	this->setValue(value);
+}
+
 /**
  * Constructor to set all values.
  * NOTE that you have to keep this constructor consistent with the model!

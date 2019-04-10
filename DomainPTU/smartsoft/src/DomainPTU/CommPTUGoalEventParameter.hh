@@ -74,6 +74,33 @@ class CommPTUGoalEventParameter : public CommPTUGoalEventParameterCore {
 		//
 		// feel free to add customized methods here
 		//
+
+		inline PTUMoveStatus getOldState() const
+		{
+			return idl_CommPTUGoalEventParameter.oldState;
+		}
+		inline void setOldState(const PTUMoveStatus &oldState)
+		{
+			idl_CommPTUGoalEventParameter.oldState = oldState;
+		}
+
+		//
+		// add your customized interface here
+		//
+
+		/**
+		 * Set the status of the PTU action. (Success, Failure, etc.)
+		 */
+		inline void set_state(DomainPTU::PTUMoveStatus state) {
+			idl_CommPTUGoalEventParameter.oldState = state;
+		}
+
+		/**
+		 * Get the status of the PTU action. (Success, Failure, etc.)
+		 */
+		inline PTUMoveStatus get_state() const {
+			return idl_CommPTUGoalEventParameter.oldState;
+		}
 };
 
 inline std::ostream &operator<<(std::ostream &os, const CommPTUGoalEventParameter &co)

@@ -19,6 +19,7 @@
 #include "CommBasicObjects/CommBaseStateData.hh"
 #include "CommBasicObjects/CommTimeStamp.hh"
 #include "CommBasicObjects/CommBatteryLevel.hh"
+#include "CommBasicObjects/CommBumperState.hh"
 #include "CommBasicObjects/CommBasePose.hh"
 #include "CommBasicObjects/CommBaseVelocity.hh"
 
@@ -91,6 +92,10 @@ public:
 	// getter and setter for element BatteryState
 	inline CommBasicObjects::CommBatteryLevel getBatteryState() const { return CommBasicObjects::CommBatteryLevel(idl_CommBaseState.batteryState); }
 	inline CommBaseStateCore& setBatteryState(const CommBasicObjects::CommBatteryLevel &batteryState) { idl_CommBaseState.batteryState = batteryState; return *this; }
+	
+	// getter and setter for element BaseBumperState
+	inline CommBasicObjects::CommBumperState getBaseBumperState() const { return CommBasicObjects::CommBumperState(idl_CommBaseState.baseBumperState); }
+	inline CommBaseStateCore& setBaseBumperState(const CommBasicObjects::CommBumperState &baseBumperState) { idl_CommBaseState.baseBumperState = baseBumperState; return *this; }
 };
 
 } /* namespace CommBasicObjects */

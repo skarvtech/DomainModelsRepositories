@@ -36,6 +36,7 @@ CommPathNavigationPoseRequestEventState::CommPathNavigationPoseRequestEventState
 :	CommPathNavigationPoseRequestEventStateCore() // base constructor sets default values as defined in the model
 {
 	setNewState(newState);
+	setNextGoal(nextGoal);
 }
  */
 

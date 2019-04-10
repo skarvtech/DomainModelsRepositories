@@ -42,10 +42,10 @@ namespace CommRobotinoObjects
 	{
 		// get own hash value
 		hashes.push_back(getCompiledHash());
-		// get hash value(s) for CommRobotinoObjects::AnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues)
-		CommRobotinoObjects::AnalogOutputRequest::getAllHashValues(hashes);
-		// get hash value(s) for CommRobotinoObjects::DigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues)
-		CommRobotinoObjects::DigitalOutputRequest::getAllHashValues(hashes);
+		// get hash value(s) for CommRobotinoObjects::CommAnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues)
+		CommRobotinoObjects::CommAnalogOutputRequest::getAllHashValues(hashes);
+		// get hash value(s) for CommRobotinoObjects::CommDigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues)
+		CommRobotinoObjects::CommDigitalOutputRequest::getAllHashValues(hashes);
 	}
 	
 	void CommRobotinoIOValuesCore::checkAllHashValues(std::list<std::string> &hashes)
@@ -63,10 +63,10 @@ namespace CommRobotinoObjects
 		assert(strcmp(getCompiledHash(), hashes.front().c_str()) == 0);
 		hashes.pop_front();
 		
-		// check hash value(s) for CommRobotinoObjects::AnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues)
-		CommRobotinoObjects::AnalogOutputRequest::checkAllHashValues(hashes);
-		// check hash value(s) for CommRobotinoObjects::DigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues)
-		CommRobotinoObjects::DigitalOutputRequest::checkAllHashValues(hashes);
+		// check hash value(s) for CommRobotinoObjects::CommAnalogOutputRequest(idl_CommRobotinoIOValues.analogOutputValues)
+		CommRobotinoObjects::CommAnalogOutputRequest::checkAllHashValues(hashes);
+		// check hash value(s) for CommRobotinoObjects::CommDigitalOutputRequest(idl_CommRobotinoIOValues.digitalOutputValues)
+		CommRobotinoObjects::CommDigitalOutputRequest::checkAllHashValues(hashes);
 	}
 	
 	#ifdef ENABLE_HASH
@@ -82,13 +82,13 @@ namespace CommRobotinoObjects
 		for(data_digitalInputValuesIt=data.digitalInputValues.begin(); data_digitalInputValuesIt!=data.digitalInputValues.end(); data_digitalInputValuesIt++) {
 			boost::hash_combine(seed, *data_digitalInputValuesIt);
 		}
-		std::vector<CommRobotinoObjectsIDL::AnalogOutputRequest>::const_iterator data_analogOutputValuesIt;
+		std::vector<CommRobotinoObjectsIDL::CommAnalogOutputRequest>::const_iterator data_analogOutputValuesIt;
 		for(data_analogOutputValuesIt=data.analogOutputValues.begin(); data_analogOutputValuesIt!=data.analogOutputValues.end(); data_analogOutputValuesIt++) {
-			seed += CommRobotinoObjects::AnalogOutputRequest::generateDataHash(*data_analogOutputValuesIt);
+			seed += CommRobotinoObjects::CommAnalogOutputRequest::generateDataHash(*data_analogOutputValuesIt);
 		}
-		std::vector<CommRobotinoObjectsIDL::DigitalOutputRequest>::const_iterator data_digitalOutputValuesIt;
+		std::vector<CommRobotinoObjectsIDL::CommDigitalOutputRequest>::const_iterator data_digitalOutputValuesIt;
 		for(data_digitalOutputValuesIt=data.digitalOutputValues.begin(); data_digitalOutputValuesIt!=data.digitalOutputValues.end(); data_digitalOutputValuesIt++) {
-			seed += CommRobotinoObjects::DigitalOutputRequest::generateDataHash(*data_digitalOutputValuesIt);
+			seed += CommRobotinoObjects::CommDigitalOutputRequest::generateDataHash(*data_digitalOutputValuesIt);
 		}
 		
 		return seed;
@@ -101,8 +101,8 @@ namespace CommRobotinoObjects
 	{  
 		setAnalogInputValues(std::vector<float>());
 		setDigitalInputValues(std::vector<bool>());
-		setAnalogOutputValues(std::vector<CommRobotinoObjects::AnalogOutputRequest>());
-		setDigitalOutputValues(std::vector<CommRobotinoObjects::DigitalOutputRequest>());
+		setAnalogOutputValues(std::vector<CommRobotinoObjects::CommAnalogOutputRequest>());
+		setDigitalOutputValues(std::vector<CommRobotinoObjects::CommDigitalOutputRequest>());
 	}
 	
 	CommRobotinoIOValuesCore::CommRobotinoIOValuesCore(const DATATYPE &data)
@@ -125,13 +125,13 @@ namespace CommRobotinoObjects
 	  for(digitalInputValuesIt=digitalInputValuesList.begin(); digitalInputValuesIt!=digitalInputValuesList.end(); digitalInputValuesIt++) {
 	  	os << *digitalInputValuesIt << " ";
 	  }
-	  std::vector<CommRobotinoObjects::AnalogOutputRequest>::const_iterator analogOutputValuesIt;
-	  std::vector<CommRobotinoObjects::AnalogOutputRequest> analogOutputValuesList = getAnalogOutputValuesCopy();
+	  std::vector<CommRobotinoObjects::CommAnalogOutputRequest>::const_iterator analogOutputValuesIt;
+	  std::vector<CommRobotinoObjects::CommAnalogOutputRequest> analogOutputValuesList = getAnalogOutputValuesCopy();
 	  for(analogOutputValuesIt=analogOutputValuesList.begin(); analogOutputValuesIt!=analogOutputValuesList.end(); analogOutputValuesIt++) {
 	  	analogOutputValuesIt->to_ostream(os);
 	  }
-	  std::vector<CommRobotinoObjects::DigitalOutputRequest>::const_iterator digitalOutputValuesIt;
-	  std::vector<CommRobotinoObjects::DigitalOutputRequest> digitalOutputValuesList = getDigitalOutputValuesCopy();
+	  std::vector<CommRobotinoObjects::CommDigitalOutputRequest>::const_iterator digitalOutputValuesIt;
+	  std::vector<CommRobotinoObjects::CommDigitalOutputRequest> digitalOutputValuesList = getDigitalOutputValuesCopy();
 	  for(digitalOutputValuesIt=digitalOutputValuesList.begin(); digitalOutputValuesIt!=digitalOutputValuesList.end(); digitalOutputValuesIt++) {
 	  	digitalOutputValuesIt->to_ostream(os);
 	  }
@@ -158,8 +158,8 @@ namespace CommRobotinoObjects
 			os << indent << "<digitalInputValues i=\"" << counter++ << "\">" << *digitalInputValuesIt << "</digitalInputValues>";
 		}
 		os << indent << "</digitalInputValuesList>";
-		std::vector<CommRobotinoObjects::AnalogOutputRequest>::const_iterator analogOutputValuesIt;
-		std::vector<CommRobotinoObjects::AnalogOutputRequest> analogOutputValuesList = getAnalogOutputValuesCopy();
+		std::vector<CommRobotinoObjects::CommAnalogOutputRequest>::const_iterator analogOutputValuesIt;
+		std::vector<CommRobotinoObjects::CommAnalogOutputRequest> analogOutputValuesList = getAnalogOutputValuesCopy();
 		counter = 0;
 		os << indent << "<analogOutputValuesList n=\"" << analogOutputValuesList.size() << "\">";
 		for(analogOutputValuesIt=analogOutputValuesList.begin(); analogOutputValuesIt!=analogOutputValuesList.end(); analogOutputValuesIt++) {
@@ -168,8 +168,8 @@ namespace CommRobotinoObjects
 			os << indent << "</analogOutputValues>";
 		}
 		os << indent << "</analogOutputValuesList>";
-		std::vector<CommRobotinoObjects::DigitalOutputRequest>::const_iterator digitalOutputValuesIt;
-		std::vector<CommRobotinoObjects::DigitalOutputRequest> digitalOutputValuesList = getDigitalOutputValuesCopy();
+		std::vector<CommRobotinoObjects::CommDigitalOutputRequest>::const_iterator digitalOutputValuesIt;
+		std::vector<CommRobotinoObjects::CommDigitalOutputRequest> digitalOutputValuesList = getDigitalOutputValuesCopy();
 		counter = 0;
 		os << indent << "<digitalOutputValuesList n=\"" << digitalOutputValuesList.size() << "\">";
 		for(digitalOutputValuesIt=digitalOutputValuesList.begin(); digitalOutputValuesIt!=digitalOutputValuesList.end(); digitalOutputValuesIt++) {
@@ -224,8 +224,8 @@ namespace CommRobotinoObjects
 		if(kmp_analogOutputValuesList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommRobotinoObjects::AnalogOutputRequest analogOutputValuesItem;
-			std::vector<CommRobotinoObjects::AnalogOutputRequest> analogOutputValuesList;
+			CommRobotinoObjects::CommAnalogOutputRequest analogOutputValuesItem;
+			std::vector<CommRobotinoObjects::CommAnalogOutputRequest> analogOutputValuesList;
 			kmp_analogOutputValues.search(is);
 			for(counter=0; counter<numberElements; counter++) {
 				if(kmp_analogOutputValues.search(is)) {
@@ -238,8 +238,8 @@ namespace CommRobotinoObjects
 		if(kmp_digitalOutputValuesList.search(is)) {
 			size_t numberElements;
 			is >> numberElements;
-			CommRobotinoObjects::DigitalOutputRequest digitalOutputValuesItem;
-			std::vector<CommRobotinoObjects::DigitalOutputRequest> digitalOutputValuesList;
+			CommRobotinoObjects::CommDigitalOutputRequest digitalOutputValuesItem;
+			std::vector<CommRobotinoObjects::CommDigitalOutputRequest> digitalOutputValuesList;
 			kmp_digitalOutputValues.search(is);
 			for(counter=0; counter<numberElements; counter++) {
 				if(kmp_digitalOutputValues.search(is)) {

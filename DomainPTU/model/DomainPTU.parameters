@@ -24,5 +24,52 @@
 // --------------------------------------------------------------------------
 
 ParameterSetRepository DomainPTU {
-	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+	ParameterSet PTUParameter {
+		Parameter RESET{
+			reset : Boolean
+		}
+		
+		Parameter ACCELERATION_PAN {
+			acc : Double
+		}
+		
+		Parameter ACCELERATION_TILT {
+			acc : Double
+		}
+		
+		Parameter SPEED_LIMIT_PAN {
+			min : Double
+			max : Double  
+		}
+		
+		Parameter SPEED_LIMIT_TILT {
+			min : Double
+			max : Double  
+		}
+		
+		Parameter SPEED_PAN {
+			speed : Double			
+		}
+		
+		Parameter SPEED_TILT {
+			speed : Double			
+		}
+		
+		Parameter START_UP_SPEED_PAN {
+			speed : Double
+		}
+		
+		Parameter START_UP_SPEED_TILT {
+			speed : Double
+		}
+		
+		Parameter SENSOR_OFFSET {
+			x : Double
+			y : Double
+			z : Double
+			azimuth : Double
+			elevation : Double
+			roll : Double
+		}
+	}
 }

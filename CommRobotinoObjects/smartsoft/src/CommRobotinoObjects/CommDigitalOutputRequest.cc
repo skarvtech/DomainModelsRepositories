@@ -24,6 +24,16 @@ CommDigitalOutputRequest::CommDigitalOutputRequest()
 {  }
 
 
+CommDigitalOutputRequest::CommDigitalOutputRequest(const unsigned int &outputNumber, const bool &outputValue){
+	setValue(outputNumber,outputValue);
+}
+
+void CommDigitalOutputRequest::setValue(const unsigned int &outputNumber, const bool &outputValue){
+	this->setOutputNumber(outputNumber);
+	this->setOutputValue(outputValue);
+}
+
+
 /**
  * Constructor to set all values.
  * NOTE that you have to keep this constructor consistent with the model!

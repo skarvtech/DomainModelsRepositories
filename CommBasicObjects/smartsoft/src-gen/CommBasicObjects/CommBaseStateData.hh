@@ -18,6 +18,7 @@
 
 #include "CommBasicObjects/CommBatteryLevelData.hh"
 #include "CommBasicObjects/CommBaseVelocityData.hh"
+#include "CommBasicObjects/CommBumperStateData.hh"
 #include "CommBasicObjects/CommTimeStampData.hh"
 #include "CommBasicObjects/CommBasePoseData.hh"
 
@@ -32,6 +33,7 @@ namespace CommBasicObjectsIDL
 		CommBasicObjectsIDL::CommBaseVelocity baseVelocity;
 		CommBasicObjectsIDL::CommBaseVelocity baseOdomVelocity;
 		CommBasicObjectsIDL::CommBatteryLevel batteryState;
+		CommBasicObjectsIDL::CommBumperState baseBumperState;
   	};
 };
 

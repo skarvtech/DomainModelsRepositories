@@ -1,5 +1,5 @@
 DomainModelsDatasheet CommNavigationObjects {
 	baseURI : "http://www.servicerobotik-ulm.de"
-	shortDescrition : "Domain Models for the Navigation domain"
+	shortDescription : "Domain Models for the Navigation domain"
 	license : spdx ( "LGPL-3.0-or-later" )
 }

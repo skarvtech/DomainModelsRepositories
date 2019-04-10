@@ -8,7 +8,7 @@
 typedef enum { NORMAL, CROSS, WAIT, NEWCROSS } node_type;
 typedef enum { NORMAL_EDGE, DELETE_EDGE } edge_type;
 typedef enum { OCCUPIED, AVAILABLE, OK } node_status;
-typedef enum { ZERO_WAY, ONE_WAY, TWO_WAY } edge_dir;
+typedef enum { ZERO_WAY, ONE_WAY, TWO_WAY , ONE_WAY_EXPRESS} edge_dir;
 static const double EPSILON = 1e-6; //7 is okay also, somehow epsilon from compiler is not enough
 //std::numeric_limits<double>::epsilon();#include <limits>
 
@@ -18,6 +18,7 @@ struct graphNode {
     double y;
     int pose;
     int path;
+    double width;
     node_type type;
     node_status sts;
     std::string robotID;
@@ -29,6 +30,7 @@ public:
     double y;
     int pose;
     int path;
+    double width;
     node_type type ;
     std::set<int> intersec_path;
     friend std::ostream& operator<< (std::ostream& stream, const RobotPoint& robotPoint){

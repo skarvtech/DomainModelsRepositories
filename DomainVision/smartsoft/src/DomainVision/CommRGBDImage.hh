@@ -45,9 +45,109 @@ class CommRGBDImage : public CommRGBDImageCore {
 		using CommRGBDImageCore::get;
 		using CommRGBDImageCore::set;
 		
-		//
-		// feel free to add customized methods here
-		//
+		inline void set_rgb_image(const unsigned char* data, unsigned int width, unsigned int height)
+		{
+			idl_CommRGBDImage.color_image.data.resize(width * height * 3);
+			idl_CommRGBDImage.color_image.parameter.width  = width;
+			idl_CommRGBDImage.color_image.parameter.height = height;
+
+			// does for our usecase only work when float's between corba and c++-floats match!
+			assert(sizeof(unsigned char) == sizeof(DomainVisionIDL::CommVideoImage_data_type::value_type));
+
+			memcpy(&idl_CommRGBDImage.color_image.data[0], data, width * height * sizeof(unsigned char)* 3);
+			idl_CommRGBDImage.color_image.is_valid = true;
+			//std::cout <<"Setting rgb image" <<std::endl;
+		}
+		inline void set_rgb_image(const std::vector<unsigned char> &data, unsigned int width, unsigned int height)
+		{
+			idl_CommRGBDImage.color_image.data.resize(width * height * 3);
+			idl_CommRGBDImage.color_image.parameter.width = width;
+			idl_CommRGBDImage.color_image.parameter.height = height;
+
+			for (size_t i = 0; i < idl_CommRGBDImage.color_image.data.size(); i++)
+			{
+				idl_CommRGBDImage.color_image.data[i] = data[i];
+			}
+
+			idl_CommRGBDImage.color_image.is_valid = true;
+		}
+		/**
+		 * Set distance image.
+		 * items measured in meter.
+		 */
+		inline void set_distances(const float* data, unsigned int width, unsigned int height)
+		{
+			idl_CommRGBDImage.depth_image.data.resize(width * height * 1);
+			idl_CommRGBDImage.depth_image.width  = width;
+			idl_CommRGBDImage.depth_image.height = height;
+
+			//std::cout <<"Inside Set Distances" <<std::endl;
+
+			// does for our usecase only work when float's between corba and c++-floats match!
+			assert(sizeof(float) == sizeof(DomainVisionIDL::CommDepthImage_data_type::value_type));
+
+			memcpy(&idl_CommRGBDImage.depth_image.data[0], data, width * height * sizeof(float));
+			idl_CommRGBDImage.depth_image.is_valid = true;
+		}
+
+		inline void set_distances_byte(const unsigned char* data, unsigned int width, unsigned int height)
+		{
+			idl_CommRGBDImage.depth_image.data.resize(width * height * 1);
+			idl_CommRGBDImage.depth_image.width = width;
+			idl_CommRGBDImage.depth_image.height = height;
+
+			//std::cout <<"Inside Set Distances byte" <<std::endl;
+
+			// does for our usecase only work when float's between corba and c++-floats match!
+			assert(sizeof(float) == sizeof(DomainVisionIDL::CommDepthImage_data_type::value_type));
+
+			memcpy(&idl_CommRGBDImage.depth_image.data[0], data, width * height * sizeof(float));
+			idl_CommRGBDImage.depth_image.is_valid = true;
+		}
+
+		/**
+		 * Set distance image.
+		 * items measured in meter.
+		 */
+		inline void set_distances(const std::vector<float> &data, unsigned int width, unsigned int height) {
+			idl_CommRGBDImage.depth_image.data.resize(width * height * 1);
+			idl_CommRGBDImage.depth_image.width = width;
+			idl_CommRGBDImage.depth_image.height = height;
+			//std::cout <<"Inside Set Distances float" <<std::endl;
+
+			for (size_t i = 0; i < idl_CommRGBDImage.depth_image.data.size(); i++)
+			{
+				idl_CommRGBDImage.depth_image.data[i] = data[i];
+			}
+
+			idl_CommRGBDImage.depth_image.is_valid = true;
+		}
+
+		/**
+		 * Set distance image. Realsense uses uint16_t
+		 *
+		 */
+		inline void set_distances(const std::vector<uint16_t> &data, unsigned int width, unsigned int height) {
+			idl_CommRGBDImage.depth_image.data.resize(width * height * 1);
+			idl_CommRGBDImage.depth_image.width = width;
+			idl_CommRGBDImage.depth_image.height = height;
+			//std::cout <<"Inside Set Distances float size =" <<idl_CommRealSenseImage.distance_data.size() <<std::endl;
+
+			for (size_t i = 0; i < idl_CommRGBDImage.depth_image.data.size(); i++)
+			{
+				idl_CommRGBDImage.depth_image.data[i] = data[i];
+			}
+
+			idl_CommRGBDImage.depth_image.is_valid = true;
+
+
+		}
+
+		inline void get_color_image_size(unsigned int& width, unsigned int& height, unsigned int& size ){
+			width = idl_CommRGBDImage.color_image.parameter.width;
+			height = idl_CommRGBDImage.color_image.parameter.height;
+			size = idl_CommRGBDImage.color_image.parameter.size;
+		}
 };
 
 inline std::ostream &operator<<(std::ostream &os, const CommRGBDImage &co)

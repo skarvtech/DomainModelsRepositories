@@ -26,6 +26,8 @@ class CommRobotinoPowerOutputValue : public CommRobotinoPowerOutputValueCore {
 		// default constructors
 		CommRobotinoPowerOutputValue();
 		
+		CommRobotinoPowerOutputValue(const float & value);
+
 		/**
 		 * Constructor to set all values.
 		 * NOTE that you have to keep this constructor consistent with the model!

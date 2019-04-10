@@ -117,7 +117,7 @@
 	t1:shortDescription "ServiceDefinition GPSDService";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
 	t1:commPatternUsage [
-		a robmosys:SendPattern;
+		a robmosys:PushPattern;
 		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
 		t1:dataType :CommGpsFix;
 	];

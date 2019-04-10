@@ -72,9 +72,90 @@ class Comm3dPointCloud : public Comm3dPointCloudCore {
 		using Comm3dPointCloudCore::get;
 		using Comm3dPointCloudCore::set;
 		
+		inline unsigned getPointsNbrElements() const
+		{
+			return idl_Comm3dPointCloud.points.size();
+		}
+		inline CommBasicObjects::CommPosition3d getPointsElementFromPos(
+				const unsigned &pos) const
+		{
+			return CommBasicObjects::CommPosition3d(
+					idl_Comm3dPointCloud.points[pos]);
+		}
+		inline bool setPointsElementOnPos(
+				const CommBasicObjects::CommPosition3d &points, const unsigned &pos)
+		{
+			if (pos < getPointsNbrElements())
+			{
+				idl_Comm3dPointCloud.points[pos] = points;
+				return true;
+			}
+			return false;
+		}
+
+		inline bool getValid() const
+		{
+			return idl_Comm3dPointCloud.valid;
+		}
+		inline void setValid(const bool &valid)
+		{
+			idl_Comm3dPointCloud.valid = valid;
+		}
+
 		//
-		// feel free to add customized methods here
+		// add your customized interface here
 		//
+
+	/**
+		 * Set the size of the 3d point cloud.
+		 * This has to be done, before setting the points.
+		 */
+		inline void set_size(size_t size) {
+			idl_Comm3dPointCloud.points.resize(size);
+		}
+
+		/**
+		 * Returns the size of the 3d point cloud.
+		 */
+		inline size_t get_size() const {
+			return idl_Comm3dPointCloud.points.size();
+		}
+
+		/**
+		 * Set the x, y, z value for a point.
+		 * The points must be set in the robot coordinate system.
+		 * The point is specified in the given unit value (0.001 = mm)
+		 */
+		inline void set_point(size_t index, double x, double y, double z, const double unit = 0.001) {
+			idl_Comm3dPointCloud.points[index].x = x * unit * 1000;
+			idl_Comm3dPointCloud.points[index].y = y * unit * 1000;
+			idl_Comm3dPointCloud.points[index].z = z * unit * 1000;
+		}
+
+		/**
+		 * Returns the x, y, z value for a point.
+		 * The points are returned in the robot coordinate system.
+		 * The point is specified in the given unit value (0.001 = mm)
+		 */
+		inline void get_point(size_t index, double &x, double &y, double &z, const double unit = 0.001) const {
+			x = idl_Comm3dPointCloud.points[index].x * 0.001 / unit;
+			y = idl_Comm3dPointCloud.points[index].y * 0.001 / unit;
+			z = idl_Comm3dPointCloud.points[index].z * 0.001 / unit;
+		}
+
+		/**
+		 * If the data is valid set it to true, otherwise to false.
+		 */
+		inline void set_valid(bool valid) {
+			idl_Comm3dPointCloud.valid = valid;
+		}
+
+		/**
+		 * Check if the data of the object is valid.
+		 */
+		inline bool is_valid() const {
+			return idl_Comm3dPointCloud.valid;
+		}
 };
 
 inline std::ostream &operator<<(std::ostream &os, const Comm3dPointCloud &co)

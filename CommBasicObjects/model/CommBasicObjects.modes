@@ -31,4 +31,8 @@ ComponentModeRepository CommBasicObjects {
 	ComponentModeCollection RobotBaseModes {
 		ComponentModeDefinition emergencyStop;
 	}
+	
+	ComponentModeCollection LaserGenModes {
+		ComponentModeDefinition GenerateLaser;		
+	}
 }

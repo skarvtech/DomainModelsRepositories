@@ -30,6 +30,7 @@ namespace CommRobotinoObjectsIDL
 		double y;
 		unsigned int pose;
 		unsigned int path;
+		double width;
 		CommRobotinoObjectsIDL::NODE_TYPE type;
 		CommRobotinoObjectsIDL::NODE_STATUS sts;
 		std::string robotID;

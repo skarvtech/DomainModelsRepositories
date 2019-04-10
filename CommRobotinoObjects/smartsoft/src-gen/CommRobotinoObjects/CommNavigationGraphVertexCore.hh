@@ -81,6 +81,10 @@ public:
 	inline int getPath() const { return idl_CommNavigationGraphVertex.path; }
 	inline CommNavigationGraphVertexCore& setPath(const int &path) { idl_CommNavigationGraphVertex.path = path; return *this; }
 	
+	// getter and setter for element Width
+	inline double getWidth() const { return idl_CommNavigationGraphVertex.width; }
+	inline CommNavigationGraphVertexCore& setWidth(const double &width) { idl_CommNavigationGraphVertex.width = width; return *this; }
+	
 	// getter and setter for element Type
 	inline CommRobotinoObjects::NODE_TYPE getType() const { return CommRobotinoObjects::NODE_TYPE(idl_CommNavigationGraphVertex.type); }
 	inline CommNavigationGraphVertexCore& setType(const CommRobotinoObjects::NODE_TYPE &type) { idl_CommNavigationGraphVertex.type = type; return *this; }

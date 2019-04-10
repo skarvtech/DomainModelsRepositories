@@ -1,9 +1,0 @@
-ComponentModeRepository CommVisionObjects {
-	ComponentModeCollection DefaultModes {
-		ComponentModeDefinition Active;
-	}
-	ComponentModeCollection ImageProvisionModes {
-		ComponentModeDefinition QueryImage;
-		ComponentModeDefinition PushImage;
-	}
-}

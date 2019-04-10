@@ -127,6 +127,10 @@ public:
 		return false;
 	}
 	inline void clearCov() { idl_CommTrackingGoal.cov.clear(); }
+	
+	// getter and setter for element GoalCount
+	inline unsigned long int getGoalCount() const { return idl_CommTrackingGoal.goalCount; }
+	inline CommTrackingGoalCore& setGoalCount(const unsigned long int &goalCount) { idl_CommTrackingGoal.goalCount = goalCount; return *this; }
 };
 
 } /* namespace CommTrackingObjects */

@@ -93,6 +93,50 @@
 # see https://robmosys.eu/wiki/modeling:metamodels:service 
 # see https://robmosys.eu/wiki/modeling:metamodels:commpattern 
 # Note: this will later not be provided by the software component
+:LaserTrackingDataService a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "LaserTrackingDataService";
+	t1:shortDescription "ServiceDefinition LaserTrackingDataService";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommTrackingObjects>;
+	t1:commPatternUsage [
+		a robmosys:PushPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:dataType :CommLaserTrackingData;
+	];
+.
+
+:PersonLostEventService a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "PersonLostEventService";
+	t1:shortDescription "ServiceDefinition PersonLostEventService";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommTrackingObjects>;
+	t1:commPatternUsage [
+		a robmosys:EventPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:eventType :CommPersonLostEventResult;
+		t1:activationType :CommPersonLostEventParameter;
+		t1:eventStateType :PersonLostEventState;
+	];
+.
+
+:TrackedPersonListService a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "TrackedPersonListService";
+	t1:shortDescription "ServiceDefinition TrackedPersonListService";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommTrackingObjects>;
+	t1:commPatternUsage [
+		a robmosys:PushPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:dataType :CommPersonTrackingList;
+	];
+.
+
 :TrackingService a robmosys:ServiceDefinition;
 	rdf:type rdfs:Class;
 	rdf:type sh:NodeShape;

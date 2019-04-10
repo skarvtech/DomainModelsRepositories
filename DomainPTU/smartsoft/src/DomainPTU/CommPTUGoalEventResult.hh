@@ -43,6 +43,9 @@
 #ifndef DOMAINPTU_COMMPTUGOALEVENTRESULT_H_
 #define DOMAINPTU_COMMPTUGOALEVENTRESULT_H_
 
+#include <stdio.h>
+#include <string.h>
+
 #include "DomainPTU/CommPTUGoalEventResultCore.hh"
 
 namespace DomainPTU {
@@ -74,6 +77,68 @@ class CommPTUGoalEventResult : public CommPTUGoalEventResultCore {
 		//
 		// feel free to add customized methods here
 		//
+
+		inline PTUMoveStatus getState() const
+		{
+			return idl_CommPTUGoalEventResult.state;
+		}
+		inline void setState(const PTUMoveStatus &state)
+		{
+			idl_CommPTUGoalEventResult.state = state;
+		}
+
+		//
+		// add your customized interface here
+		//
+		/**
+		 * Set the status of the PTU action. (Success, Failure, etc.)
+		 */
+		inline void set_state(DomainPTU::PTUMoveStatus state) {
+			idl_CommPTUGoalEventResult.state = state;
+		}
+
+		/**
+		 * Get the status of the PTU action. (Success, Failure, etc.)
+		 */
+		inline PTUMoveStatus get_state() const {
+			return idl_CommPTUGoalEventResult.state;
+		}
+
+
+		/**
+		 * Get the status of the PTU action. (Success, Failure, etc.)
+		 */
+		inline void get(char* r) const
+		{
+			switch (idl_CommPTUGoalEventResult.state)
+			{
+			case PTUMoveStatus::FAILURE:
+				strcpy(r, "(FAILURE)");
+				break;
+
+			case PTUMoveStatus::GOAL_NOT_REACHED:
+				strcpy(r, "(GOALNOTREACHED)");
+				break;
+
+			case PTUMoveStatus::GOAL_REACHED:
+				strcpy(r, "(GOALREACHED)");
+				break;
+
+			case PTUMoveStatus::HALTED:
+				strcpy(r, "(HALTED)");
+				break;
+
+			case PTUMoveStatus::PAN_TILT_OUT_OF_RANGE:
+			case PTUMoveStatus::TILT_OUT_OF_RANGE:
+			case PTUMoveStatus::PAN_OUT_OF_RANGE:
+				strcpy(r, "(OUTOFRANGE)");
+				break;
+
+			default:
+				strcpy(r, "(UNKNOWN)");
+				break;
+			}
+		}
 };
 
 inline std::ostream &operator<<(std::ostream &os, const CommPTUGoalEventResult &co)

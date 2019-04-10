@@ -76,6 +76,7 @@ namespace CommTrackingObjects
 		for(data_covIt=data.cov.begin(); data_covIt!=data.cov.end(); data_covIt++) {
 			boost::hash_combine(seed, *data_covIt);
 		}
+		boost::hash_combine(seed, data.goalCount);
 		
 		return seed;
 	}
@@ -92,6 +93,7 @@ namespace CommTrackingObjects
 		setY(0.0);
 		setIsValid(false);
 		setCov(std::vector<double>());
+		setGoalCount(0);
 	}
 	
 	CommTrackingGoalCore::CommTrackingGoalCore(const DATATYPE &data)
@@ -115,6 +117,7 @@ namespace CommTrackingObjects
 	  for(covIt=covList.begin(); covIt!=covList.end(); covIt++) {
 	  	os << *covIt << " ";
 	  }
+	  os << getGoalCount() << " ";
 	  os << ") ";
 	}
 	
@@ -138,6 +141,7 @@ namespace CommTrackingObjects
 			os << indent << "<cov i=\"" << counter++ << "\">" << *covIt << "</cov>";
 		}
 		os << indent << "</covList>";
+		os << indent << "<goalCount>" << getGoalCount() << "</goalCount>";
 	}
 	
 	// restore from xml stream
@@ -152,6 +156,7 @@ namespace CommTrackingObjects
 		static const Smart::KnuthMorrisPratt kmp_isValid("<isValid>");
 		static const Smart::KnuthMorrisPratt kmp_covList("<covList n=\"");
 		static const Smart::KnuthMorrisPratt kmp_cov("\">");
+		static const Smart::KnuthMorrisPratt kmp_goalCount("<goalCount>");
 		
 		if(kmp_trackingType.search(is)) {
 			CommTrackingObjects::TrackingGoalType trackingTypeItem;
@@ -196,6 +201,11 @@ namespace CommTrackingObjects
 				}
 			}
 			setCov(covList);
+		}
+		if(kmp_goalCount.search(is)) {
+			unsigned long int goalCountItem;
+			is >> goalCountItem;
+			setGoalCount(goalCountItem);
 		}
 	}
 	

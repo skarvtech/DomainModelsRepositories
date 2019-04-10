@@ -1,5 +1,5 @@
 SkillDefinitionRepository CommRobotinoObjects {
-	SkillDefinitionSet MPSSkills {
+	CoordinationModuleDefinition MPSSkills {
 
 		SkillDefinition mps_station_undock {
 			results {

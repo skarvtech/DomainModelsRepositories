@@ -74,6 +74,124 @@ class CommPTUMoveRequest : public CommPTUMoveRequestCore {
 		//
 		// feel free to add customized methods here
 		//
+
+		inline PTUMoveFlag getFlag() const
+		{
+			return idl_CommPTUMoveRequest.flag;
+		}
+		inline void setFlag(const PTUMoveFlag &flag)
+		{
+			idl_CommPTUMoveRequest.flag = flag;
+		}
+
+		inline double getPan() const
+		{
+			return idl_CommPTUMoveRequest.pan;
+		}
+		inline void setPan(const double &pan)
+		{
+			idl_CommPTUMoveRequest.pan = pan;
+		}
+
+		inline CommBasicObjects::CommPosition3d getPoint() const
+		{
+			return CommBasicObjects::CommPosition3d(idl_CommPTUMoveRequest.point);
+		}
+		inline void setPoint(const CommBasicObjects::CommPosition3d &point)
+		{
+			idl_CommPTUMoveRequest.point = point;
+		}
+
+		inline double getTilt() const
+		{
+			return idl_CommPTUMoveRequest.tilt;
+		}
+		inline void setTilt(const double &tilt)
+		{
+			idl_CommPTUMoveRequest.tilt = tilt;
+		}
+
+		//
+		// add your customized interface here
+		//
+
+		/**
+		 * Translate the PTUMoveFlag enum to a string representation.
+		 */
+		static std::string modeToString(PTUMoveFlag flag);
+
+
+		/**
+		 * Set the pan angle in rad.
+		 */
+		inline void set_pan(double angle) {
+			idl_CommPTUMoveRequest.pan = angle;
+		}
+
+		/**
+		 * Returns the pan angle in rad.
+		 */
+		inline double get_pan() const {
+			return idl_CommPTUMoveRequest.pan;
+		}
+
+		/**
+		 * Set the tilt angle in rad.
+		 */
+		inline void set_tilt(double angle) {
+			idl_CommPTUMoveRequest.tilt = angle;
+		}
+
+		/**
+		 * Returns the tilt angle in rad.
+		 */
+		inline double get_tilt() const {
+			return idl_CommPTUMoveRequest.tilt;
+		}
+
+		/**
+		 * Set the position the ptu unit should look at. The position can be in
+		 * world or robot coordinate system as specified by the move mode.
+		 * The unit is by default in mm.
+		 */
+		inline void set_position(double x, double y, double z, const double unit = 0.001) {
+			idl_CommPTUMoveRequest.point.x = x * unit * 1000;
+			idl_CommPTUMoveRequest.point.y = y * unit * 1000;
+			idl_CommPTUMoveRequest.point.z = z * unit * 1000;
+		}
+
+		/**
+		 * Returns the position the ptu unit should look at. The position can be in
+		 * world or robot coordinate system as specified by the move mode.
+		 * The unit is by default in mm.
+		 */
+		inline void get_position(double& x, double& y, double& z, const double unit = 0.001) const {
+			x = idl_CommPTUMoveRequest.point.x * 0.001 / unit;
+			y = idl_CommPTUMoveRequest.point.y * 0.001 / unit;
+			z = idl_CommPTUMoveRequest.point.z * 0.001 / unit;
+		}
+
+		/**
+		 * Define which values of the communication object should be used for
+		 * moving the ptu.
+		 */
+		inline void set_move_mode(PTUMoveFlag flag) {
+			idl_CommPTUMoveRequest.flag = flag;
+		}
+
+		/**
+		 * Returns the flag that inidcates which values of the communication object
+		 * should be used for moving the ptu.
+		 */
+		inline PTUMoveFlag get_move_mode() const {
+			return idl_CommPTUMoveRequest.flag;
+		}
+
+		/**
+		 * Print the object to an output stream.
+		 * @param os Output stream to which should be printed
+		 */
+		void print(std::ostream &os = std::cout) const;
 };
 
 inline std::ostream &operator<<(std::ostream &os, const CommPTUMoveRequest &co)

@@ -26,6 +26,8 @@ class CommDigitalOutputRequest : public CommDigitalOutputRequestCore {
 		// default constructors
 		CommDigitalOutputRequest();
 		
+		CommDigitalOutputRequest(const unsigned int &outputNumber, const bool &outputValue);
+
 		/**
 		 * Constructor to set all values.
 		 * NOTE that you have to keep this constructor consistent with the model!
@@ -48,6 +50,7 @@ class CommDigitalOutputRequest : public CommDigitalOutputRequestCore {
 		//
 		// feel free to add customized methods here
 		//
+		void setValue(const unsigned int &outputNumber, const bool &outputValue);
 };
 
 inline std::ostream &operator<<(std::ostream &os, const CommDigitalOutputRequest &co)

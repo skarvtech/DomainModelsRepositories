@@ -71,6 +71,7 @@ namespace CommRobotinoObjects
 		boost::hash_combine(seed, data.y);
 		boost::hash_combine(seed, data.pose);
 		boost::hash_combine(seed, data.path);
+		boost::hash_combine(seed, data.width);
 		boost::hash_combine(seed, data.type);
 		boost::hash_combine(seed, data.sts);
 		boost::hash_combine(seed, std::string(data.robotID.c_str()));
@@ -88,6 +89,7 @@ namespace CommRobotinoObjects
 		setY(0.0);
 		setPose(0);
 		setPath(0);
+		setWidth(0.0);
 		setType(CommRobotinoObjects::NODE_TYPE());
 		setSts(CommRobotinoObjects::NODE_STATUS());
 		setRobotID("");
@@ -108,6 +110,7 @@ namespace CommRobotinoObjects
 	  os << getY() << " ";
 	  os << getPose() << " ";
 	  os << getPath() << " ";
+	  os << getWidth() << " ";
 	  getType().to_ostream(os);
 	  getSts().to_ostream(os);
 	  os << getRobotID() << " ";
@@ -121,6 +124,7 @@ namespace CommRobotinoObjects
 		os << indent << "<y>" << getY() << "</y>";
 		os << indent << "<pose>" << getPose() << "</pose>";
 		os << indent << "<path>" << getPath() << "</path>";
+		os << indent << "<width>" << getWidth() << "</width>";
 		os << indent << "<type>";
 		getType().to_xml(os, indent);
 		os << indent << "</type>";
@@ -137,6 +141,7 @@ namespace CommRobotinoObjects
 		static const Smart::KnuthMorrisPratt kmp_y("<y>");
 		static const Smart::KnuthMorrisPratt kmp_pose("<pose>");
 		static const Smart::KnuthMorrisPratt kmp_path("<path>");
+		static const Smart::KnuthMorrisPratt kmp_width("<width>");
 		static const Smart::KnuthMorrisPratt kmp_type("<type>");
 		static const Smart::KnuthMorrisPratt kmp_sts("<sts>");
 		static const Smart::KnuthMorrisPratt kmp_robotID("<robotID>");
@@ -165,6 +170,11 @@ namespace CommRobotinoObjects
 			unsigned int pathItem;
 			is >> pathItem;
 			setPath(pathItem);
+		}
+		if(kmp_width.search(is)) {
+			double widthItem;
+			is >> widthItem;
+			setWidth(widthItem);
 		}
 		if(kmp_type.search(is)) {
 			CommRobotinoObjects::NODE_TYPE typeItem;
