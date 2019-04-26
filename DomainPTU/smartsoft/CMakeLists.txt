@@ -52,7 +52,7 @@ ELSE()
 ENDIF()
 
 # link your external libraries here
-# TARET_LINK_LIBRARIES(${PROJECT_NAME} <your-libs>)
+#TARGET_LINK_LIBRARIES(${PROJECT_NAME} <your-libs>)
 
 ## end user-code                                                               ##
 #################################################################################
@@ -62,3 +62,6 @@ SMART_COMMOBJECT_AUTOLINK_DEPENDENCIES()
 
 # autoinstall all default CommunicationObject artefacts
 SMART_COMMOBJECT_AUTOINSTALL()
+
+# include extensions cmake files
+INCLUDE(${CMAKE_CURRENT_LIST_DIR}/src-gen/DomainModelsExtensions.cmake)

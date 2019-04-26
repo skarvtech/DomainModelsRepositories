@@ -32,12 +32,7 @@ ServiceDefRepository DomainVision version 1.0 {
 	ForkingServiceDefinition DepthImagePushService{
 		PushPattern <DataType=DomainVision.CommDepthImage>
 	}
-	
-	CoordinationServiceDefinition VisionCoordinationService {
-		ParameterPattern < EmptyDefaultParameterSet >
-		StatePattern < lifecycle ComponentLifecycle with DomainVision.DefaultModes >
-	}
-	
+
 	CoordinationServiceDefinition ImageProvisionCoordinationService {
 		ParameterPattern < EmptyDefaultParameterSet >
 		StatePattern < lifecycle ComponentLifecycle with DomainVision.ImageProvisionModes >

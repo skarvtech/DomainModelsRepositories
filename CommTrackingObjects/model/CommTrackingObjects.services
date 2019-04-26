@@ -42,6 +42,14 @@ ServiceDefRepository CommTrackingObjects version 1.0
 			EventType = 		CommTrackingObjects.CommPersonLostEventResult
 			EventStateType = 	CommTrackingObjects.PersonLostEventState
 		>
+	}	
+	
+	ForkingServiceDefinition PersonDetectionEventService {
+		EventPattern < 
+			ActivationType = 	CommTrackingObjects.CommPersonLostEventParameter
+			EventType = 		CommTrackingObjects.CommPersonDetectionEventResult
+			EventStateType = 	CommTrackingObjects.PersonLostEventState
+		>
 	}
 	
 	CoordinationServiceDefinition TrackerCoordinateService{
@@ -49,4 +57,7 @@ ServiceDefRepository CommTrackingObjects version 1.0
 		StatePattern <lifecycle ComponentLifecycle with CommTrackingObjects.TrackerModes>
 		
 	}
+	
+	RequestAnswerServiceDefinition PersonDetectionQueryService {
+		QueryPattern < RequestType = CommTrackingObjects.CommPersonId AnswerType = CommTrackingObjects.CommDetectedPerson> }
 }

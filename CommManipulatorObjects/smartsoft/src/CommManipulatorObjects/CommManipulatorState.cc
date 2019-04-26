@@ -53,3 +53,32 @@ CommManipulatorState::CommManipulatorState(const DATATYPE &commManipulatorState)
 
 CommManipulatorState::~CommManipulatorState()
 {  }
+void CommManipulatorState::print(std::ostream &os) const {
+	os << "CommManipulatorState(";
+	os << "id=" << get_id() << "\n";
+	if (is_valid()) {
+		double x, y, z, azimuth, elevation, roll;
+
+		get_pose_TCP_manipulator(x, y, z, azimuth, elevation, roll);
+		os << "pose tcp manipulator=" << x << ", " << y << ", " << z << ", " << azimuth << ", " << elevation << ", "
+				<< roll << "\n";
+
+		get_pose_TCP_robot(x, y, z, azimuth, elevation, roll);
+		os << "pose tcp robot=" << x << ", " << y << ", " << z << ", " << azimuth << ", " << elevation << ", "
+						<< roll << "\n";
+
+		get_pose_manipulator(x, y, z, azimuth, elevation, roll);
+		os << "pose manipulator=" << x << ", " << y << ", " << z << ", " << azimuth << ", " << elevation << ", "
+						<< roll << "\n";
+
+		os << "joint angles=";
+		for (size_t i = 0; i < get_joint_count(); ++i) {
+			os << get_joint_angle(i) << ", ";
+		}
+		os << "\n";
+
+	} else {
+		os << "invalid";
+	}
+	os << ")\n";
+}

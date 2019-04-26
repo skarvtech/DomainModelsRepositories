@@ -54,6 +54,55 @@ Structure of Communication Object:
 Structure of Communication Object:
 - state: CommTrackingObjects::PersonLostEventType 
 
+\class CommTrackingObjects::CommPersonDetectionEventResultCore
+
+Structure of Communication Object:
+- environment_id: UInt32  = 0 
+- person_id: UInt32[*] 
+
+\class CommTrackingObjects::PersonDetectionEventStateCore
+
+Structure of Communication Object:
+- environment_id: UInt32  = 0 
+- person_id: UInt32[*] 
+
+\class CommTrackingObjects::CommDetectedPersonCore
+
+Structure of Communication Object:
+- id: UInt32  = 0 
+- is_valid: Boolean  = false 
+- pose: CommBasicObjects::CommPose3d 
+- base_state: CommBasicObjects::CommBaseState 
+
+\class CommTrackingObjects::CommPersonIdCore
+
+Structure of Communication Object:
+- id: UInt32  = 0 
+
+\class CommTrackingObjects::CommValidPositionCore
+
+Structure of Communication Object:
+- valid: Boolean  = false 
+
+\class CommTrackingObjects::LeaderEventStateCore
+
+Structure of Communication Object:
+- type: CommTrackingObjects::LeaderEventType 
+- goal_x: Int32 
+- goal_y: Int32 
+
+\class CommTrackingObjects::CommLeaderEventParamCore
+
+Structure of Communication Object:
+- type: CommTrackingObjects::LeaderEventType 
+
+\class CommTrackingObjects::CommLeaderEventResultCore
+
+Structure of Communication Object:
+- type: CommTrackingObjects::LeaderEventType 
+- goal_x: Int32 
+- goal_y: Int32 
+
 \class CommTrackingObjects::TrackingGoalType
 
 Structure of Enumeration:
@@ -73,6 +122,46 @@ Structure of Enumeration:
 
 Structure of Enumeration:
 - REGAIN_RESET 
+
+\class CommTrackingObjects::ScanType
+
+Structure of Enumeration:
+- NONE_SCAN_TYPE 
+- FULL_SCAN 
+- SINGLE_SCAN 
+
+\class CommTrackingObjects::PersonManagerParam
+
+Structure of Enumeration:
+- NONE_MANAGER_PARAM 
+- RESET_MANAGER 
+- DEACTIVATE_MANAGER 
+- ACTIVATE_MANAGER 
+
+\class CommTrackingObjects::ScanMode
+
+Structure of Enumeration:
+- NONE_SCAN_MODE 
+- CONTINUOUS 
+- ONE_SHOT 
+
+\class CommTrackingObjects::ScanParam
+
+Structure of Enumeration:
+- NONE_SCAN_PARAM 
+- FULL_SCAN_PARAM 
+
+\class CommTrackingObjects::LeaderEventType
+
+Structure of Enumeration:
+- TOO_CLOSE 
+- LEADER_IMAGE_SUCCESS 
+- LEADER_FOUND 
+- TOO_MANY_PERSONS 
+- NO_FACES_FOUND 
+- TOO_FEW_HANDS 
+- WAVE_DETECTED 
+- UNKNOWN 
 
 
 
@@ -139,6 +228,55 @@ Class Reference: CommTrackingObjects::CommPersonLostEventParameterCore
 
 Class Reference: CommTrackingObjects::CommPersonLostEventResultCore
 <hr>
+@section CommPersonDetectionEventResult CommPersonDetectionEventResult
+- environment_id: UInt32   = 0 
+- person_id: UInt32[*]  
+
+Class Reference: CommTrackingObjects::CommPersonDetectionEventResultCore
+<hr>
+@section PersonDetectionEventState PersonDetectionEventState
+- environment_id: UInt32   = 0 
+- person_id: UInt32[*]  
+
+Class Reference: CommTrackingObjects::PersonDetectionEventStateCore
+<hr>
+@section CommDetectedPerson CommDetectedPerson
+- id: UInt32   = 0 
+- is_valid: Boolean   = false 
+- pose: @ref CommPose3d (CommObj) 
+- base_state: @ref CommBaseState (CommObj) 
+
+Class Reference: CommTrackingObjects::CommDetectedPersonCore
+<hr>
+@section CommPersonId CommPersonId
+- id: UInt32   = 0 
+
+Class Reference: CommTrackingObjects::CommPersonIdCore
+<hr>
+@section CommValidPosition CommValidPosition
+- valid: Boolean   = false 
+
+Class Reference: CommTrackingObjects::CommValidPositionCore
+<hr>
+@section LeaderEventState LeaderEventState
+- type: @ref LeaderEventType (Enum) 
+- goal_x: Int32  
+- goal_y: Int32  
+
+Class Reference: CommTrackingObjects::LeaderEventStateCore
+<hr>
+@section CommLeaderEventParam CommLeaderEventParam
+- type: @ref LeaderEventType (Enum) 
+
+Class Reference: CommTrackingObjects::CommLeaderEventParamCore
+<hr>
+@section CommLeaderEventResult CommLeaderEventResult
+- type: @ref LeaderEventType (Enum) 
+- goal_x: Int32  
+- goal_y: Int32  
+
+Class Reference: CommTrackingObjects::CommLeaderEventResultCore
+<hr>
 @section TrackingGoalType TrackingGoalType
 - XY_ROBOT 
 - XY_MAP 
@@ -158,6 +296,46 @@ Class Reference: CommTrackingObjects::PersonLostEventType
 - REGAIN_RESET 
 
 Class Reference: CommTrackingObjects::FollowMeRegainTagType
+<hr>
+@section ScanType ScanType
+- NONE_SCAN_TYPE 
+- FULL_SCAN 
+- SINGLE_SCAN 
+
+Class Reference: CommTrackingObjects::ScanType
+<hr>
+@section PersonManagerParam PersonManagerParam
+- NONE_MANAGER_PARAM 
+- RESET_MANAGER 
+- DEACTIVATE_MANAGER 
+- ACTIVATE_MANAGER 
+
+Class Reference: CommTrackingObjects::PersonManagerParam
+<hr>
+@section ScanMode ScanMode
+- NONE_SCAN_MODE 
+- CONTINUOUS 
+- ONE_SHOT 
+
+Class Reference: CommTrackingObjects::ScanMode
+<hr>
+@section ScanParam ScanParam
+- NONE_SCAN_PARAM 
+- FULL_SCAN_PARAM 
+
+Class Reference: CommTrackingObjects::ScanParam
+<hr>
+@section LeaderEventType LeaderEventType
+- TOO_CLOSE 
+- LEADER_IMAGE_SUCCESS 
+- LEADER_FOUND 
+- TOO_MANY_PERSONS 
+- NO_FACES_FOUND 
+- TOO_FEW_HANDS 
+- WAVE_DETECTED 
+- UNKNOWN 
+
+Class Reference: CommTrackingObjects::LeaderEventType
 <hr>
 
 

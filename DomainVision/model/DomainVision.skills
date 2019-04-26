@@ -1,0 +1,22 @@
+SkillDefinitionRepository DomainVision {
+	CoordinationModuleDefinition CameraModule {
+		SkillDefinition activateCameraPush{
+			results {
+				SUCCESS value =""
+			}
+		}
+		
+		SkillDefinition activateCameraRequestResponse{
+			results {
+				SUCCESS value =""
+			}
+		}
+		
+		SkillDefinition deactivateCamera{
+			results {
+				SUCCESS value =""
+			}
+		}
+	}
+	
+}

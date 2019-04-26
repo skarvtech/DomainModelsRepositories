@@ -172,7 +172,7 @@ ServiceDefRepository CommBasicObjects version 1.0
 	}
 	
 	ForkingServiceDefinition UltrasonicService {
-		PushPattern<DataType=CommBasicObjects.CommUltrasonicScan>
+		PushPattern<DataType=CommBasicObjects.CommMobileUltrasonicScan>
 	}
 	
 }

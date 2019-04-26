@@ -700,9 +700,15 @@ void CommVideoImage::set_data(const unsigned char *data)
 
 	// does for our usecase only work when float's between corba and c++-type match!
 	assert(sizeof(char) == sizeof(DomainVisionIDL::CommVideoImage_data_type::value_type));
-
-	memcpy(&idl_CommVideoImage.data[0], data, get_size());
-    idl_CommVideoImage.is_valid = true;
+	if(idl_CommVideoImage.parameter.size == 0)
+	{
+		std::cerr << "Image Data not set. First set width, height using the function set_parameters before using the function set_data";
+		idl_CommVideoImage.is_valid = false;
+	}
+	else{
+		memcpy(&idl_CommVideoImage.data[0], data, idl_CommVideoImage.parameter.size);
+		idl_CommVideoImage.is_valid = true;
+	}
 }
 
 

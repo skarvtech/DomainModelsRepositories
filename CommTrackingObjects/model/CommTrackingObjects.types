@@ -84,6 +84,72 @@ CommObjectsRepository CommTrackingObjects version 1.0.0 {
 	Enumeration FollowMeRegainTagType {
 		REGAIN_RESET
 	}
+	
+	// person detection
+	CommObject CommPersonDetectionEventResult {
+		environment_id: UInt32= 0
+		person_id: UInt32[*]
+	}
+	CommObject PersonDetectionEventState{
+		environment_id: UInt32= 0
+		person_id: UInt32[*]
+	}
+	CommObject CommDetectedPerson {
+		id: UInt32= 0
+		is_valid: Boolean= false
+		pose: CommPose3d
+		base_state: CommBaseState
+	}
+	CommObject CommPersonId {
+		id: UInt32= 0
+	}
+	CommObject CommValidPosition {
+		valid: Boolean= false
+	}
+	CommObject LeaderEventState {
+		type: LeaderEventType
+		goal_x: Int32
+		goal_y: Int32
+	}
+	CommObject CommLeaderEventParam {
+		type: LeaderEventType
+	}
+	CommObject CommLeaderEventResult {
+		type: LeaderEventType
+		goal_x: Int32
+		goal_y: Int32
+	}
+	Enumeration ScanType {
+		NONE_SCAN_TYPE
+		FULL_SCAN
+		SINGLE_SCAN
+	}
+	Enumeration PersonManagerParam {
+		NONE_MANAGER_PARAM
+		RESET_MANAGER
+		DEACTIVATE_MANAGER
+		ACTIVATE_MANAGER
+	}
+	Enumeration ScanMode {
+		NONE_SCAN_MODE
+		CONTINUOUS
+		ONE_SHOT
+	}
+	Enumeration ScanParam {
+		NONE_SCAN_PARAM
+		FULL_SCAN_PARAM
+	}
+
+	Enumeration LeaderEventType {
+		TOO_CLOSE
+		LEADER_IMAGE_SUCCESS
+		LEADER_FOUND
+		TOO_MANY_PERSONS
+		NO_FACES_FOUND
+		TOO_FEW_HANDS
+		WAVE_DETECTED
+		UNKNOWN
+	}
 
 
 }

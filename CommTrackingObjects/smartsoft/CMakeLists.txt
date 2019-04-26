@@ -62,3 +62,6 @@ SMART_COMMOBJECT_AUTOLINK_DEPENDENCIES()
 
 # autoinstall all default CommunicationObject artefacts
 SMART_COMMOBJECT_AUTOINSTALL()
+
+# include extensions cmake files
+INCLUDE(${CMAKE_CURRENT_LIST_DIR}/src-gen/DomainModelsExtensions.cmake)
