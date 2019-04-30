@@ -39,4 +39,46 @@ SkillDefinitionRepository CommLocalizationObjects {
 			}
 		}
 	}
+	
+	CoordinationModuleDefinition SlamModule {
+		SkillDefinition startMapping {
+			in {
+				init_x : Double
+				init_y : Double
+				init_a : Double
+			}
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+		
+		SkillDefinition abortMapping {
+			results {
+				SUCCESS value = "OK"
+				ERROR value = "MAPPING NOT ACTIVE"
+			}
+		}
+		
+		SkillDefinition stopMapping {
+			in {
+				mapName : String
+				mapDirName : String
+			}
+			results {
+				SUCCESS value = "OK"
+				ERROR value = "MAPPING NOT ACTIVE"
+			}
+		}
+		
+		SkillDefinition saveCurrentMap {
+			in {
+				mapName : String
+				mapDirName : String
+			}
+			results {
+				SUCCESS value = "OK"
+				ERROR value = "MAPPING NOT ACTIVE"
+			}
+		}
+	}
 }

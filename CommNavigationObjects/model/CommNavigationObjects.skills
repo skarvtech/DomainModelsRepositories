@@ -21,6 +21,12 @@ SkillDefinitionRepository CommNavigationObjects {
 				SUCCESS value = "OK"
 			}
 		}
+		
+		SkillDefinition resetBase {
+			results {
+				SUCCESS value = "OK"
+			}
+		}
 	}
 
 
