@@ -171,6 +171,11 @@ ServiceDefRepository CommBasicObjects version 1.0
 		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.LaserGenModes>
 	}
 	
+	CoordinationServiceDefinition VisualizationCoordinationService {
+		ParameterPattern <CommBasicObjects.VisualizationParams>
+		StatePattern < lifecycle ComponentLifecycle >
+	}
+	
 	ForkingServiceDefinition UltrasonicService {
 		PushPattern<DataType=CommBasicObjects.CommMobileUltrasonicScan>
 	}

@@ -19,4 +19,28 @@ SkillDefinitionRepository CommBasicObjects {
 		}	
 		
 	}
+	
+	CoordinationModuleDefinition VisualizationModule {
+		SkillDefinition startVisualizationOf {
+			in {
+				type : String
+				server : String
+				service : String
+			}
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+		
+		SkillDefinition stopVisualizationOf {
+			in {
+				type : String
+				server : String
+				service : String
+			}
+			results {
+				SUCCESS value = "OK"
+			}
+		}
+	}
 }
