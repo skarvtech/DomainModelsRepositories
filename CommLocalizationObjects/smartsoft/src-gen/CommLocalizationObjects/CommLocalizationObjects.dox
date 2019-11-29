@@ -47,39 +47,23 @@ Structure of Communication Object:
 - newState: CommLocalizationObjects::LocalizationEventType 
 
 \class CommLocalizationObjects::CommGpsFixCore
-Communication object to read a gps device. Inspired by struct gps_fix_t from libgps
 
 Structure of Communication Object:
 - gps_timestamp: Double 
-<i> Timestamp as received from GPS device in unix format + fractional part </i>
 - is_2D: Boolean 
-<i> Values for latitude and longitude are valid. </i>
 - is_3D: Boolean 
-<i> Values for latitude, longitude and elevation are valid. </i>
 - satellites_visible: Int32 
-<i> Number of visible satellites </i>
 - satellites_used: Int32 
-<i> Number of satellites that were used for calculating the position </i>
 - latitude: Double 
-<i> Latitude. Only valid if is_2D = true </i>
 - longitude: Double 
-<i> Longitude. Only valid if is_2D = true </i>
 - altitude: Double 
-<i> Altitude [meters]. Only valid if is_3D = [true] </i>
 - speed: Double 
-<i> Speed over ground. [meters/second] </i>
 - climb: Double 
-<i> Vertical speed. [meters/second] </i>
 - latitude_uncertainty: Double 
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - longitude_uncertainty: Double 
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - altitude_uncertainty: Double 
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - speed_uncertainty: Double 
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - climb_uncertainty: Double 
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 
 \class CommLocalizationObjects::BearingOnlySLAMTag
 
@@ -152,35 +136,20 @@ Class Reference: CommLocalizationObjects::LocalizationEventStateCore
 <hr>
 @section CommGpsFix CommGpsFix
 - gps_timestamp: Double  
-<i> Timestamp as received from GPS device in unix format + fractional part </i>
 - is_2D: Boolean  
-<i> Values for latitude and longitude are valid. </i>
 - is_3D: Boolean  
-<i> Values for latitude, longitude and elevation are valid. </i>
 - satellites_visible: Int32  
-<i> Number of visible satellites </i>
 - satellites_used: Int32  
-<i> Number of satellites that were used for calculating the position </i>
 - latitude: Double  
-<i> Latitude. Only valid if is_2D = true </i>
 - longitude: Double  
-<i> Longitude. Only valid if is_2D = true </i>
 - altitude: Double  
-<i> Altitude [meters]. Only valid if is_3D = [true] </i>
 - speed: Double  
-<i> Speed over ground. [meters/second] </i>
 - climb: Double  
-<i> Vertical speed. [meters/second] </i>
 - latitude_uncertainty: Double  
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - longitude_uncertainty: Double  
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - altitude_uncertainty: Double  
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - speed_uncertainty: Double  
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 - climb_uncertainty: Double  
-<i> Uncertainty of the corresponding element. 95% confidence. [meters] </i>
 
 Class Reference: CommLocalizationObjects::CommGpsFixCore
 <hr>

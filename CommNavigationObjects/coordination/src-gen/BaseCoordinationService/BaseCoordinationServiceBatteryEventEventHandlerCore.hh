@@ -7,11 +7,11 @@
 #include "CommBasicObjects/CommBatteryParameter.hh"
 #include "BaseCoordinationServiceBatteryEventEventHandler.hh"
 
-class BaseCoordinationServiceBatteryEventEventHandlerCore : public Smart::IEventHandler<CommBasicObjects::CommBatteryEvent, SmartACE::EventId>
+class BaseCoordinationServiceBatteryEventEventHandlerCore : public Smart::IEventHandler<CommBasicObjects::CommBatteryEvent>
 {
 public:
-	BaseCoordinationServiceBatteryEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommBasicObjects::CommBatteryEvent &r) override;
+	BaseCoordinationServiceBatteryEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommBasicObjects::CommBatteryEvent &r) override;
 	CommBasicObjects::CommBatteryParameter activateEventParam(const std::string& parameterString);
 private:
 	BaseCoordinationServiceBatteryEventEventHandler userHandler;

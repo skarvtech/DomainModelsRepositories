@@ -23,5 +23,15 @@
 //
 // --------------------------------------------------------------------------
 ParameterSetRepository CommTrackingObjects {
-	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+	ParameterSet TrackingParam {
+		Trigger FOLLOW_RESET{
+			initX : Double
+			initY : Double
+		}
+		
+		Trigger SET_MAX_COV{ 
+			sigma : Double
+		}
+	}
+
 }

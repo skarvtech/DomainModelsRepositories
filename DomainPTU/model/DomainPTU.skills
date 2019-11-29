@@ -1,0 +1,22 @@
+SkillDefinitionRepository DomainPTU {
+	CoordinationModuleDefinition ptuModule {
+		SkillDefinition moveptuabsolute {
+			in {
+				pan: Double
+				tilt: Double
+			}
+			results {
+				SUCCESS value = "";
+			}
+		}
+		SkillDefinition moveptulocation {
+			in {
+				location: String
+				nmbr: UInt32
+			}
+			results {
+				SUCCESS value = "";
+			}
+		}
+	}
+}

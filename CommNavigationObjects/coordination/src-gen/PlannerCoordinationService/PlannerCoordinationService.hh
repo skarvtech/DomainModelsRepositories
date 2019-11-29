@@ -23,7 +23,7 @@ public:
 
 	//variables, ports, handlers
 	//param, state, wiring is dealt with the single master
-	Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult, SmartACE::EventId> *plannerCoordinationServiceplannerEventClient;
+	Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult> *plannerCoordinationServiceplannerEventClient;
 	PlannerCoordinationServicePlannerEventEventHandlerCore *plannerCoordinationServiceplannerEventEventHandlerCore;
  };
 #endif /* PLANNERCOORDINATIONSERVICE_H_ */

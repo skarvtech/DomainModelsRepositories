@@ -157,7 +157,6 @@
 	rdfs:subClassOf robmosys:AbstractService;
 	rdfs:label "CurrGridMapPushService";
 	t1:shortDescription "ServiceDefinition CurrGridMapPushService";
-	t1:description """Mapping service-definitions""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
 	t1:commPatternUsage [
 		a robmosys:PushPattern;
@@ -187,7 +186,6 @@
 	rdfs:subClassOf robmosys:AbstractService;
 	rdfs:label "GoalEventService";
 	t1:shortDescription "ServiceDefinition GoalEventService";
-	t1:description """CDL-related service-definitions""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
 	t1:commPatternUsage [
 		a robmosys:EventPattern;
@@ -247,7 +245,6 @@
 	rdfs:subClassOf robmosys:AbstractService;
 	rdfs:label "NavigationVelocityService";
 	t1:shortDescription "ServiceDefinition NavigationVelocityService";
-	t1:description """Base-related service-definitions""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
 	t1:commPatternUsage [
 		a robmosys:SendPattern;
@@ -278,7 +275,6 @@
 	rdfs:subClassOf robmosys:AbstractService;
 	rdfs:label "PlannerGoalService";
 	t1:shortDescription "ServiceDefinition PlannerGoalService";
-	t1:description """Planner service definitions""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommNavigationObjects>;
 	t1:commPatternUsage [
 		a robmosys:PushPattern;

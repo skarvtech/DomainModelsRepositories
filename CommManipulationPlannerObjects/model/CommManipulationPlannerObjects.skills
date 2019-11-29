@@ -1,0 +1,15 @@
+SkillDefinitionRepository CommManipulationPlannerObjects {
+	CoordinationModuleDefinition manipulationPlannerModule {
+		SkillDefinition graspobjects{
+			in {
+				objID : UInt32
+			}
+			results {
+				SUCCESS value = ""
+				ERROR value = "COLLISION"
+			}
+		}
+		
+	}
+	
+}

@@ -7,11 +7,11 @@
 #include "CommNavigationObjects/CommCdlGoalEventParameter.hh"
 #include "CdlCoordinationServiceGoalEventEventHandler.hh"
 
-class CdlCoordinationServiceGoalEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommCdlGoalEventResult, SmartACE::EventId>
+class CdlCoordinationServiceGoalEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommCdlGoalEventResult>
 {
 public:
-	CdlCoordinationServiceGoalEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommCdlGoalEventResult &r) override;
+	CdlCoordinationServiceGoalEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommCdlGoalEventResult &r) override;
 	CommNavigationObjects::CommCdlGoalEventParameter activateEventParam(const std::string& parameterString);
 private:
 	CdlCoordinationServiceGoalEventEventHandler userHandler;

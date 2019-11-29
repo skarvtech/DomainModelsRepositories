@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-CdlCoordinationServiceGoalEventEventHandlerCore::CdlCoordinationServiceGoalEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommNavigationObjects::CommCdlGoalEventResult,SmartACE::EventId>(client)
+CdlCoordinationServiceGoalEventEventHandlerCore::CdlCoordinationServiceGoalEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommNavigationObjects::CommCdlGoalEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void CdlCoordinationServiceGoalEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommCdlGoalEventResult &r) {
+void CdlCoordinationServiceGoalEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommCdlGoalEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

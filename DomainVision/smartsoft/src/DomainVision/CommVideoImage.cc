@@ -89,6 +89,7 @@ CommVideoImage::~CommVideoImage()
 CommVideoImage::CommVideoImage(unsigned int width, unsigned int height, DomainVision::FormatType format, const unsigned char *data)
 {
   idl_CommVideoImage.intrinsic_m.resize(4*4);
+  idl_CommVideoImage.distortion_m.resize(1*5);
   set_parameters(width,height,format);
   if(data) set_data(data);
 }

@@ -8,8 +8,9 @@ ServiceDefRepository CommManipulationPlannerObjects version 1.0 {
 		> 
 	}
 	
-	CoordinationServiceDefinition OpenRaveCoordinationService {
+	CoordinationServiceDefinition ManipulationPlannerCoordinationService {
 		ParameterPattern < CommManipulationPlannerObjects.ManipulationPlannerParameter >
 		StatePattern < lifecycle ComponentLifecycle with CommManipulationPlannerObjects.OpenRaveStates >
+		CommunicationServiceUsage plannerevent uses ManipulationPlannerEventService  
 	}
 }

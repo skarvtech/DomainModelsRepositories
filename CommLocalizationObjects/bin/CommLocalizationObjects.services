@@ -36,15 +36,25 @@ ServiceDefRepository CommLocalizationObjects version 1.0
 		>
 	}
 	
-		JoiningServiceDefinition GPSDService {
-		SendPattern < DataType = CommLocalizationObjects.CommGpsFix >
+		ForkingServiceDefinition GPSDService {
+		PushPattern < DataType = CommLocalizationObjects.CommGpsFix >
 	}
 	
-		RequestAnswerServiceDefinition CommGpsFixService {
+	RequestAnswerServiceDefinition CommGpsFixService {
 		QueryPattern <
 			RequestType = CommBasicObjects.CommVoid
 			AnswerType = CommLocalizationObjects.CommGpsFix
 		>
 	}
 	
+	CoordinationServiceDefinition LocalizationCoordinationService {
+		ParameterPattern < CommLocalizationObjects.LocalizationParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommLocalizationObjects.localizationMode> 
+		CommunicationServiceUsage localizationEvent uses LocalizationEventService
+	}
+	
+	CoordinationServiceDefinition SLAMCoordinationService {
+		ParameterPattern < CommLocalizationObjects.SlamParameter >
+		StatePattern < lifecycle ComponentLifecycle with CommLocalizationObjects.localizationMode>
+	}
 }

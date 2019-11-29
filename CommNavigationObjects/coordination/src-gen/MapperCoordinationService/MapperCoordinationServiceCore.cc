@@ -4,6 +4,8 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <smartNumericCorrelationId.h>
+
  void MapperCoordinationServiceCore::addNewModuleInstance(const std::string& name){
  	std::cout<<"addNewModuleInstance name:"<<name<<std::endl;
 	MapperCoordinationService mi;

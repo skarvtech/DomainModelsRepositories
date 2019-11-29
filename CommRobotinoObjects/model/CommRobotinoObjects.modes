@@ -23,5 +23,23 @@
 //
 // --------------------------------------------------------------------------
 ComponentModeRepository CommRobotinoObjects {
+	ComponentModeCollection ConveyerBeltModes
+	{
+		ComponentModeDefinition load;
+		ComponentModeDefinition unload;
+		ComponentModeDefinition manualload;
+		ComponentModeDefinition manualunload;
+		ComponentModeDefinition signalerror;
+	}
+        ComponentModeCollection FestoMpsDockingStates {
+		ComponentModeDefinition LaserDocking;
+		ComponentModeDefinition IrDocking;
+		ComponentModeDefinition UnDocking;
+	}
+	
+	ComponentModeCollection RobotToRobotDockingStates {
+		ComponentModeDefinition LaserDocking;		
+		ComponentModeDefinition UnDocking;
+	}
 
 }

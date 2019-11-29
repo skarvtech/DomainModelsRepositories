@@ -89,21 +89,25 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		newState : RobotinoConveyerBeltEventType
 	}
 	
-	CommObject AnalogOutputRequest {
+	CommObject CommAnalogOutputRequest {
 		outputNumber : UInt32
 		outputValue : Double
 	}
 	
-	CommObject DigitalOutputRequest {
+	CommObject CommDigitalOutputRequest {
 		outputNumber : UInt32
 		outputValue : Boolean
+	}
+	
+	CommObject CommRobotinoPowerOutputValue {
+		value : Float
 	}
 	
 	CommObject CommRobotinoIOValues {
 		analogInputValues : Float [*]
 		digitalInputValues : Boolean [*]
-		analogOutputValues : AnalogOutputRequest [*]
-		digitalOutputValues : DigitalOutputRequest [*]
+		analogOutputValues : CommAnalogOutputRequest [*]
+		digitalOutputValues : CommDigitalOutputRequest [*]
 	}
 	
 	CommObject CommDigitalInputEventResult {
@@ -189,6 +193,7 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		y : Double
 		pose : UInt32
         path : UInt32
+        width : Double	
     	type : NODE_TYPE
      	sts : NODE_STATUS
      	robotID : String
@@ -216,9 +221,9 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		AVAILABLE
 		OK
 	}
-	/////////////////////////////////////
+	// ///////////////////////////////////
 	
-	/////////////////////////////////////
+	// ///////////////////////////////////
 	// Network Graph
 	
 	CommObject CommNavigationGraphVertex {
@@ -226,6 +231,7 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		y : Double
 		pose : Int32
 		path : Int32
+		width : Double
 		type : NODE_TYPE
 		intersec_path: Int32 [*]
 	}
@@ -286,6 +292,61 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		start_id:Int32
 	}
 	
+	CommObject CommPathFreeArea{
+		areaID : Int32
+		maxOccupancy : Int32
+		robotIDs : Int32 [*]
+		nodeXvector : Double [*]
+		nodeYvector : Double [*]
+	}
+	
+	Enumeration CoordinatedNavigationResourceRequestActionType {
+		UNKOWN
+		FREE
+		ACQUIRE
+	}
+	
+	Enumeration CoordinatedNavigationResourceResponseActionType {
+		UNKOWN
+		SUCCESS
+		FAILED
+	}
+	
+	Enumeration CoordinatedNavigationResourceStateType {
+		UNKOWN
+		FREE
+		BLOCKED
+	}
+	
+	CommObject CommCoordinatedNavigationResourceRequest {
+		resourceID :  Int32
+		robotID : Int32
+		actionType : CoordinatedNavigationResourceRequestActionType = UNKOWN
+	}
+	
+	CommObject CommCoordinatedNavigationResourceState {
+		resourceID : Int32
+		robotID : Int32
+		state : CoordinatedNavigationResourceStateType = UNKOWN 
+		remainingCapacity : Int32 = 0
+	}
+	
+	CommObject CommCoordinatedNavigationResourceResponse {
+		resourceID :  Int32
+		reservedSuccess : CoordinatedNavigationResourceResponseActionType = UNKOWN
+		remainingCapacity : Int32 = 0
+	}
+	
+	CommObject CommCoordinatedNavigationDataRequest {
+		resourceID :  Int32
+		
+	}
+	
+	CommObject CommCoordinatedNavigationDataResponse{
+		isValid : Boolean
+		area : CommPathFreeArea
+	}
+
 	CommObject CommPathNetworkLayout {
 		networkStatus : CommPathNetworkStatus
 		layoutFile: CommDataFile
@@ -351,83 +412,5 @@ CommObjectsRepository CommRobotinoObjects version 1.0.0 {
 		tags : CommVisualTag [*]
 		valid : Boolean = false
 	}
-	
-
-
-	CommObject CommAnalogOutputRequest {
-		outputNumber : UInt32
-		outputValue : Double
-	}
-	
-	CommObject CommDigitalOutputRequest {
-		outputNumber : UInt32
-		outputValue : Boolean
-	}
-	
-	CommObject CommRobotinoPowerOutputValue {
-		value : Float
-	}
-	
-
-
-	
-	CommObject CommPathFreeArea{
-		areaID : Int32
-		maxOccupancy : Int32
-		robotIDs : Int32 [*]
-		nodeXvector : Double [*]
-		nodeYvector : Double [*]
-	}
-	
-	Enumeration CoordinatedNavigationResourceRequestActionType {
-		UNKOWN
-		FREE
-		ACQUIRE
-	}
-	
-	Enumeration CoordinatedNavigationResourceResponseActionType {
-		UNKOWN
-		SUCCESS
-		FAILED
-	}
-	
-	Enumeration CoordinatedNavigationResourceStateType {
-		UNKOWN
-		FREE
-		BLOCKED
-	}
-	
-	CommObject CommCoordinatedNavigationResourceRequest {
-		resourceID :  Int32
-		robotID : Int32
-		actionType : CoordinatedNavigationResourceRequestActionType = UNKOWN
-	}
-	
-	CommObject CommCoordinatedNavigationResourceState {
-		resourceID : Int32
-		robotID : Int32
-		state : CoordinatedNavigationResourceStateType = UNKOWN 
-		remainingCapacity : Int32 = 0
-	}
-	
-	CommObject CommCoordinatedNavigationResourceResponse {
-		resourceID :  Int32
-		reservedSuccess : CoordinatedNavigationResourceResponseActionType = UNKOWN
-		remainingCapacity : Int32 = 0
-	}
-	
-	CommObject CommCoordinatedNavigationDataRequest {
-		resourceID :  Int32
-		
-	}
-	
-	CommObject CommCoordinatedNavigationDataResponse{
-		isValid : Boolean
-		area : CommPathFreeArea
-	}
-
-
-
-
 	
 }

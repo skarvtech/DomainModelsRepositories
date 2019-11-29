@@ -57,5 +57,7 @@ ServiceDefRepository CommManipulatorObjects version 1.0 {
 	CoordinationServiceDefinition ManipulatorCoordinationService {
 		ParameterPattern < EmptyDefaultParameterSet >
 		StatePattern < lifecycle ComponentLifecycle with CommManipulatorObjects.ManipulatorStates >
+		CommunicationServiceUsage manipulatorevent uses ManipulatorEventService
+		CommunicationServiceUsage manipulatorstate uses MobileManipulatorStateQueryService
 	}
 }

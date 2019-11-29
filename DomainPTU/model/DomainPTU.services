@@ -47,5 +47,7 @@ ServiceDefRepository DomainPTU version 1.0 {
 	CoordinationServiceDefinition PTUCoordinationService {
 		ParameterPattern < DomainPTU.PTUParameter >
 		StatePattern < lifecycle ComponentLifecycle with DomainPTU.PTUStates >
-	}
+		CommunicationServiceUsage ptupose uses MovePTUSendService
+		CommunicationServiceUsage ptuevent uses GoalEventService
+		}
 }

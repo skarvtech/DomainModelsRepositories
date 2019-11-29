@@ -25,22 +25,15 @@ Structure of Communication Object:
 
 Structure of Communication Object:
 - width: UInt32 
-<i> pixels </i>
 - height: UInt32 
-<i> pixels </i>
 - format: DomainVision::DepthFormatType 
 - pixel_size: UInt32 
-<i> bit per pixel </i>
 - min_distcance: Double 
-<i> in meter </i>
 - max_distcance: Double 
-<i> in meter </i>
 - data: UInt8[*] 
 - intrinsic_m: Double[*] 
 - extrinsic_m: Double[*] 
-<i> rotation[3][3] + translation[3] in single row </i>
 - stereo_m: Double[*] 
-<i> homogeneous transformation matrix 4x4 </i>
 - distortion_m: Double[*] 
 - distortion_model: DomainVision::ImageDistortionModel  = BROWN_CONRADY 
 - seq_count: UInt32 
@@ -127,22 +120,15 @@ Class Reference: DomainVision::ImageParametersCore
 <hr>
 @section CommDepthImage CommDepthImage
 - width: UInt32  
-<i> pixels </i>
 - height: UInt32  
-<i> pixels </i>
 - format: @ref DepthFormatType (Enum) 
 - pixel_size: UInt32  
-<i> bit per pixel </i>
 - min_distcance: Double  
-<i> in meter </i>
 - max_distcance: Double  
-<i> in meter </i>
 - data: UInt8[*]  
 - intrinsic_m: Double[*]  
 - extrinsic_m: Double[*]  
-<i> rotation[3][3] + translation[3] in single row </i>
 - stereo_m: Double[*]  
-<i> homogeneous transformation matrix 4x4 </i>
 - distortion_m: Double[*]  
 - distortion_model: @ref ImageDistortionModel (Enum)  = BROWN_CONRADY 
 - seq_count: UInt32  

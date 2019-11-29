@@ -36,6 +36,11 @@ ParameterSetRepository CommRobotinoObjects {
 		Trigger SAVE_BEFORE_DOCKING_POSE {}
 	}
 	
+	ParameterSet RobotToRobotDockingParameter {
+				
+		Trigger SAVE_BEFORE_DOCKING_POSE {}
+	}
+	
 	ParameterSet RobotinoRPCParameter {
 		Trigger REFRESH_STATIC_MAP{
 		}

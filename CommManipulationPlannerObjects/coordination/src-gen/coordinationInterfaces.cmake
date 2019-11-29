@@ -16,5 +16,5 @@
 #--------------------------------------------------------------------------
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
-MESSAGE("-- Include OpenRaveCoordinationService")
-ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/OpenRaveCoordinationService ${CMAKE_CURRENT_BINARY_DIR}/OpenRaveCoordinationService)
+MESSAGE("-- Include ManipulationPlannerCoordinationService")
+ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/ManipulationPlannerCoordinationService ${CMAKE_CURRENT_BINARY_DIR}/ManipulationPlannerCoordinationService)

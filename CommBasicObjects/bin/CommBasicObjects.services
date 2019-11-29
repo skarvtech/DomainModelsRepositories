@@ -52,9 +52,7 @@ ServiceDefRepository CommBasicObjects version 1.0
 	// Dennis 31 Oct. 2018
 	/*ForkingServiceDefinition BasePositionUpdateService {
 		PushPattern<DataType=CommBasicObjects.CommBasePositionUpdate>
-	}*/
-	
-	
+	}*/	
 	
 	RequestAnswerServiceDefinition BaseStateQueryService {
 		QueryPattern <
@@ -79,15 +77,6 @@ ServiceDefRepository CommBasicObjects version 1.0
 		ParameterPattern < EmptyDefaultParameterSet >
 	}
 	
-	CoordinationServiceDefinition BaseCoordinationService {
-		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.BasicModes >
-		ParameterPattern < CommBasicObjects.BaseParams >
-		CommunicationServiceUsage baseState uses BaseStateQueryService
-		//OptionalCoordinationService bumperEvent references 
-		//OptionalCoordinationService batteryEvent references 
-		
-	}
-	
 	ForkingServiceDefinition IMUData {
 		PushPattern<DataType=CommBasicObjects.CommIMUData>
 	}
@@ -97,6 +86,14 @@ ServiceDefRepository CommBasicObjects version 1.0
 			ActivationType = 	CommBasicObjects.CommBumperEventParameter
 			EventType = 		CommBasicObjects.CommBumperEventResult
 			EventStateType = 	CommBasicObjects.CommBumperEventState
+		>
+	}
+	
+	ForkingServiceDefinition BatteryEventService{
+		EventPattern <
+			ActivationType = 	CommBasicObjects.CommBatteryParameter
+			EventStateType = 	CommBasicObjects.CommBatteryState
+			EventType = 		CommBasicObjects.CommBatteryEvent
 		>
 	}
 	
@@ -167,6 +164,20 @@ ServiceDefRepository CommBasicObjects version 1.0
 	
 	JoiningServiceDefinition SequnecerHLInterfaceSend {
 		SendPattern < DataType = CommBasicObjects.CommSkillMsg>
+	}
+	
+	CoordinationServiceDefinition LaserFromRGBDCoordinationService{
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern < lifecycle ComponentLifecycle with CommBasicObjects.LaserGenModes>
+	}
+	
+	CoordinationServiceDefinition VisualizationCoordinationService {
+		ParameterPattern <CommBasicObjects.VisualizationParams>
+		StatePattern < lifecycle ComponentLifecycle >
+	}
+	
+	ForkingServiceDefinition UltrasonicService {
+		PushPattern<DataType=CommBasicObjects.CommMobileUltrasonicScan>
 	}
 	
 }

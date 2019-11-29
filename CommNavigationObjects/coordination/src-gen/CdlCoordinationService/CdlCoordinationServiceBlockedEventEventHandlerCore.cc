@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-CdlCoordinationServiceBlockedEventEventHandlerCore::CdlCoordinationServiceBlockedEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommNavigationObjects::CommCdlRobotBlockedEventResult,SmartACE::EventId>(client)
+CdlCoordinationServiceBlockedEventEventHandlerCore::CdlCoordinationServiceBlockedEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommNavigationObjects::CommCdlRobotBlockedEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void CdlCoordinationServiceBlockedEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommCdlRobotBlockedEventResult &r) {
+void CdlCoordinationServiceBlockedEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommCdlRobotBlockedEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

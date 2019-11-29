@@ -4,6 +4,8 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <smartNumericCorrelationId.h>
+
  void LocalizationCoordinationServiceCore::addNewModuleInstance(const std::string& name){
  	std::cout<<"addNewModuleInstance name:"<<name<<std::endl;
 	LocalizationCoordinationService mi;
@@ -98,7 +100,7 @@ std::string LocalizationCoordinationServiceCore::switchCi(const std::string& ciI
 			if(strcasecmp(service.c_str(), "localizationEvent-activate") == 0 )
 			{
 				Smart::StatusCode status;
-				SmartACE::EventId id;
+				Smart::EventIdPtr id = nullptr;
 				char *input  = (char *)NULL;
 				char *pointer = (char *)NULL;
 				char *param1  = (char *)NULL;
@@ -180,7 +182,8 @@ std::string LocalizationCoordinationServiceCore::switchCi(const std::string& ciI
 				std::string str(param1);
 				// remove " "
 				str = str.substr(1, str.length()-2);
-				int id = atoi( param1 );
+				// TODO: <alex> this seems to be quite a hack, as ID is not always an int and will not work with other middlewares as ACE
+				Smart::EventIdPtr id = std::make_shared<Smart::NumericCorrelationId>(atoi( param1 ));
 					
 				status = iter->second.localizationCoordinationServicelocalizationEventClient->deactivate(id);
 				outString.str("");

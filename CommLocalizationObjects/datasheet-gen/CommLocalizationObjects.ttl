@@ -55,7 +55,6 @@
 :CommGpsFix a robmosys:CommunicationObject;
 	rdfs:label "CommGpsFix";
 	t1:shortDescription "CommunicationObject CommGpsFix";
-	t1:description """Communication object to read a gps device. Inspired by struct gps_fix_t from libgps""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
 .
 

@@ -30,9 +30,9 @@ public:
 
 	//variables, ports, handlers
 	//param, state, wiring is dealt with the single master
-	Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult, SmartACE::EventId> *cdlCoordinationServiceblockedEventClient;
+	Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult> *cdlCoordinationServiceblockedEventClient;
 	CdlCoordinationServiceBlockedEventEventHandlerCore *cdlCoordinationServiceblockedEventEventHandlerCore;
-	Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult, SmartACE::EventId> *cdlCoordinationServicegoalEventClient;
+	Smart::IEventClientPattern<CommNavigationObjects::CommCdlGoalEventParameter, CommNavigationObjects::CommCdlGoalEventResult> *cdlCoordinationServicegoalEventClient;
 	CdlCoordinationServiceGoalEventEventHandlerCore *cdlCoordinationServicegoalEventEventHandlerCore;
  };
 #endif /* CDLCOORDINATIONSERVICE_H_ */

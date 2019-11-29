@@ -103,6 +103,40 @@ Structure of Communication Object:
 - goal_x: Int32 
 - goal_y: Int32 
 
+\class CommTrackingObjects::CommDetectedMarkerCore
+CommObject for representing id and pose from visual tags ex: Alvar, AprilTag...
+
+Structure of Communication Object:
+- id: UInt32  = 0 
+- pose: CommBasicObjects::CommPose3d 
+
+\class CommTrackingObjects::CommDetectedMarkerListCore
+CommObject for representing collection of CommDetectedMarker
+
+Structure of Communication Object:
+- markers: CommTrackingObjects::CommDetectedMarker[*] 
+- sensor_pose: CommBasicObjects::CommPose3d 
+- base_state: CommBasicObjects::CommBaseState 
+- valid: Boolean  = false 
+
+\class CommTrackingObjects::CommDetectedMarkerEventResultCore
+contains markers which will be fired in event i.e Result = State && Parameter
+
+Structure of Communication Object:
+- markers: CommTrackingObjects::CommDetectedMarker[*] 
+
+\class CommTrackingObjects::CommDetectedMarkerEventStateCore
+contains markers found
+
+Structure of Communication Object:
+- markers: CommTrackingObjects::CommDetectedMarker[*] 
+
+\class CommTrackingObjects::CommDetectedMarkerEventParameterCore
+contains tag ids requested
+
+Structure of Communication Object:
+- tag_ids: UInt32[*] 
+
 \class CommTrackingObjects::TrackingGoalType
 
 Structure of Enumeration:
@@ -276,6 +310,35 @@ Class Reference: CommTrackingObjects::CommLeaderEventParamCore
 - goal_y: Int32  
 
 Class Reference: CommTrackingObjects::CommLeaderEventResultCore
+<hr>
+@section CommDetectedMarker CommDetectedMarker
+- id: UInt32   = 0 
+- pose: @ref CommPose3d (CommObj) 
+
+Class Reference: CommTrackingObjects::CommDetectedMarkerCore
+<hr>
+@section CommDetectedMarkerList CommDetectedMarkerList
+- markers: @ref CommDetectedMarker[*] (CommObj) 
+- sensor_pose: @ref CommPose3d (CommObj) 
+- base_state: @ref CommBaseState (CommObj) 
+- valid: Boolean   = false 
+
+Class Reference: CommTrackingObjects::CommDetectedMarkerListCore
+<hr>
+@section CommDetectedMarkerEventResult CommDetectedMarkerEventResult
+- markers: @ref CommDetectedMarker[*] (CommObj) 
+
+Class Reference: CommTrackingObjects::CommDetectedMarkerEventResultCore
+<hr>
+@section CommDetectedMarkerEventState CommDetectedMarkerEventState
+- markers: @ref CommDetectedMarker[*] (CommObj) 
+
+Class Reference: CommTrackingObjects::CommDetectedMarkerEventStateCore
+<hr>
+@section CommDetectedMarkerEventParameter CommDetectedMarkerEventParameter
+- tag_ids: UInt32[*]  
+
+Class Reference: CommTrackingObjects::CommDetectedMarkerEventParameterCore
 <hr>
 @section TrackingGoalType TrackingGoalType
 - XY_ROBOT 
