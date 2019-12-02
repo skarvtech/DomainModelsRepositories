@@ -28,9 +28,9 @@ public:
 
 	//variables, ports, handlers
 	//param, state, wiring is dealt with the single master
-	Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult, SmartACE::EventId> *kBCoordinationServicekbEventClient;
+	Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult> *kBCoordinationServicekbEventClient;
 	KBCoordinationServiceKbEventEventHandlerCore *kBCoordinationServicekbEventEventHandlerCore;
-	Smart::IQueryClientPattern<CommBasicObjects::CommKBRequest, CommBasicObjects::CommKBResponse, SmartACE::QueryId> *kBCoordinationServicekbQueryClient;
+	Smart::IQueryClientPattern<CommBasicObjects::CommKBRequest, CommBasicObjects::CommKBResponse> *kBCoordinationServicekbQueryClient;
 	KBCoordinationServiceKbQueryQueryHandler *kBCoordinationServicekbQueryQueryHandler;
  };
 #endif /* KBCOORDINATIONSERVICE_H_ */

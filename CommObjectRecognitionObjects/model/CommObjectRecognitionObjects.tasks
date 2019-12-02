@@ -1,0 +1,10 @@
+TaskDefinitionRepository CommObjectRecognitionObjects {
+	TaskDefinition testTask {
+		in {
+			
+		}
+		results {
+			SUCCESS value = ""
+		}
+	}
+}

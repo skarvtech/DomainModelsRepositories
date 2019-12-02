@@ -63,6 +63,7 @@ CommObjectsRepository CommBasicObjects version 1.0.0 {
 		baseVelocity: CommBaseVelocity
 		baseOdomVelocity: CommBaseVelocity
 		batteryState: CommBatteryLevel
+		baseBumperState : CommBumperState
 	}
 	CommObject CommBasePose {
 		covInvalid: Boolean
@@ -107,6 +108,17 @@ CommObjectsRepository CommBasicObjects version 1.0.0 {
 		ROBOT_TURRET_COMPONENT
 	}
 	
+	
+	CommObject CommBumperState {
+		bumperState : BumperStateType = BUMPER_NOT_SUPPORTED
+	}
+	
+	Enumeration BumperStateType {
+		BUMPER_NOT_SUPPORTED
+		BUMPER_NOT_PRESSED
+		BUMPER_PRESSED
+	}
+
 	Enumeration BumperEventType {
 		BUMPER_UNKNOWN
 		BUMPER_NOT_PRESSED

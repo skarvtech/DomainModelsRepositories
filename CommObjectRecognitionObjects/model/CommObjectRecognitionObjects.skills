@@ -1,0 +1,12 @@
+SkillDefinitionRepository CommObjectRecognitionObjects {
+	CoordinationModuleDefinition objRecognitionModule {
+		SkillDefinition objectrecognition{
+			results {
+				SUCCESS value = ""
+				ERROR value = "COLLISION"
+			}
+		}
+		
+	}
+	
+}

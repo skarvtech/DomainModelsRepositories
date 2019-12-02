@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-BaseCoordinationServiceBatteryEventEventHandlerCore::BaseCoordinationServiceBatteryEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommBasicObjects::CommBatteryEvent,SmartACE::EventId>(client)
+BaseCoordinationServiceBatteryEventEventHandlerCore::BaseCoordinationServiceBatteryEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommBasicObjects::CommBatteryEvent>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void BaseCoordinationServiceBatteryEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommBasicObjects::CommBatteryEvent &r) {
+void BaseCoordinationServiceBatteryEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommBasicObjects::CommBatteryEvent &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

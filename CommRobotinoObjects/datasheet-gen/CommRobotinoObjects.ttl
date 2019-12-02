@@ -589,8 +589,6 @@
 	rdfs:subClassOf robmosys:AbstractService;
 	rdfs:label "PathNavigationGoalService";
 	t1:shortDescription "ServiceDefinition PathNavigationGoalService";
-	t1:description """Service for path-based navigation.
-	A path is a virtual corridor a robot is allowed to navigate within.""";
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommRobotinoObjects>;
 	t1:commPatternUsage [
 		a robmosys:PushPattern;

@@ -7,11 +7,11 @@
 #include "CommBasicObjects/CommKBEventParam.hh"
 #include "KBCoordinationServiceKbEventEventHandler.hh"
 
-class KBCoordinationServiceKbEventEventHandlerCore : public Smart::IEventHandler<CommBasicObjects::CommKBEventResult, SmartACE::EventId>
+class KBCoordinationServiceKbEventEventHandlerCore : public Smart::IEventHandler<CommBasicObjects::CommKBEventResult>
 {
 public:
-	KBCoordinationServiceKbEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommBasicObjects::CommKBEventResult &r) override;
+	KBCoordinationServiceKbEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommBasicObjects::CommKBEventResult &r) override;
 	CommBasicObjects::CommKBEventParam activateEventParam(const std::string& parameterString);
 private:
 	KBCoordinationServiceKbEventEventHandler userHandler;

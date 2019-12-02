@@ -27,4 +27,53 @@ ServiceDefRepository CommTrackingObjects version 1.0
 	ForkingServiceDefinition TrackingService {
 		PushPattern<DataType=CommTrackingObjects.CommTrackingGoal>
 	}
+	
+	ForkingServiceDefinition LaserTrackingDataService {
+		PushPattern<DataType=CommTrackingObjects.CommLaserTrackingData>
+	}
+	
+	ForkingServiceDefinition TrackedPersonListService {
+		PushPattern<DataType=CommTrackingObjects.CommPersonTrackingList>
+	}
+	
+	ForkingServiceDefinition PersonLostEventService {
+		EventPattern < 
+			ActivationType = 	CommTrackingObjects.CommPersonLostEventParameter
+			EventType = 		CommTrackingObjects.CommPersonLostEventResult
+			EventStateType = 	CommTrackingObjects.PersonLostEventState
+		>
+	}	
+	
+	ForkingServiceDefinition PersonDetectionEventService {
+		EventPattern < 
+			ActivationType = 	CommTrackingObjects.CommPersonLostEventParameter
+			EventType = 		CommTrackingObjects.CommPersonDetectionEventResult
+			EventStateType = 	CommTrackingObjects.PersonLostEventState
+		>
+	}
+	
+	CoordinationServiceDefinition TrackerCoordinateService{
+		ParameterPattern < EmptyDefaultParameterSet >
+		StatePattern <lifecycle ComponentLifecycle with CommTrackingObjects.TrackerModes>
+		
+	}
+	
+	RequestAnswerServiceDefinition PersonDetectionQueryService {
+		QueryPattern < RequestType = CommTrackingObjects.CommPersonId AnswerType = CommTrackingObjects.CommDetectedPerson> }
+		
+	ForkingServiceDefinition MarkerDetectionService {
+		PushPattern<DataType=CommTrackingObjects.CommDetectedMarker>
+	}
+	
+	ForkingServiceDefinition MarkerListDetectionService {
+		PushPattern<DataType=CommTrackingObjects.CommDetectedMarkerList>
+	}
+	
+	ForkingServiceDefinition MarkerListEventService {
+		EventPattern < 
+			ActivationType=CommTrackingObjects.CommDetectedMarkerEventParameter
+			EventType=CommTrackingObjects.CommDetectedMarkerEventResult
+			EventStateType=CommTrackingObjects.CommDetectedMarkerEventState
+		> 
+	}
 }

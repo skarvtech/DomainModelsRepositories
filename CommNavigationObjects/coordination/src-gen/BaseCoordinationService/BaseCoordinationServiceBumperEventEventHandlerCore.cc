@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-BaseCoordinationServiceBumperEventEventHandlerCore::BaseCoordinationServiceBumperEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBumperEventParameter, CommBasicObjects::CommBumperEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommBasicObjects::CommBumperEventResult,SmartACE::EventId>(client)
+BaseCoordinationServiceBumperEventEventHandlerCore::BaseCoordinationServiceBumperEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommBumperEventParameter, CommBasicObjects::CommBumperEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommBasicObjects::CommBumperEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void BaseCoordinationServiceBumperEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommBasicObjects::CommBumperEventResult &r) {
+void BaseCoordinationServiceBumperEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommBasicObjects::CommBumperEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

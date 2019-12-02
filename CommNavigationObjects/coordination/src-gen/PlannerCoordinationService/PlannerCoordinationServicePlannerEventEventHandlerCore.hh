@@ -7,11 +7,11 @@
 #include "CommNavigationObjects/CommPlannerEventParameter.hh"
 #include "PlannerCoordinationServicePlannerEventEventHandler.hh"
 
-class PlannerCoordinationServicePlannerEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommPlannerEventResult, SmartACE::EventId>
+class PlannerCoordinationServicePlannerEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommPlannerEventResult>
 {
 public:
-	PlannerCoordinationServicePlannerEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommPlannerEventResult &r) override;
+	PlannerCoordinationServicePlannerEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommPlannerEventResult &r) override;
 	CommNavigationObjects::CommPlannerEventParameter activateEventParam(const std::string& parameterString);
 private:
 	PlannerCoordinationServicePlannerEventEventHandler userHandler;

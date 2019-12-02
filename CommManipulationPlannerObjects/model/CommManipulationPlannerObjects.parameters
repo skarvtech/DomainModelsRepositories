@@ -2,7 +2,14 @@ ParameterSetRepository CommManipulationPlannerObjects {
 	ParameterSet ManipulationPlannerParameter {
 		
 		Trigger PLAN_PATH_TARGET_TCP_POSE {
-			pose : Double [6]
+			
+			// TODO: // pose : Double [6]
+			x: Double
+			y: Double
+			z: Double
+			azimuth: Double
+			elevation: Double
+			roll: Double
 		}
 		
 		Trigger PLAN_PATH_TARGET_JOINT_ANGLES {

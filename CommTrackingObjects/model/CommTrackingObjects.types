@@ -150,6 +150,34 @@ CommObjectsRepository CommTrackingObjects version 1.0.0 {
 		WAVE_DETECTED
 		UNKNOWN
 	}
-
-
+	/*CommObject for representing id and pose from visual tags ex: Alvar, AprilTag...*/
+	CommObject CommDetectedMarker{
+		id: UInt32= 0		
+		pose: CommPose3d //pose in sensor		
+	}
+	
+	/*CommObject for representing collection of CommDetectedMarker*/
+	CommObject CommDetectedMarkerList {		
+		markers: CommDetectedMarker[*]		
+		sensor_pose : CommPose3d //sensor offset robot
+		base_state : CommBaseState
+		valid : Boolean = false		
+	}	
+	
+	/*contains markers which will be fired in event i.e Result = State && Parameter*/
+	CommObject CommDetectedMarkerEventResult {
+			
+		markers: CommDetectedMarker[*]
+	}
+	
+	/*contains markers found*/
+	CommObject CommDetectedMarkerEventState {
+		
+		markers: CommDetectedMarker[*]
+	}	
+	
+	/* contains tag ids requested*/
+	CommObject CommDetectedMarkerEventParameter {
+		tag_ids: UInt32[*]
+	}
 }

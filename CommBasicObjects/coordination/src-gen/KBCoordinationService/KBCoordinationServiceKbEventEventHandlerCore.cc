@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-KBCoordinationServiceKbEventEventHandlerCore::KBCoordinationServiceKbEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommBasicObjects::CommKBEventResult,SmartACE::EventId>(client)
+KBCoordinationServiceKbEventEventHandlerCore::KBCoordinationServiceKbEventEventHandlerCore(Smart::IEventClientPattern<CommBasicObjects::CommKBEventParam, CommBasicObjects::CommKBEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommBasicObjects::CommKBEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void KBCoordinationServiceKbEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommBasicObjects::CommKBEventResult &r) {
+void KBCoordinationServiceKbEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommBasicObjects::CommKBEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

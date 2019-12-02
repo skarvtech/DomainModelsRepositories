@@ -162,6 +162,20 @@ ServiceDefRepository CommRobotinoObjects version 1.0
 			EventStateType 	= CommRobotinoObjects.PathNavigationEventState 
 		>
 	}
+	
+	CoordinationServiceDefinition ConveyerBeltCoordinationService {
+		ParameterPattern <EmptyDefaultParameterSet>
+		StatePattern <lifecycle ComponentLifecycle with CommRobotinoObjects.ConveyerBeltModes>
+	}
+
+        CoordinationServiceDefinition FestoMPSDockingCoordinationService {
+		StatePattern < lifecycle ComponentLifecycle with CommRobotinoObjects.FestoMpsDockingStates>
+		ParameterPattern < CommRobotinoObjects.RobotinoDockingParameter>		
+	}
+	CoordinationServiceDefinition RobotToRobotDockingCoordinationService {
+		StatePattern < lifecycle ComponentLifecycle with CommRobotinoObjects.RobotToRobotDockingStates>
+		ParameterPattern < CommRobotinoObjects.RobotToRobotDockingParameter>		
+	}
 
 	
 }

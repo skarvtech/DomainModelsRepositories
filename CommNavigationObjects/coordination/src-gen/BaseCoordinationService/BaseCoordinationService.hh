@@ -35,11 +35,11 @@ public:
 
 	//variables, ports, handlers
 	//param, state, wiring is dealt with the single master
-	Smart::IQueryClientPattern<CommBasicObjects::CommVoid, CommBasicObjects::CommBaseState, SmartACE::QueryId> *baseCoordinationServicebaseStateClient;
+	Smart::IQueryClientPattern<CommBasicObjects::CommVoid, CommBasicObjects::CommBaseState> *baseCoordinationServicebaseStateClient;
 	BaseCoordinationServiceBaseStateQueryHandler *baseCoordinationServicebaseStateQueryHandler;
-	Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent, SmartACE::EventId> *baseCoordinationServicebatteryEventClient;
+	Smart::IEventClientPattern<CommBasicObjects::CommBatteryParameter, CommBasicObjects::CommBatteryEvent> *baseCoordinationServicebatteryEventClient;
 	BaseCoordinationServiceBatteryEventEventHandlerCore *baseCoordinationServicebatteryEventEventHandlerCore;
-	Smart::IEventClientPattern<CommBasicObjects::CommBumperEventParameter, CommBasicObjects::CommBumperEventResult, SmartACE::EventId> *baseCoordinationServicebumperEventClient;
+	Smart::IEventClientPattern<CommBasicObjects::CommBumperEventParameter, CommBasicObjects::CommBumperEventResult> *baseCoordinationServicebumperEventClient;
 	BaseCoordinationServiceBumperEventEventHandlerCore *baseCoordinationServicebumperEventEventHandlerCore;
  };
 #endif /* BASECOORDINATIONSERVICE_H_ */

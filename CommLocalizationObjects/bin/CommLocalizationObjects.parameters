@@ -23,5 +23,33 @@
 //
 // --------------------------------------------------------------------------
 ParameterSetRepository CommLocalizationObjects {
-	ParameterSet MyParameterSet extends EmptyDefaultParameterSet { }
+	ParameterSet LocalizationParameter {
+		
+		Trigger INITIALPOSE {
+			x: Int32
+			y: Int32
+			a: Double
+		}
+		
+		Trigger GLOBALLOCALIZATION { }
+		
+		Trigger LOADMAP {
+			filename : String
+		}
+	}
+	
+	ParameterSet SlamParameter {
+		
+		Trigger INITNEWMAP { 
+			x: Int32
+			y: Int32
+			a: Int32 
+		}
+		
+		Trigger SAVEMAP { 
+			dirname : String
+			filename : String
+		}
+		
+	}
 }

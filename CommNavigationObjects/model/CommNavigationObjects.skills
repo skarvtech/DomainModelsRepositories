@@ -49,7 +49,7 @@ SkillDefinitionRepository CommNavigationObjects {
 			}
 		}
 		
-		/////////////////////////////////////////////
+		// ///////////////////////////////////////////
 		// MAP HANDLING
 		
 		SkillDefinition loadNavigationMap {
@@ -69,7 +69,7 @@ SkillDefinitionRepository CommNavigationObjects {
 		}
 		
 		
-		/////////////////////////////////////////////
+		// ///////////////////////////////////////////
 		// MOVE ROBOT 
 		
 		SkillDefinition moveRoboterPosition{
@@ -140,7 +140,7 @@ SkillDefinitionRepository CommNavigationObjects {
 		}
 		
 		// MOVE ROBOT 
-		/////////////////////////////////////////////
+		// ///////////////////////////////////////////
 		
 		
 		

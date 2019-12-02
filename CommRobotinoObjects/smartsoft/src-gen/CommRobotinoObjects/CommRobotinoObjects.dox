@@ -311,7 +311,6 @@ Structure of Communication Object:
 Structure of Communication Object:
 - tagID: Int32 
 - tagPose: CommBasicObjects::CommPose3d 
-<i> in sensor coordinates </i>
 - base_state: CommBasicObjects::CommBaseState 
 - sensor_pose: CommBasicObjects::CommPose3d 
 
@@ -745,7 +744,6 @@ Class Reference: CommRobotinoObjects::CommClosestNodeAnswerCore
 @section CommVisualTag CommVisualTag
 - tagID: Int32  
 - tagPose: @ref CommPose3d (CommObj) 
-<i> in sensor coordinates </i>
 - base_state: @ref CommBaseState (CommObj) 
 - sensor_pose: @ref CommPose3d (CommObj) 
 

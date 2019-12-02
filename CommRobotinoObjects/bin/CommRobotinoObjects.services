@@ -48,7 +48,7 @@ ServiceDefRepository CommRobotinoObjects version 1.0
 	
 	
 	
-	ForkingServiceDefinition CommRobotinoDigitalEvent {
+	ForkingServiceDefinition CommRobotinoDigitalInputEvent {
 		EventPattern < 
 			ActivationType 	= CommRobotinoObjects.CommDigitalInputEventParameter
 			EventType 		= CommRobotinoObjects.CommDigitalInputEventResult
@@ -161,6 +161,20 @@ ServiceDefRepository CommRobotinoObjects version 1.0
 			EventType 		= CommRobotinoObjects.CommNavigationPaths
 			EventStateType 	= CommRobotinoObjects.PathNavigationEventState 
 		>
+	}
+	
+	CoordinationServiceDefinition ConveyerBeltCoordinationService {
+		ParameterPattern <EmptyDefaultParameterSet>
+		StatePattern <lifecycle ComponentLifecycle with CommRobotinoObjects.ConveyerBeltModes>
+	}
+
+        CoordinationServiceDefinition FestoMPSDockingCoordinationService {
+		StatePattern < lifecycle ComponentLifecycle with CommRobotinoObjects.FestoMpsDockingStates>
+		ParameterPattern < CommRobotinoObjects.RobotinoDockingParameter>		
+	}
+	CoordinationServiceDefinition RobotToRobotDockingCoordinationService {
+		StatePattern < lifecycle ComponentLifecycle with CommRobotinoObjects.RobotToRobotDockingStates>
+		ParameterPattern < CommRobotinoObjects.RobotToRobotDockingParameter>		
 	}
 
 	

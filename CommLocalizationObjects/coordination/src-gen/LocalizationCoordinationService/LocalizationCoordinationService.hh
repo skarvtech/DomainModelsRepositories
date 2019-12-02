@@ -23,7 +23,7 @@ public:
 
 	//variables, ports, handlers
 	//param, state, wiring is dealt with the single master
-	Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult, SmartACE::EventId> *localizationCoordinationServicelocalizationEventClient;
+	Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult> *localizationCoordinationServicelocalizationEventClient;
 	LocalizationCoordinationServiceLocalizationEventEventHandlerCore *localizationCoordinationServicelocalizationEventEventHandlerCore;
  };
 #endif /* LOCALIZATIONCOORDINATIONSERVICE_H_ */

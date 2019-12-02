@@ -4,6 +4,8 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <smartNumericCorrelationId.h>
+
  void PlannerCoordinationServiceCore::addNewModuleInstance(const std::string& name){
  	std::cout<<"addNewModuleInstance name:"<<name<<std::endl;
 	PlannerCoordinationService mi;
@@ -98,7 +100,7 @@ std::string PlannerCoordinationServiceCore::switchCi(const std::string& ciInstan
 			if(strcasecmp(service.c_str(), "plannerEvent-activate") == 0 )
 			{
 				Smart::StatusCode status;
-				SmartACE::EventId id;
+				Smart::EventIdPtr id = nullptr;
 				char *input  = (char *)NULL;
 				char *pointer = (char *)NULL;
 				char *param1  = (char *)NULL;
@@ -180,7 +182,8 @@ std::string PlannerCoordinationServiceCore::switchCi(const std::string& ciInstan
 				std::string str(param1);
 				// remove " "
 				str = str.substr(1, str.length()-2);
-				int id = atoi( param1 );
+				// TODO: <alex> this seems to be quite a hack, as ID is not always an int and will not work with other middlewares as ACE
+				Smart::EventIdPtr id = std::make_shared<Smart::NumericCorrelationId>(atoi( param1 ));
 					
 				status = iter->second.plannerCoordinationServiceplannerEventClient->deactivate(id);
 				outString.str("");

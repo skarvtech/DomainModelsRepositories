@@ -182,4 +182,37 @@ CommObjectsRepository CommNavigationObjects version 1.0.0 {
 		newState: CdlRobotBlockEventType
 	}
 
+	Enumeration NavigationPartType {
+		GRID_BASED_FREE_NAV
+		CORRIDOR_BASED_COORDINATED_NAV
+		GRID_BASED_COORDINATED_NAV
+		
+	}
+	
+	Enumeration NavigationConnectonType {
+		VIA_LOCATION
+	}
+	
+	CommObject CommNavigationTopologyPart {
+		type : NavigationPartType
+		id : UInt32
+		name : String 
+		contained_location_ids : UInt32 [*]
+	}
+	
+	CommObject CommNavigationTopologyConnection {
+		type : NavigationConnectonType
+		
+		locationId : UInt32
+		
+		fromPart : UInt32
+		toPart : UInt32
+	}
+	
+	CommObject CommNavigationTopologyMap {
+		isValid: Boolean = false
+		vertices : CommNavigationTopologyPart[*]
+		edges : CommNavigationTopologyConnection[*] 
+	}
+
 }

@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-LocalizationCoordinationServiceLocalizationEventEventHandlerCore::LocalizationCoordinationServiceLocalizationEventEventHandlerCore(Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommLocalizationObjects::CommLocalizationEventResult,SmartACE::EventId>(client)
+LocalizationCoordinationServiceLocalizationEventEventHandlerCore::LocalizationCoordinationServiceLocalizationEventEventHandlerCore(Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommLocalizationObjects::CommLocalizationEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void LocalizationCoordinationServiceLocalizationEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommLocalizationObjects::CommLocalizationEventResult &r) {
+void LocalizationCoordinationServiceLocalizationEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommLocalizationObjects::CommLocalizationEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

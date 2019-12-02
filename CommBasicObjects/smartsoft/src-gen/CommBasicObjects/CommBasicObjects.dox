@@ -244,7 +244,6 @@ Structure of Communication Object:
 - distances: Double[*] 
 - timeStamp: CommBasicObjects::CommTimeStamp 
 - raw_readings: Double[*] 
-<i> all IR raw readings as they are! </i>
 
 \class CommBasicObjects::CommMobileUltrasonicScanCore
 
@@ -688,7 +687,6 @@ Class Reference: CommBasicObjects::CommMobileIRScanCore
 - distances: Double[*]  
 - timeStamp: @ref CommTimeStamp (CommObj) 
 - raw_readings: Double[*]  
-<i> all IR raw readings as they are! </i>
 
 Class Reference: CommBasicObjects::CommIRScanCore
 <hr>

@@ -8,7 +8,7 @@ ServiceDefRepository DomainSymbolicPlanner version 1.0
 
 	CoordinationServiceDefinition DefaultService {
 		ParameterPattern < EmptyDefaultParameterSet >
-		StatePattern < lifecycle ComponentLifecycle  >
+		StatePattern < lifecycle ComponentLifecycle with DomainSymbolicPlanner.DefaultModes>
 	}
 
 }

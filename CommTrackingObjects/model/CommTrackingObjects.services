@@ -60,4 +60,20 @@ ServiceDefRepository CommTrackingObjects version 1.0
 	
 	RequestAnswerServiceDefinition PersonDetectionQueryService {
 		QueryPattern < RequestType = CommTrackingObjects.CommPersonId AnswerType = CommTrackingObjects.CommDetectedPerson> }
+		
+	ForkingServiceDefinition MarkerDetectionService {
+		PushPattern<DataType=CommTrackingObjects.CommDetectedMarker>
+	}
+	
+	ForkingServiceDefinition MarkerListDetectionService {
+		PushPattern<DataType=CommTrackingObjects.CommDetectedMarkerList>
+	}
+	
+	ForkingServiceDefinition MarkerListEventService {
+		EventPattern < 
+			ActivationType=CommTrackingObjects.CommDetectedMarkerEventParameter
+			EventType=CommTrackingObjects.CommDetectedMarkerEventResult
+			EventStateType=CommTrackingObjects.CommDetectedMarkerEventState
+		> 
+	}
 }

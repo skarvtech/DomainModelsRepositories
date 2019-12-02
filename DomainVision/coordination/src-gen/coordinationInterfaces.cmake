@@ -16,5 +16,5 @@
 #--------------------------------------------------------------------------
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
-MESSAGE("-- Include ImageProvisionCoordinationService")
-ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/ImageProvisionCoordinationService ${CMAKE_CURRENT_BINARY_DIR}/ImageProvisionCoordinationService)
+MESSAGE("-- Include VisionCoordinationService")
+ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/VisionCoordinationService ${CMAKE_CURRENT_BINARY_DIR}/VisionCoordinationService)

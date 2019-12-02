@@ -57,4 +57,33 @@ ParameterSetRepository CommBasicObjects {
 		}
 	}
 	
+	ParameterSet VisualizationParams {
+		Trigger SHOW_BASE1 {}
+		Trigger STOP_BASE1 {}
+		
+		Trigger SHOW_LASER1 {}
+		Trigger STOP_LASER1 {}
+		
+		Trigger SHOW_LASER2 {}
+		Trigger STOP_LASER2 {}
+		
+		Trigger SHOW_LASER3 {}
+		Trigger STOP_LASER3 {}
+		
+		Trigger SHOW_IR1 {}
+		Trigger STOP_IR1 {}
+		
+		Trigger SHOW_MAP1 {}
+		Trigger STOP_MAP1 {}
+		
+		Trigger SHOW_RGB1 {}
+		Trigger STOP_RGB1 {}
+		
+		Trigger SHOW_RGBD1 {}
+		Trigger STOP_RGBD1 {}
+		
+		Trigger SHOW_DEPTHIMAGE1 {}
+		Trigger STOP_DEPTHIMAGE1 {}
+	}
+	
 }

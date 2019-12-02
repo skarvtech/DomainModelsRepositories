@@ -3,13 +3,13 @@
 #include <cstdio>
 #include <iostream>
 
-PlannerCoordinationServicePlannerEventEventHandlerCore::PlannerCoordinationServicePlannerEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult, SmartACE::EventId> *client, std::string ciInstanceName)
-: Smart::IEventHandler<CommNavigationObjects::CommPlannerEventResult,SmartACE::EventId>(client)
+PlannerCoordinationServicePlannerEventEventHandlerCore::PlannerCoordinationServicePlannerEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommPlannerEventParameter, CommNavigationObjects::CommPlannerEventResult> *client, std::string ciInstanceName)
+: Smart::IEventHandler<CommNavigationObjects::CommPlannerEventResult>(client)
 {
 	this->ciInstanceName = ciInstanceName;
 }
 		
-void PlannerCoordinationServicePlannerEventEventHandlerCore::handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommPlannerEventResult &r) {
+void PlannerCoordinationServicePlannerEventEventHandlerCore::handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommPlannerEventResult &r) {
 	std::cout<<"Event CORE Called!"<<std::endl;
 	std::string resultString;
 	resultString = userHandler.handleEvent(r);

@@ -7,11 +7,11 @@
 #include "CommLocalizationObjects/CommLocalizationEventParameter.hh"
 #include "LocalizationCoordinationServiceLocalizationEventEventHandler.hh"
 
-class LocalizationCoordinationServiceLocalizationEventEventHandlerCore : public Smart::IEventHandler<CommLocalizationObjects::CommLocalizationEventResult, SmartACE::EventId>
+class LocalizationCoordinationServiceLocalizationEventEventHandlerCore : public Smart::IEventHandler<CommLocalizationObjects::CommLocalizationEventResult>
 {
 public:
-	LocalizationCoordinationServiceLocalizationEventEventHandlerCore(Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommLocalizationObjects::CommLocalizationEventResult &r) override;
+	LocalizationCoordinationServiceLocalizationEventEventHandlerCore(Smart::IEventClientPattern<CommLocalizationObjects::CommLocalizationEventParameter, CommLocalizationObjects::CommLocalizationEventResult> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommLocalizationObjects::CommLocalizationEventResult &r) override;
 	CommLocalizationObjects::CommLocalizationEventParameter activateEventParam(const std::string& parameterString);
 private:
 	LocalizationCoordinationServiceLocalizationEventEventHandler userHandler;

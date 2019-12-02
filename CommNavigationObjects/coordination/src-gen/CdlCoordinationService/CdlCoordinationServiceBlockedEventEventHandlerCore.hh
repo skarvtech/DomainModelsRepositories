@@ -7,11 +7,11 @@
 #include "CommNavigationObjects/CommCdlRobotBlockedEventParameter.hh"
 #include "CdlCoordinationServiceBlockedEventEventHandler.hh"
 
-class CdlCoordinationServiceBlockedEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommCdlRobotBlockedEventResult, SmartACE::EventId>
+class CdlCoordinationServiceBlockedEventEventHandlerCore : public Smart::IEventHandler<CommNavigationObjects::CommCdlRobotBlockedEventResult>
 {
 public:
-	CdlCoordinationServiceBlockedEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult, SmartACE::EventId> *client, std::string moduleInstanceName);
-	virtual void handleEvent(const SmartACE::EventId &id, const CommNavigationObjects::CommCdlRobotBlockedEventResult &r) override;
+	CdlCoordinationServiceBlockedEventEventHandlerCore(Smart::IEventClientPattern<CommNavigationObjects::CommCdlRobotBlockedEventParameter, CommNavigationObjects::CommCdlRobotBlockedEventResult> *client, std::string moduleInstanceName);
+	virtual void handleEvent(const Smart::EventIdPtr &id, const CommNavigationObjects::CommCdlRobotBlockedEventResult &r) override;
 	CommNavigationObjects::CommCdlRobotBlockedEventParameter activateEventParam(const std::string& parameterString);
 private:
 	CdlCoordinationServiceBlockedEventEventHandler userHandler;
