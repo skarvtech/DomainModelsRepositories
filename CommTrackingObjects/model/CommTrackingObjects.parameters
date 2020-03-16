@@ -22,8 +22,10 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 // --------------------------------------------------------------------------
-ParameterSetRepository CommTrackingObjects {
-	ParameterSet TrackingParam {
+ParameterSetRepository CommTrackingObjects
+{
+	ParameterSet TrackingParam
+	{
 		Trigger FOLLOW_RESET{
 			initX : Double
 			initY : Double
@@ -33,5 +35,10 @@ ParameterSetRepository CommTrackingObjects {
 			sigma : Double
 		}
 	}
-
+	ParameterSet Markers
+	{
+		Trigger SAVE_TAGS_AS_JSON{
+		dirname : String
+	}
+	}
 }

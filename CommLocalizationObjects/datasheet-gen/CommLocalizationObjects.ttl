@@ -52,6 +52,24 @@
 	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
 .
 
+:CommAmclHypothesis a robmosys:CommunicationObject;
+	rdfs:label "CommAmclHypothesis";
+	t1:shortDescription "CommunicationObject CommAmclHypothesis";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
+.
+
+:CommAmclParticle a robmosys:CommunicationObject;
+	rdfs:label "CommAmclParticle";
+	t1:shortDescription "CommunicationObject CommAmclParticle";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
+.
+
+:CommAmclVisualizationInfo a robmosys:CommunicationObject;
+	rdfs:label "CommAmclVisualizationInfo";
+	t1:shortDescription "CommunicationObject CommAmclVisualizationInfo";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
+.
+
 :CommGpsFix a robmosys:CommunicationObject;
 	rdfs:label "CommGpsFix";
 	t1:shortDescription "CommunicationObject CommGpsFix";
@@ -93,6 +111,20 @@
 # see https://robmosys.eu/wiki/modeling:metamodels:service 
 # see https://robmosys.eu/wiki/modeling:metamodels:commpattern 
 # Note: this will later not be provided by the software component
+:AmclVisualizationInfo a robmosys:ServiceDefinition;
+	rdf:type rdfs:Class;
+	rdf:type sh:NodeShape;
+	rdfs:subClassOf robmosys:AbstractService;
+	rdfs:label "AmclVisualizationInfo";
+	t1:shortDescription "ServiceDefinition AmclVisualizationInfo";
+	t1:memberOfRepository <http://www.servicerobotik-ulm.de/DomainModels/CommLocalizationObjects>;
+	t1:commPatternUsage [
+		a robmosys:PushPattern;
+		# FIXME: check the namespace: it will be wrong when elements from other repos are used.
+		t1:dataType :CommAmclVisualizationInfo;
+	];
+.
+
 :CommGpsFixService a robmosys:ServiceDefinition;
 	rdf:type rdfs:Class;
 	rdf:type sh:NodeShape;

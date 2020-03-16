@@ -61,7 +61,7 @@ CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_sensor_fram
 
 CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_robot_frame_by_index(size_t index) const
 {
-	arma::mat measurment = get_tag_pose_in_sensor_frame_by_index(index).getHomogeneousMatrix(1.0);
+	arma::mat measurment = static_cast<CommBasicObjects::CommPose3d>(idl_CommDetectedMarkerList.markers.at(index).pose).getHomogeneousMatrix(1.0);
 	arma::mat sensorPose = getSensor_pose().getHomogeneousMatrix(1.0);
 
 	arma::mat offset = sensorPose * measurment;
@@ -71,7 +71,7 @@ CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_robot_frame
 
 CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_world_frame_by_index(size_t index) const
 {
-	arma::mat measurment = get_tag_pose_in_sensor_frame_by_index(index).getHomogeneousMatrix(1.0);
+	arma::mat measurment = static_cast<CommBasicObjects::CommPose3d>(idl_CommDetectedMarkerList.markers.at(index).pose).getHomogeneousMatrix(1.0);
 
 	arma::mat sensorPose = getSensor_pose().getHomogeneousMatrix(1.0);
 	arma::mat robotPose = getBase_state().getBasePose().getPose3D().getHomogeneousMatrix(1.0);
@@ -82,19 +82,15 @@ CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_world_frame
 
 CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_sensor_frame_by_tag_id(unsigned int tag_id) const
 {
-
-	CommBasicObjects::CommPose3d marker_pose;
 	for(int i =0; i<idl_CommDetectedMarkerList.markers.size(); ++i)
 	{
-		CommTrackingObjects::CommDetectedMarker current_marker = idl_CommDetectedMarkerList.markers[i];
-		if(current_marker.getId() == tag_id)
+		if(idl_CommDetectedMarkerList.markers[i].id == tag_id)
 		{
-			marker_pose = current_marker.getPose();
-			return marker_pose;
+			return idl_CommDetectedMarkerList.markers[i].pose;
 		}
 	}
 
-	return marker_pose;
+	return CommBasicObjects::CommPose3d(0,0,0,0,0,0);
 }
 
 CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_robot_frame_by_tag_id(unsigned int tag_id) const
@@ -110,7 +106,6 @@ CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_robot_frame
 CommBasicObjects::CommPose3d CommDetectedMarkerList::get_tag_pose_in_world_frame_by_tag_id(unsigned int tag_id) const
 {
 	arma::mat measurment = get_tag_pose_in_sensor_frame_by_tag_id(tag_id).getHomogeneousMatrix(1.0);
-
 	arma::mat sensorPose = getSensor_pose().getHomogeneousMatrix(1.0);
 	arma::mat robotPose = getBase_state().getBasePose().getPose3D().getHomogeneousMatrix(1.0);
 

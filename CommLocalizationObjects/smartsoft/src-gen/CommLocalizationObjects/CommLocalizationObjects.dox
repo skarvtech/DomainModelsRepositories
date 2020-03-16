@@ -65,6 +65,25 @@ Structure of Communication Object:
 - speed_uncertainty: Double 
 - climb_uncertainty: Double 
 
+\class CommLocalizationObjects::CommAmclParticleCore
+
+Structure of Communication Object:
+- pose: CommBasicObjects::CommPose3d 
+- weight: Double  = 0.0 
+
+\class CommLocalizationObjects::CommAmclHypothesisCore
+
+Structure of Communication Object:
+- pose: CommBasicObjects::CommPose3d 
+- weight: Double  = 0.0 
+- covMatrix: Double[9]  = [0.0] 
+
+\class CommLocalizationObjects::CommAmclVisualizationInfoCore
+
+Structure of Communication Object:
+- particles: CommLocalizationObjects::CommAmclParticle[*] 
+- hypotheses: CommLocalizationObjects::CommAmclHypothesis[*] 
+
 \class CommLocalizationObjects::BearingOnlySLAMTag
 
 Structure of Enumeration:
@@ -152,6 +171,25 @@ Class Reference: CommLocalizationObjects::LocalizationEventStateCore
 - climb_uncertainty: Double  
 
 Class Reference: CommLocalizationObjects::CommGpsFixCore
+<hr>
+@section CommAmclParticle CommAmclParticle
+- pose: @ref CommPose3d (CommObj) 
+- weight: Double   = 0.0 
+
+Class Reference: CommLocalizationObjects::CommAmclParticleCore
+<hr>
+@section CommAmclHypothesis CommAmclHypothesis
+- pose: @ref CommPose3d (CommObj) 
+- weight: Double   = 0.0 
+- covMatrix: Double[9]   = [0.0] 
+
+Class Reference: CommLocalizationObjects::CommAmclHypothesisCore
+<hr>
+@section CommAmclVisualizationInfo CommAmclVisualizationInfo
+- particles: @ref CommAmclParticle[*] (CommObj) 
+- hypotheses: @ref CommAmclHypothesis[*] (CommObj) 
+
+Class Reference: CommLocalizationObjects::CommAmclVisualizationInfoCore
 <hr>
 @section BearingOnlySLAMTag BearingOnlySLAMTag
 - LANDMARKCOUNT 

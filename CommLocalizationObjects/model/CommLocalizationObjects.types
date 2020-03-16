@@ -122,6 +122,19 @@ CommObjectsRepository CommLocalizationObjects version 1.0.0 {
 		climb_uncertainty : Double
 	}
 
+	CommObject CommAmclParticle{
+	pose: CommPose3d
+	weight: Double = 0.0
+	}
 
+	CommObject CommAmclHypothesis{
+	pose: CommPose3d
+	weight: Double = 0.0
+	covMatrix: Double[9] = [0.0]
+	}
 
+	CommObject CommAmclVisualizationInfo{
+	particles: CommAmclParticle[*]
+	hypotheses: CommAmclHypothesis[*]
+	}
 }

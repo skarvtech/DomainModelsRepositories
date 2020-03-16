@@ -105,6 +105,7 @@ CommPose3d::~CommPose3d()
 arma::mat CommPose3d::getHomogeneousMatrix(const double unit) const
 {
 	arma::mat matrix(4, 4);
+	matrix.zeros();
 	EulerTransformationMatrices::create_zyx_matrix(get_x(unit),
 			get_y(unit), get_z(unit), get_azimuth(), get_elevation(),
 			get_roll(), matrix);
