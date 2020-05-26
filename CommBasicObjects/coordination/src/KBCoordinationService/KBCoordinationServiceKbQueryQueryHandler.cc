@@ -1,4 +1,4 @@
-#include "../../../../DomainModelsRepositories/CommBasicObjects/coordination/src/KBCoordinationService/KBCoordinationServiceKbQueryQueryHandler.hh"
+#include "KBCoordinationServiceKbQueryQueryHandler.hh"
   
 CommBasicObjects::CommKBRequest KBCoordinationServiceKbQueryQueryHandler::handleRequest(const std::string& inString){
 	//fill the request commObject with the data provided via the inString (from TCL)

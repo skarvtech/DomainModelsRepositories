@@ -1,4 +1,4 @@
-#include "../../../../DomainModelsRepositories/CommBasicObjects/coordination/src/KBCoordinationService/KBCoordinationServiceKbEventEventHandler.hh"
+#include "KBCoordinationServiceKbEventEventHandler.hh"
 
 std::string KBCoordinationServiceKbEventEventHandler::handleEvent(const CommBasicObjects::CommKBEventResult &r) throw() {
 	std::string outString;
