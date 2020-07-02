@@ -24,6 +24,10 @@ IDescription::shp_t SelfDescription(CommBasicObjectsIDL::CommNavigationVelocity 
 	ret->add(
 		SelfDescription(&(obj->vY), "VY")
 	);
+	// add vZ
+	ret->add(
+		SelfDescription(&(obj->vZ), "VZ")
+	);
 	// add omega
 	ret->add(
 		SelfDescription(&(obj->omega), "Omega")

@@ -40,6 +40,10 @@ ServiceDefRepository CommLocalizationObjects version 1.0
 		PushPattern < DataType = CommLocalizationObjects.CommGpsFix >
 	}
 	
+	ForkingServiceDefinition AmclVisualizationInfo{
+		PushPattern<DataType=CommLocalizationObjects.CommAmclVisualizationInfo>
+	}
+	
 	RequestAnswerServiceDefinition CommGpsFixService {
 		QueryPattern <
 			RequestType = CommBasicObjects.CommVoid

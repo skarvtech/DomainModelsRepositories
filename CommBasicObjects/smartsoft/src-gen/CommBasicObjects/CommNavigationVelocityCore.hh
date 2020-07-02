@@ -72,6 +72,10 @@ public:
 	inline double getVY() const { return idl_CommNavigationVelocity.vY; }
 	inline CommNavigationVelocityCore& setVY(const double &vY) { idl_CommNavigationVelocity.vY = vY; return *this; }
 	
+	// getter and setter for element VZ
+	inline double getVZ() const { return idl_CommNavigationVelocity.vZ; }
+	inline CommNavigationVelocityCore& setVZ(const double &vZ) { idl_CommNavigationVelocity.vZ = vZ; return *this; }
+	
 	// getter and setter for element Omega
 	inline double getOmega() const { return idl_CommNavigationVelocity.omega; }
 	inline CommNavigationVelocityCore& setOmega(const double &omega) { idl_CommNavigationVelocity.omega = omega; return *this; }

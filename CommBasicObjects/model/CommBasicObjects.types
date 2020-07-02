@@ -84,6 +84,7 @@ CommObjectsRepository CommBasicObjects version 1.0.0 {
 	CommObject CommNavigationVelocity {
 		vX: Double = .0
 		vY: Double = .0
+		vZ: Double = .0
 		omega: Double = .0
 	}
 	CommObject CommBatteryLevel {

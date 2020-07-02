@@ -94,6 +94,8 @@ class CommNavigationVelocity : public CommNavigationVelocityCore {
 
 		inline double get_vY(const double unit = 0.001) const { return getVY() * (0.001 / unit); }
 
+		inline double get_vZ(const double unit = 0.001) const { return getVZ() * (0.001 / unit); }
+
 		/**
 		Get the angular velocity in radians per second.
 		*/
@@ -109,6 +111,7 @@ class CommNavigationVelocity : public CommNavigationVelocityCore {
 		*/
 		inline void set_vX(double v, const double unit = 0.001) { setVX( v * (1000 * unit) ); }
 		inline void set_vY(double v, const double unit = 0.001) { setVY( v * (1000 * unit) ); }
+		inline void set_vZ(double v, const double unit = 0.001) { setVZ( v * (1000 * unit) ); }
 
 		/**
 		Set the angular velocity of the base in radians per second.

@@ -83,6 +83,7 @@ Structure of Communication Object:
 Structure of Communication Object:
 - vX: Double  = 0.0 
 - vY: Double  = 0.0 
+- vZ: Double  = 0.0 
 - omega: Double  = 0.0 
 
 \class CommBasicObjects::CommBatteryLevelCore
@@ -526,6 +527,7 @@ Class Reference: CommBasicObjects::CommBaseVelocityCore
 @section CommNavigationVelocity CommNavigationVelocity
 - vX: Double   = 0.0 
 - vY: Double   = 0.0 
+- vZ: Double   = 0.0 
 - omega: Double   = 0.0 
 
 Class Reference: CommBasicObjects::CommNavigationVelocityCore

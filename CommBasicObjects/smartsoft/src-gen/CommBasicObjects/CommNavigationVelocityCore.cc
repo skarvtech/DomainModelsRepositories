@@ -68,6 +68,7 @@ namespace CommBasicObjects
 		
 		boost::hash_combine(seed, data.vX);
 		boost::hash_combine(seed, data.vY);
+		boost::hash_combine(seed, data.vZ);
 		boost::hash_combine(seed, data.omega);
 		
 		return seed;
@@ -80,6 +81,7 @@ namespace CommBasicObjects
 	{  
 		setVX(0.0);
 		setVY(0.0);
+		setVZ(0.0);
 		setOmega(0.0);
 	}
 	
@@ -95,6 +97,7 @@ namespace CommBasicObjects
 	  os << "CommNavigationVelocity(";
 	  os << getVX() << " ";
 	  os << getVY() << " ";
+	  os << getVZ() << " ";
 	  os << getOmega() << " ";
 	  os << ") ";
 	}
@@ -103,6 +106,7 @@ namespace CommBasicObjects
 	void CommNavigationVelocityCore::to_xml(std::ostream &os, const std::string &indent) const {
 		os << indent << "<vX>" << getVX() << "</vX>";
 		os << indent << "<vY>" << getVY() << "</vY>";
+		os << indent << "<vZ>" << getVZ() << "</vZ>";
 		os << indent << "<omega>" << getOmega() << "</omega>";
 	}
 	
@@ -110,6 +114,7 @@ namespace CommBasicObjects
 	void CommNavigationVelocityCore::from_xml(std::istream &is) {
 		static const Smart::KnuthMorrisPratt kmp_vX("<vX>");
 		static const Smart::KnuthMorrisPratt kmp_vY("<vY>");
+		static const Smart::KnuthMorrisPratt kmp_vZ("<vZ>");
 		static const Smart::KnuthMorrisPratt kmp_omega("<omega>");
 		
 		if(kmp_vX.search(is)) {
@@ -121,6 +126,11 @@ namespace CommBasicObjects
 			double vYItem;
 			is >> vYItem;
 			setVY(vYItem);
+		}
+		if(kmp_vZ.search(is)) {
+			double vZItem;
+			is >> vZItem;
+			setVZ(vZItem);
 		}
 		if(kmp_omega.search(is)) {
 			double omegaItem;

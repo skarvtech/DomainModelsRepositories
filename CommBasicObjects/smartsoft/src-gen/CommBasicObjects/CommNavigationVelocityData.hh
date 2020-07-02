@@ -24,6 +24,7 @@ namespace CommBasicObjectsIDL
 	{
 		double vX;
 		double vY;
+		double vZ;
 		double omega;
   	};
 };

@@ -24,6 +24,8 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const CommBasicObjectsIDL::CommN
 	good_bit = good_bit && cdr.write_double(data.vX);
 	// serialize list-element vY
 	good_bit = good_bit && cdr.write_double(data.vY);
+	// serialize list-element vZ
+	good_bit = good_bit && cdr.write_double(data.vZ);
 	// serialize list-element omega
 	good_bit = good_bit && cdr.write_double(data.omega);
 	
@@ -38,6 +40,8 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, CommBasicObjectsIDL::CommNavigati
 	good_bit = good_bit && cdr.read_double(data.vX);
 	// deserialize type element vY
 	good_bit = good_bit && cdr.read_double(data.vY);
+	// deserialize type element vZ
+	good_bit = good_bit && cdr.read_double(data.vZ);
 	// deserialize type element omega
 	good_bit = good_bit && cdr.read_double(data.omega);
 	

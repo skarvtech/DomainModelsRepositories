@@ -36,6 +36,10 @@ ParameterSetRepository CommLocalizationObjects {
 		Trigger LOADMAP {
 			filename : String
 		}
+
+		Trigger SENSORSTOUSE{
+			sensorsToUse: UInt16
+		}
 	}
 	
 	ParameterSet SlamParameter {
